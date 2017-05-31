@@ -19,7 +19,7 @@ class Navigator extends Component {
 		return {
 			// initialRouteName: 'Registration',
 			// initialRouteName: 'Login',
-			initialRouteName: 'FirstLaunch',
+			initialRouteName: 'AddMail',
 		};
 	}
 

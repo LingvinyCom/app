@@ -8,6 +8,8 @@ import {
 import Collapsible from 'react-native-collapsible';
 import Input from '../../../../../components/SimpleInput/';
 import Switch from '../../../../../components/Switch/';
+import Colors from '../../../../../config/colors.config';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export default class CollapseMenu extends Component {
 	state: {
@@ -30,9 +32,24 @@ export default class CollapseMenu extends Component {
 		const maxLength = 30;
 		return (
 			<View>
-				<View>
-					<Text>Aditional Settings</Text>
-					<Text onPress={this.toggleMenu.bind(this)}>+</Text>
+				<View style={styles.titleCollapse}>
+					<Text style={styles.title}>Aditional Settings</Text>
+					<Text
+						style={styles.collapseIcon}
+						onPress={this.toggleMenu.bind(this)}
+					>
+						{
+							this.state.isCollapsed &&
+							<Icon
+								name="add"
+								size={24}
+								color={Colors.lightGray} /> ||
+							<Icon
+								name="remove"
+								size={24}
+								color={Colors.lightGray} />
+						}
+					</Text>
 				</View>
 				<Collapsible collapsed={this.state.isCollapsed}>
 					<View>
@@ -54,12 +71,10 @@ export default class CollapseMenu extends Component {
 							onChangeText={(text: string) => this.props.auth.setValue({'password': text})}
 							maxLength={maxLength}
 						/>
-
 						<Switch 
 							label={'USE SSL'}
 							onPress={() => console.log('onPress Switch')}
 						/>
-
 						<Input
 							label={'AUTHENTICATION'}
 							value={'...'}
@@ -80,5 +95,21 @@ export default class CollapseMenu extends Component {
 }
 
 const styles = StyleSheet.create({
-
+    titleCollapse: {
+    	flexDirection: 'row',
+	    justifyContent: 'space-between',
+	    alignItems: 'center',
+	    height: 60,
+	    paddingHorizontal: 40,
+	    backgroundColor: '#F5F6F8',
+	    marginBottom: 30,
+    },
+    title: {
+        fontSize: 16,
+	    color: Colors.gray,
+    },
+    collapseIcon: {
+        fontSize: 16,
+        color: Colors.gray,
+    },
 });
