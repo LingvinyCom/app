@@ -32,6 +32,7 @@ export default class SignIn extends Component {
         <Title text={'Login to Continue'}/>
         <Form
           auth={this.props.auth}
+          isShowForgotPassword={true}
           onPress={this.login.bind(this)}
         />
         <Footer

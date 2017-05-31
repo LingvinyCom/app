@@ -3,17 +3,15 @@
 import React, { Component } from 'react';
 import {
 	View,
-	StyleSheet,
 	TouchableOpacity,
 	Text,
-	// Image,
 } from 'react-native';
 import { observer } from 'mobx-react';
 import Input from '../../../../components/SimpleInput/';
 import RoundedButton from '../../../../components/RoundedButton/';
 
-import Colors from '../../../../config/colors.config';
-import TouchableItem from "../../../../../node_modules/react-navigation/lib/views/TouchableItem";
+import styles from './styles';
+
 
 @observer
 export default class Form extends Component {
@@ -25,16 +23,8 @@ export default class Form extends Component {
 		const { email, password, requestError } = this.props.auth;
 		const { component, isShowForgotPassword } = this.props;
 
-		/**
-		 *  @TODO: Show/hide error auth modal depends on  requestError.
-		 *  Place maxLength to global config.
-		 */
 		return (
 			<View style={styles.form}>
-				{/*<Image
-					style={styles.logo}
-					source={require('./../../../*.png')}
-				/>*/}
 				<Input
 					label={'EMAIL'}
 					value={email}
@@ -73,23 +63,3 @@ export default class Form extends Component {
 		);
 	}
 }
-
-const styles = StyleSheet.create({
-  form: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'stretch',
-  },
-    forgotPasswordWrapper: {
-  	    paddingBottom: 25,
-	    alignItems: 'flex-end',
-	    justifyContent: 'center',
-    },
-    forgotPasswordBtn: {
-  	    marginHorizontal: 40,
-    },
-    forgotPasswordText: {
-  	    fontSize: 14,
-	    color: Colors.lightGray,
-    },
-});

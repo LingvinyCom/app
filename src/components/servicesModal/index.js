@@ -14,7 +14,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import Colors from '../../config/colors.config';
 import styles from './styles';
 
-const ServicesleModal = (props: Object) => {
+const ServicesModal = (props: Object) => {
 	const { modalVisible, hideModal, servicesList, onPressPolicy, onPressOther } = props;
 	return (
 		<Modal
@@ -72,4 +72,4 @@ const ServicesleModal = (props: Object) => {
 	);
 };
 
-export default ServicesleModal;
+export default ServicesModal;

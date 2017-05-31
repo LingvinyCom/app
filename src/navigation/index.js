@@ -6,10 +6,6 @@ import Auth from './auth';
 import styles from './styles';
 
 class Navigator extends Component {
-	constructor(props: Object): void {
-		super(props);
-	}
-
 	setNavigatorConfig() {
 	// if (this.props.auth.isHydrated && this.props.auth.uid) {
 	//     return {
@@ -17,9 +13,12 @@ class Navigator extends Component {
 	//     };
 	// }
 		return {
+			initialRouteName: 'FirstLaunch',
 			// initialRouteName: 'Registration',
 			// initialRouteName: 'SignIn',
-			initialRouteName: 'FirstLaunch',
+			// initialRouteName: 'Login',
+			// initialRouteName: 'AddMail',
+			// initialRouteName: 'ForgotPassword',
 		};
 	}
 

@@ -11,6 +11,12 @@ class AuthStore {
   @observable email: string = '';
   @observable password: string = '';
 
+	@observable hostName: string = '';
+	@observable userName: string = '';
+	@observable hostPassword: string = '';
+	@observable useSsl: boolean = false;
+	@observable serverPort: number = 0;
+
   @observable uid: string = '';
   @observable requestError: string = '';
 
@@ -20,7 +26,6 @@ class AuthStore {
 
   @action login(email: string, password: string): void  {
     login(email, password).then((res) => {
-			console.log('res-->', res);
 			switch (res.status) {
 				case 200:
 					// @TODO: CHECK if success to write value.

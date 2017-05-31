@@ -5,7 +5,7 @@ import SignIn from './../containers/auth/SignIn/';
 import ForgotPassword from './../containers/auth/ForgotPassword/';
 
 /**
- *  @TODO: Place navigationOptions global.
+ *  @TODO: Place navigationOptions header:null global.
  */
 export default {
   FirstLaunch: {

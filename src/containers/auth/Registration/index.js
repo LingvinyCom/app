@@ -13,7 +13,7 @@ import Form from '../components/Form/';
 import RoundedButton from './../../../components/RoundedButton/';
 import Footer from '../components/Footer/';
 import Logotip from '../components/Logo';
-import ServicesModal from '../../../components/servicesModal';
+import ServicesModal from '../../../components/ServicesModal';
 
 import styles from './styles';
 
@@ -34,6 +34,10 @@ export default class Registration extends Component {
 
 	registration() {
 		console.log('onPress registration');
+	}
+
+	toggleServicesModal(value: boolean) {
+		this.setState({ isShowServicesModal: value });
 	}
 
 	render() {
@@ -77,11 +81,10 @@ export default class Registration extends Component {
 					<Form
 						auth={this.props.auth}
 						onPress={this.registration.bind(this)}
-						isShowForgotPassword={true}
 						component={
 							<RoundedButton
 								text={'Choose Mail Service'}
-								onPress={() => this.setState({ isShowServicesModal: true })}
+								onPress={() => this.toggleServicesModal(true)}
 								color={'transparent'}
 							/>
 						}
@@ -93,10 +96,13 @@ export default class Registration extends Component {
 					/>
 					<ServicesModal
 						modalVisible={this.state.isShowServicesModal}
-						hideModal={() => this.setState({ isShowServicesModal: false }) }
+						hideModal={() => this.toggleServicesModal(false)}
 						servicesList={servicesList}
 						onPressPolicy={() => console.log("onPress Policy")}
-						onPressOther={() => console.log("onPress btn Other") }
+						onPressOther={() => {
+							this.toggleServicesModal(false);
+							navigate('AddMail');
+						}}
 					/>
 				</View>
 			</ScrollView>
