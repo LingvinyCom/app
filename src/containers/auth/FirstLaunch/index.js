@@ -8,9 +8,27 @@ import {
 import SwiperSlider from './../../../components/Swiper';
 import RoundedButton from './../../../components/RoundedButton';
 
+import Colors from '../../../config/colors.config';
+
 export default class FirstLaunch extends Component {
   render() {
-    const slides = ['first', 'second', 'third'];
+    const slides = [
+        {
+            title: "Translate your emails with perfection",
+            description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia",
+            imgUrl: require('../../../assets/img/onboarding-img-1.png'),
+        },
+        {
+            title: "Translate your emails with perfection",
+            description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia",
+            imgUrl: require('../../../assets/img/onboarding-img-1.png'),
+        },
+        {
+            title: "Translate your emails with perfection",
+            description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia",
+            imgUrl: require('../../../assets/img/onboarding-img-1.png'),
+        },
+    ];
     const { navigate } = this.props.navigation;
 
     return (
@@ -29,11 +47,13 @@ export default class FirstLaunch extends Component {
 
 const styles = StyleSheet.create({
   wrapper: {
+      flex: 1,
   },
   btnWrapper: {
-    height: 100,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff',
+    paddingBottom: 30,
+    backgroundColor: Colors.white,
+    height: 100,
   },
 });

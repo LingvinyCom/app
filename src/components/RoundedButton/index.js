@@ -2,10 +2,15 @@
 
 import React, { Component } from 'react';
 import {
+  Dimensions,
   StyleSheet,
   TouchableOpacity,
   Text,
 } from 'react-native';
+
+import Colors from '../../config/colors.config';
+
+const WidthDevice = Dimensions.get('window').width;
 
 export default class RoundedButton extends Component {
   // constructor(props: Object): void {
@@ -32,15 +37,16 @@ export default class RoundedButton extends Component {
 
 const styles = StyleSheet.create({
   button: {
-        backgroundColor: 'blue',
-        height: 40,
-        width: 200,
-        borderRadius: 25,
+        backgroundColor: Colors.blue,
+        height: 46,
+        width: WidthDevice - 80,
+        marginHorizontal: 40,
+        borderRadius: 23,
         justifyContent: 'center',
         alignItems: 'center',
     },
     text: {
-        color: '#fff',
+        color: Colors.white,
         fontSize: 16,
     },
 });
