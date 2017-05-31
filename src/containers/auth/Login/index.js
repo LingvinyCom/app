@@ -7,9 +7,9 @@ import {
   StyleSheet,
 } from 'react-native';
 
-import Title from './components/Title/';
-import LoginForm from './components/LoginForm/';
-import Footer from './components/Footer/';
+import Title from '../components/Title/';
+import Form from '../components/Form/';
+import Footer from '../components/Footer/';
 
 @inject((allStores) => ({
     auth: allStores.auth,
@@ -32,7 +32,7 @@ export default class Login extends Component {
     return (
       <View style={styles.loginWrapper}>
         <Title text={'Login to Continue'}/>
-        <LoginForm
+        <Form
           auth={this.props.auth}
           onPress={this.login.bind(this)}
         />

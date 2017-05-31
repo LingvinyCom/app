@@ -12,7 +12,7 @@ class AuthStore {
   @observable password: string = '';
 
   @observable uid: string = '';
-  @observable reqError: string = '';
+  @observable requestError: string = '';
 
   @action setValue(params: Object): void {
     Object.assign(this, params);
@@ -28,7 +28,7 @@ class AuthStore {
 					break;
 				default:
 					// @TODO: CHECK if error to write value.
-					this.reqError = 'res.error';
+					this.requestError = 'res.error';
 					break;
 			}
 		});

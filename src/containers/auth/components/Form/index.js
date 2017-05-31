@@ -7,22 +7,27 @@ import {
 	// Image,
 } from 'react-native';
 import { observer } from 'mobx-react';
-import Input from '../../../../../components/SimpleInput/';
-import RoundedButton from '../../../../../components/RoundedButton/';
+import Input from '../../../../components/SimpleInput/';
+import RoundedButton from '../../../../components/RoundedButton/';
 
 
 @observer
-export default class LoginForm extends Component {
+export default class Form extends Component {
+	// props = {}
+
+	// static defaultProps = {}
 
 	render() {
-		const { email, password, reqError } = this.props.auth;
+		const { email, password, requestError } = this.props.auth;
+		const { component } = this.props;
 		const maxLength = 30;
 		/**
-		 *  @TODO: Show/hide error auth modal depends on  reqError.
+		 *  @TODO: Show/hide error auth modal depends on  requestError.
 		 *  Place maxLength to global config.
 		 */
+		console.log('FORM --->', this.props.component);
 		return (
-			<View style={styles.loginForm}>
+			<View style={styles.form}>
 				{/*<Image
 					style={styles.logo}
 					source={require('./../../../*.png')}
@@ -33,6 +38,11 @@ export default class LoginForm extends Component {
 					onChangeText={(text: string) => this.props.auth.setValue({'email': text})}
 					maxLength={maxLength}
 				/>
+				{
+					component
+					? component
+					: null
+				}
 				<Input
 					label={'PASSWORD'}
 					secureTextEntry={true}
@@ -50,7 +60,7 @@ export default class LoginForm extends Component {
 }
 
 const styles = StyleSheet.create({
-  loginForm: {
+  form: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
