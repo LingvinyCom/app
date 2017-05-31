@@ -3,7 +3,7 @@
 
 /* REACT */
 import React, { Component } from 'react';
-import { AppState, View, Text } from 'react-native';
+import { AppState, View, Text, StyleSheet } from 'react-native';
 
 /* MODULES */
 import { inject, observer } from 'mobx-react';
@@ -33,9 +33,15 @@ export default class App extends Component {
 
 	render () {
 		return (
-			<View style={{flex: 1}}>
+			<View style={styles.pageContainer}>
 				<Router />
 			</View>
 		);
 	}
 }
+
+const styles = StyleSheet.create({
+    pageContainer: {
+    	flex: 1,
+    }
+});
