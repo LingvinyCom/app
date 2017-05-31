@@ -10,6 +10,9 @@ import {
 import Title from '../components/Title/';
 import Form from '../components/Form/';
 import Footer from '../components/Footer/';
+import Logotip from '../components/Logo';
+
+import Colors from '../../../config/colors.config';
 
 @inject((allStores) => ({
     auth: allStores.auth,
@@ -31,6 +34,7 @@ export default class Login extends Component {
 
     return (
       <View style={styles.loginWrapper}>
+          <Logotip />
         <Title text={'Login to Continue'}/>
         <Form
           auth={this.props.auth}
@@ -51,5 +55,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: Colors.white,
   },
 });

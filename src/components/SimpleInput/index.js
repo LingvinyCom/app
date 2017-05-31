@@ -2,20 +2,24 @@
 
 import React, { Component } from 'react';
 import {
+	Dimensions,
 	StyleSheet,
 	TextInput,
 	Text,
 	View,
 } from 'react-native';
 
+import Colors from '../../config/colors.config';
+
+const WidthDevice = Dimensions.get('window').width;
 
 const SimpleInput = (props: Object) => (
-	<View>
+	<View style={styles.wrapper}>
 		{
 			props.label &&
-				<View style={styles.label}>
-					<Text>{props.label}</Text>
-				</View>
+			<View style={styles.labelWrapper}>
+			<Text style={styles.label}>{props.label}</Text>
+			</View>
 		}
 		<TextInput
 			style={styles.input}
@@ -27,22 +31,24 @@ const SimpleInput = (props: Object) => (
 export default SimpleInput;
 
 const styles = StyleSheet.create({
+		wrapper: {
+    	width: WidthDevice - 80,
+	    marginHorizontal: 40,
+        borderBottomWidth: 1,
+        borderColor: '#c8c7cc',
+	    marginBottom: 30,
+    },
 	input: {
-		marginLeft: 'auto',
-		marginRight: 'auto',
+		width: WidthDevice - 80,
+		height: 30,
 		paddingVertical: 0,
-		paddingHorizontal: 10,
-		width: 285,
-		height: 36,
-		borderRadius: 3,
-		borderWidth: 1,
-		marginBottom: 10,
-		borderColor: '#c8c7cc',
+		paddingHorizontal: 0,
 		fontSize: 14,
-		color: '#646464',
+		color: Colors.gray,
 		overflow: 'hidden',
 	},
 	label: {
-
+		fontSize: 14,
+		color: Colors.gray,
 	},
 });
