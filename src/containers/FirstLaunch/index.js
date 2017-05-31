@@ -8,23 +8,24 @@ import {
 import SwiperSlider from './../../components/Swiper';
 import RoundedButton from './../../components/RoundedButton';
 
-import Colors from '../../config/colors.config';
+import styles from './styles';
+
 const slides = [
-    {
-        title: "Translate your emails with perfection",
-        description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia",
-        imgUrl: require('../../assets/img/onboarding-img-1.png'),
-    },
-    {
-        title: "Translate your emails with perfection",
-        description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia",
-        imgUrl: require('../../assets/img/onboarding-img-1.png'),
-    },
-    {
-        title: "Translate your emails with perfection",
-        description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia",
-        imgUrl: require('../../assets/img/onboarding-img-1.png'),
-    },
+  {
+    title: "Translate your emails with perfection",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia",
+    imgUrl: require('../../assets/img/onboarding-img-1.png'),
+  },
+  {
+    title: "Translate your emails with perfection",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia",
+    imgUrl: require('../../assets/img/onboarding-img-1.png'),
+  },
+  {
+    title: "Translate your emails with perfection",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia",
+    imgUrl: require('../../assets/img/onboarding-img-1.png'),
+  },
 ];
 
 export default class FirstLaunch extends Component {
@@ -44,16 +45,3 @@ export default class FirstLaunch extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  wrapper: {
-      flex: 1,
-  },
-  btnWrapper: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingBottom: 30,
-    backgroundColor: Colors.white,
-    height: 100,
-  },
-});

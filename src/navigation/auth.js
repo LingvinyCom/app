@@ -1,7 +1,8 @@
 import FirstLaunch from './../containers/FirstLaunch/';
 import Registration from './../containers/auth/Registration/';
 import AddMail from './../containers/auth/AddMail/';
-import Login from './../containers/auth/Login/';
+import SignIn from './../containers/auth/SignIn/';
+import ForgotPassword from './../containers/auth/ForgotPassword/';
 
 /**
  *  @TODO: Place navigationOptions global.
@@ -25,8 +26,14 @@ export default {
       header: null,
     },
   },
-  Login: {
-    screen: Login,
+  SignIn: {
+    screen: SignIn,
+    navigationOptions: {
+      header: null,
+    },
+  },
+  ForgotPassword: {
+    screen: ForgotPassword,
     navigationOptions: {
       header: null,
     },

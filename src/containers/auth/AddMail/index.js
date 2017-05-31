@@ -18,7 +18,6 @@ import RoundedButton from './../../../components/RoundedButton/';
 }))
 export default class AddMail extends Component {
 	render() {
-		const maxLength = 30;
 		const { email, password } = this.props.auth;
 
 		return (
@@ -29,14 +28,12 @@ export default class AddMail extends Component {
 							label={'EMAIL'}
 							value={email}
 							onChangeText={(text: string) => this.props.auth.setValue({'email': text})}
-							maxLength={maxLength}
 						/>
 						<Input
 							label={'PASSWORD'}
 							secureTextEntry={true}
 							value={password}
 							onChangeText={(text: string) => this.props.auth.setValue({'password': text})}
-							maxLength={maxLength}
 						/>
 					</View>
 

@@ -27,7 +27,6 @@ export default class CollapseMenu extends Component {
 	}
 
 	render() {
-		const maxLength = 30;
 		return (
 			<View>
 				<View>
@@ -40,22 +39,19 @@ export default class CollapseMenu extends Component {
 							label={'HOST NAME'}
 							value={'...'}
 							onChangeText={(text: string) => this.props.auth.setValue({'hostName': text})}
-							maxLength={maxLength}
 						/>
 						<Input
 							label={'USER NAME'}
 							value={'...'}
 							onChangeText={(text: string) => this.props.auth.setValue({'userName': text})}
-							maxLength={maxLength}
 						/>
 						<Input
 							label={'PASSWORD'}
 							value={'...'}
 							onChangeText={(text: string) => this.props.auth.setValue({'password': text})}
-							maxLength={maxLength}
 						/>
 
-						<Switch 
+						<Switch
 							label={'USE SSL'}
 							onPress={() => console.log('onPress Switch')}
 						/>
@@ -64,13 +60,11 @@ export default class CollapseMenu extends Component {
 							label={'AUTHENTICATION'}
 							value={'...'}
 							onChangeText={(text: string) => this.props.auth.setValue({'authentication': text})}
-							maxLength={maxLength}
 						/>
 						<Input
 							label={'SERVER PORT'}
 							value={'...'}
 							onChangeText={(text: string) => this.props.auth.setValue({'serverPort': text})}
-							maxLength={maxLength}
 						/>
 					</View>
 				</Collapsible>

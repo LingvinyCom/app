@@ -24,7 +24,7 @@ export default class Form extends Component {
 	render() {
 		const { email, password, requestError } = this.props.auth;
 		const { component, isShowForgotPassword } = this.props;
-		const maxLength = 30;
+
 		/**
 		 *  @TODO: Show/hide error auth modal depends on  requestError.
 		 *  Place maxLength to global config.
@@ -39,9 +39,7 @@ export default class Form extends Component {
 					label={'EMAIL'}
 					value={email}
 					onChangeText={(text: string) => this.props.auth.setValue({'email': text})}
-					maxLength={maxLength}
-				    placeholder={'Enter an Email'}
-					placeholderTextColor={Colors.lightGray}
+					placeholder={'Enter an Email'}
 					underlineColorAndroid={'transparent'}
 				/>
 				{
@@ -54,9 +52,7 @@ export default class Form extends Component {
 					secureTextEntry={true}
 					value={password}
 					onChangeText={(text: string) => this.props.auth.setValue({'password': text})}
-					maxLength={maxLength}
 					placeholder={'Enter a Password'}
-					placeholderTextColor={Colors.lightGray}
 					underlineColorAndroid={'transparent'}
 				/>
 				{
@@ -72,7 +68,7 @@ export default class Form extends Component {
 				<RoundedButton
 					text={'Login'}
 					onPress={this.props.onPress}
-                />
+        />
 			</View>
 		);
 	}

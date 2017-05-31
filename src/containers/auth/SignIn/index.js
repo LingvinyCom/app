@@ -2,22 +2,19 @@
 
 import React, { Component } from 'react';
 import { inject } from 'mobx-react';
-import {
-  View,
-  StyleSheet,
-} from 'react-native';
+import { View } from 'react-native';
 
+import Logotip from '../components/Logo';
 import Title from '../components/Title/';
 import Form from '../components/Form/';
 import Footer from '../components/Footer/';
-import Logotip from '../components/Logo';
 
-import Colors from '../../../config/colors.config';
+import styles from './styles';
 
 @inject((allStores) => ({
     auth: allStores.auth,
 }))
-export default class Login extends Component {
+export default class SignIn extends Component {
 
   login() {
 		this.props.auth.login(
@@ -26,15 +23,12 @@ export default class Login extends Component {
 		);
 	}
 
-  /**
-   * @TODO: Footer show/hide depends on Route.
-   */
   render() {
     const { navigate } = this.props.navigation;
 
     return (
-      <View style={styles.loginWrapper}>
-          <Logotip />
+      <View style={styles.signinWrapper}>
+        <Logotip/>
         <Title text={'Login to Continue'}/>
         <Form
           auth={this.props.auth}
@@ -50,11 +44,3 @@ export default class Login extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-  loginWrapper: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: Colors.white,
-  },
-});
