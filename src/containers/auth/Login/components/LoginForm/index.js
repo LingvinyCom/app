@@ -1,3 +1,5 @@
+// @flow
+
 import React, { Component } from 'react';
 import {
 	View,
@@ -8,32 +10,17 @@ import { observer } from 'mobx-react';
 import Input from '../../../../../components/SimpleInput/';
 import RoundedButton from '../../../../../components/RoundedButton/';
 
+
 @observer
 export default class LoginForm extends Component {
 
-	login() {
-		const payload = {
-				email: this.props.auth.email,
-				password: this.props.auth.password,
-		};
-
-		this.props.auth.login(
-			'login/',
-			payload,
-			this.onSuccess,
-			this.onFail,
-		);
-	}
-
-	onSuccess() {
-		console.log('SUCCES LOGIN');
-	}
-
-	onFail() {
-		console.log('LOGIN FAIL');
-	}
-
 	render() {
+		const { email, password, reqError } = this.props.auth;
+		const maxLength = 30;
+		/**
+		 *  @TODO: Show/hide error auth modal depends on  reqError.
+		 *  Place maxLength to global config.
+		 */
 		return (
 			<View style={styles.loginForm}>
 				{/*<Image
@@ -42,20 +29,20 @@ export default class LoginForm extends Component {
 				/>*/}
 				<Input
 					label={'EMAIL'}
-					value={this.props.auth.email}
-					onChangeText={(email) => this.props.auth.setValue({'email': email})}
-					maxLength={30}
+					value={email}
+					onChangeText={(text: string) => this.props.auth.setValue({'email': text})}
+					maxLength={maxLength}
 				/>
 				<Input
 					label={'PASSWORD'}
 					secureTextEntry={true}
-					value={this.props.auth.password}
-					onChangeText={(password) => this.props.auth.setValue({'password': password})}
-					maxLength={30}
+					value={password}
+					onChangeText={(text: string) => this.props.auth.setValue({'password': text})}
+					maxLength={maxLength}
 				/>
 				<RoundedButton
 					text={'Login'}
-					onPress={this.login.bind(this)}
+					onPress={this.props.onPress}
         />
 			</View>
 		);

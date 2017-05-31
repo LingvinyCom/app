@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { StackNavigator } from 'react-navigation';
 
-import { inject, observer } from 'mobx-react';
-
 import Auth from './auth';
 
 class Navigator extends Component {
@@ -17,8 +15,9 @@ class Navigator extends Component {
 	//     };
 	// }
 		return {
-			initialRouteName: 'Login',
-			// initialRouteName: 'FirstLaunch',
+			// initialRouteName: 'Registration',
+			// initialRouteName: 'Login',
+			initialRouteName: 'FirstLaunch',
 		};
 	}
 

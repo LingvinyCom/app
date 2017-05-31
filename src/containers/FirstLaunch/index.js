@@ -5,8 +5,8 @@ import {
   View,
   StyleSheet,
 } from 'react-native';
-import SwiperSlider from './../../../components/Swiper';
-import RoundedButton from './../../../components/RoundedButton';
+import SwiperSlider from './../../components/Swiper';
+import RoundedButton from './../../components/RoundedButton';
 
 export default class FirstLaunch extends Component {
   render() {
@@ -19,7 +19,7 @@ export default class FirstLaunch extends Component {
         <View style={styles.btnWrapper}>
           <RoundedButton
             text={'Skip'}
-            onPress={() => navigate('Login')}
+            onPress={() => navigate('Registration')}
           />
         </View>
       </View>

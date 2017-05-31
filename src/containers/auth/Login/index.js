@@ -1,36 +1,45 @@
 // @flow
 
 import React, { Component } from 'react';
-import { inject, observer } from 'mobx-react';
+import { inject } from 'mobx-react';
 import {
-  Text,
   View,
   StyleSheet,
 } from 'react-native';
-import LoginForm from './components/LoginForm/';
-import LoginFooter from './components/LoginFooter/';
-import PageTitle from './components/PageTitle/';
 
+import Title from './components/Title/';
+import LoginForm from './components/LoginForm/';
+import Footer from './components/Footer/';
 
 @inject((allStores) => ({
     auth: allStores.auth,
 }))
-@observer
 export default class Login extends Component {
 
+  login() {
+		this.props.auth.login(
+			this.props.auth.email,
+			this.props.auth.password,
+		);
+	}
+
   /**
-   * @TODO: LoginFooter show/hide depends on Route.
+   * @TODO: Footer show/hide depends on Route.
    */
   render() {
     const { navigate } = this.props.navigation;
+
     return (
       <View style={styles.loginWrapper}>
-        <PageTitle text={'New to Lingviny?'}/>
+        <Title text={'Login to Continue'}/>
         <LoginForm
           auth={this.props.auth}
+          onPress={this.login.bind(this)}
         />
-        <LoginFooter
-          onPress={() => navigate('FirstLaunch')}
+        <Footer
+          text={'New User?'}
+          clickableText={'Sign Up'}
+          onPressText={() => navigate('Registration')}
         />
       </View>
     );

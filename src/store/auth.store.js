@@ -1,31 +1,34 @@
 // @flow
 
+
 import { observable, action } from 'mobx';
-import { API_URL } from '../config/api.config';
+
+import { login } from './../utils/request/';
+
+
 
 class AuthStore {
   @observable email: string = '';
   @observable password: string = '';
 
+  @observable uid: string = '';
+  @observable reqError: string = '';
+
   @action setValue(params: Object): void {
     Object.assign(this, params);
   }
 
-  @action login(url: string, payload: Object, onSuccess: Function, onFail: Function): void  {
-    fetch(`${API_URL}${url}`, {
-			method: 'POST',
-			headers: {
-				'Accept': 'application/json',
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(payload),
-		}).then(function(res) {
+  @action login(email: string, password: string): void  {
+    login(email, password).then((res) => {
+			console.log('res-->', res);
 			switch (res.status) {
 				case 200:
-					onSuccess();
+					// @TODO: CHECK if success to write value.
+					this.uid = 'user token';
 					break;
 				default:
-					onFail();
+					// @TODO: CHECK if error to write value.
+					this.reqError = 'res.error';
 					break;
 			}
 		});

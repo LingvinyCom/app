@@ -1,3 +1,5 @@
+// @flow
+
 import React, { Component } from 'react';
 import {
 	View,
@@ -5,7 +7,7 @@ import {
 	Text,
 } from 'react-native';
 
-export default class PageTitle extends Component {
+export default class Description extends Component {
 	// props = {}
 
 	// static defaultProps = {}

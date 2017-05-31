@@ -7,19 +7,19 @@ import {
 	StyleSheet,
 } from 'react-native';
 
-export default class LoginFooter extends Component {
+export default class Footer extends Component {
 	// props = {}
 
 	// static defaultProps = {}
 
 	render() {
+		const { text, clickableText, onPressText } = this.props;
+
 		return (
 			<View>
-				<Text>
-					Already a member?
-				</Text>
-				<Text onPress={this.props.onPress}>
-					Login
+				<Text>{text}</Text>
+				<Text onPress={onPressText}>
+					{clickableText}
 				</Text>
 			</View>
 		);
