@@ -2,12 +2,16 @@
 
 import React, { Component } from 'react';
 import {
-  Text,
-  View,
-  StyleSheet,
+    Dimensions,
+    Image,
+    Text,
+    View,
 } from 'react-native';
 import Swiper from 'react-native-swiper';
+import styles from './styles';
 
+
+const HeightDevice = Dimensions.get('window').height;
 
 export default class SwiperSlider extends Component {
 	// constructor(props: Object): void {
@@ -25,7 +29,17 @@ export default class SwiperSlider extends Component {
 					<Swiper {...swiperProps}>
 						{slides.map((slide, idx) => (
 								<View style={styles.slide} key={idx}>
-									<Text style={styles.text}>slide</Text>
+                                    <Text style={styles.onboardingTitle} >
+	                                    {slide.title}
+                                    </Text>
+                                    <View style={styles.onboardingImageWraper}>
+                                        <Image
+                                            source={slide.imgUrl}
+                                        />
+                                    </View>
+									<Text style={styles.onboardingDescription}>
+                                        {slide.description}
+                                    </Text>
 								</View>
 							))}
 					</Swiper>
@@ -34,27 +48,11 @@ export default class SwiperSlider extends Component {
 	}
 }
 
-const styles = StyleSheet.create({
-	slide: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fff',
-  },
-  text: {
-    color: '#000',
-    fontSize: 30,
-    fontWeight: 'bold'
-  },
-  btnWrapper: {
-    height: 100,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fff',
-  },
-});
+
 
 const swiperProps = {
   loop: false,
-  height: 580,
+  height: HeightDevice - 100,
+  dot: <View style={styles.swiperDot} />,
+  activeDot: <View style={styles.swiperActiveDot} />,
 };
