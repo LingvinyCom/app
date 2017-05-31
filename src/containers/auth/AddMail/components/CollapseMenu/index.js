@@ -27,7 +27,6 @@ export default class CollapseMenu extends Component {
 	toggleMenu() {
 		this.setState({ isCollapsed: !this.state.isCollapsed });
 	}
-
 	render() {
 		const maxLength = 30;
 		return (
@@ -71,7 +70,7 @@ export default class CollapseMenu extends Component {
 							onChangeText={(text: string) => this.props.auth.setValue({'password': text})}
 							maxLength={maxLength}
 						/>
-						<Switch 
+						<Switch
 							label={'USE SSL'}
 							onPress={() => console.log('onPress Switch')}
 						/>
