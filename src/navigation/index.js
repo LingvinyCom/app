@@ -3,6 +3,8 @@ import { StackNavigator } from 'react-navigation';
 
 import Auth from './auth';
 
+import styles from './styles';
+
 class Navigator extends Component {
 	constructor(props: Object): void {
 		super(props);
@@ -30,7 +32,7 @@ class Navigator extends Component {
 		// 	return null;
 		// };
 		const Router = this.initRouter();
-		return <Router />;
+		return <Router style={styles.routerContainer} />;
 	}
 }
 
