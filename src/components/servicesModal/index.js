@@ -15,7 +15,7 @@ const ServicesleModal = (props) => {
             animationType={"fade"}
             transparent={true}
             visible={modalVisible}
-            onRequestClose={() => {alert("Modal has been closed.")}}
+            onRequestClose={() => {alert("Modal has been closed.");}}
         >
             <View style={styles.modalWrapper}>
                 <View style={styles.modalContent}>
