@@ -8,32 +8,23 @@ import {
 	View,
 } from 'react-native';
 
-export default class SimpleInput extends Component {
-	// constructor(props: Object): void {
-	// 	super(props);
-	// }
 
-	// props = {}
+const SimpleInput = (props: Object) => (
+	<View>
+		{
+			props.label &&
+				<View style={styles.label}>
+					<Text>{props.label}</Text>
+				</View>
+		}
+		<TextInput
+			style={styles.input}
+			{...props}
+		/>
+	</View>
+);
 
-	// static defaultProps = {}
-
-	render() {
-		return (
-			<View>
-				{
-					this.props.label &&
-					<View style={styles.label}>
-						<Text>EMAIL</Text>
-					</View>
-				}
-				<TextInput
-					style={styles.input}
-					{...this.props}
-				/>
-			</View>
-		);
-	}
-}
+export default SimpleInput;
 
 const styles = StyleSheet.create({
 	input: {

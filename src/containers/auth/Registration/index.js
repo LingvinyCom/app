@@ -20,7 +20,7 @@ import Footer from '../components/Footer/';
 export default class Registration extends Component {
 
   registration() {
-		console.log(1);
+		console.log('onPress registration');
 	}
 
   /**
@@ -44,7 +44,10 @@ export default class Registration extends Component {
           component={
            <RoundedButton
             text={'Choose Mail Service'}
-            onPress={() => console.log('SHOW MODAL SELECT SERVICE')}
+            onPress={() => {
+              console.log('SHOW MODAL SELECT SERVICE');
+              navigate('AddMail');
+              }}
             />
           }
         />

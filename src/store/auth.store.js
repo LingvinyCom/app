@@ -24,11 +24,11 @@ class AuthStore {
 			switch (res.status) {
 				case 200:
 					// @TODO: CHECK if success to write value.
-					this.uid = 'user token';
+					this.uid = 'Token';
 					break;
 				default:
 					// @TODO: CHECK if error to write value.
-					this.requestError = 'res.error';
+					this.requestError = 'Error';
 					break;
 			}
 		});

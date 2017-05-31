@@ -1,5 +1,6 @@
 import FirstLaunch from './../containers/FirstLaunch/';
 import Registration from './../containers/auth/Registration/';
+import AddMail from './../containers/auth/AddMail/';
 import Login from './../containers/auth/Login/';
 
 /**
@@ -14,6 +15,12 @@ export default {
   },
   Registration: {
     screen: Registration,
+    navigationOptions: {
+      header: null,
+    },
+  },
+  AddMail: {
+    screen: AddMail,
     navigationOptions: {
       header: null,
     },

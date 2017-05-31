@@ -25,7 +25,6 @@ export default class Form extends Component {
 		 *  @TODO: Show/hide error auth modal depends on  requestError.
 		 *  Place maxLength to global config.
 		 */
-		console.log('FORM --->', this.props.component);
 		return (
 			<View style={styles.form}>
 				{/*<Image
