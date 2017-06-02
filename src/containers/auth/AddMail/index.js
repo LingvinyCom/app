@@ -23,33 +23,37 @@ export default class AddMail extends Component {
 		const { email, password } = this.props.auth;
 
 		return (
-			<ScrollView style={styles.scollableWrapper}>
-				<View style={styles.pageWrapper}>
-					<View style={styles.pageContent}>
-						<Title text={'Add Email Account'}/>
-						<View style={styles.pageForm}>
-							<Input
-								label={'EMAIL'}
-								value={email}
-								onChangeText={(text: string) => this.props.auth.setValue({'email': text})}
-								placeholder={"Enter an Email"}
-							/>
-							<Input
-								label={'PASSWORD'}
-								secureTextEntry={true}
-								value={password}
-								onChangeText={(text: string) => this.props.auth.setValue({'password': text})}
-								placeholder={"Enter a Password"}
+			<View style={styles.screenWrapper}>
+				<ScrollView>
+					<View style={styles.pageWrapper}>
+						<View style={styles.pageContent}>
+							<Title text={'Add Email Account'}/>
+							<View style={styles.pageForm}>
+								<Input
+									label={'EMAIL'}
+									value={email}
+									onChangeText={(text: string) => this.props.auth.setValue({'email': text})}
+									placeholder={"Enter an Email"}
+								/>
+								<Input
+									label={'PASSWORD'}
+									secureTextEntry={true}
+									value={password}
+									onChangeText={(text: string) => this.props.auth.setValue({'password': text})}
+									placeholder={"Enter a Password"}
+								/>
+							</View>
+							<CollapseMenu />
+						</View>
+						<View>
+							<RoundedButton
+								text={'Done'}
+								onPress={() => console.log('onPress Done')}
 							/>
 						</View>
-						<CollapseMenu />
 					</View>
-					<RoundedButton
-						text={'Done'}
-						onPress={() => console.log('onPress Done')}
-					/>
-				</View>
-			</ScrollView>
+				</ScrollView>
+			</View>
 		);
 	}
 }

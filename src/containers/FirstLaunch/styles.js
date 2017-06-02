@@ -1,7 +1,7 @@
 // @flow
 
 import { StyleSheet } from 'react-native';
-import Colors from '../../config/colors.config';
+import COLORS from '../../config/colors.config';
 
 /**
  *  @TODO: Add _t_styles.
@@ -14,7 +14,7 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     paddingBottom: 30,
-    backgroundColor: Colors.white,
+    backgroundColor: COLORS.white,
     height: 100,
   },
 };

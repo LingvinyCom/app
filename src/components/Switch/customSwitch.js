@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import Colors from '../../config/colors.config';
+import COLORS from '../../config/colors.config';
 
 /* CUSTOM MODULES */
 import { Switch } from './switchPlugin';
@@ -21,10 +21,10 @@ const CustomSwitch = (props: Props) => {
             disabled={false}
             activeText={'on'}
             inActiveText={'off'}
-            backgroundActive={Colors.switchActiveGreen}
-            backgroundInactive={Colors.nonActiveSwitchBackgroundColor}
-            circleActiveColor={Colors.lightgreen}
-            circleInActiveColor={Colors.white}
+            backgroundActive={COLORS.switchActiveGreen}
+            backgroundInactive={COLORS.nonActiveSwitchBackgroundColor}
+            circleActiveColor={COLORS.lightgreen}
+            circleInActiveColor={COLORS.white}
         />
     );
 };

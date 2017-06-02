@@ -1,7 +1,7 @@
 // @flow
 
 import { StyleSheet } from 'react-native';
-import Colors from '../../../../config/colors.config';
+import COLORS from '../../../../config/colors.config';
 
 /**
  *  @TODO: Add _t_styles.
@@ -15,13 +15,13 @@ const styles = {
 	},
 	text: {
 		fontSize: 22,
-		color: Colors.gray,
+		color: COLORS.gray,
 		paddingBottom: 7,
 	},
 	border: {
 		width: 45,
 		height: 3,
-		backgroundColor: Colors.green,
+		backgroundColor: COLORS.green,
 	},
 };
 

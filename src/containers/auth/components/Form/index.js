@@ -21,8 +21,7 @@ export default class Form extends Component {
 
 	render() {
 		const { email, password, requestError } = this.props.auth;
-		const { component, isShowForgotPassword } = this.props;
-
+		const { component, isShowForgotPassword, onPressForgotPassword } = this.props;
 		return (
 			<View style={styles.form}>
 				<Input
@@ -48,7 +47,10 @@ export default class Form extends Component {
 				{
 					isShowForgotPassword &&
 					<View style={styles.forgotPasswordWrapper}>
-						<TouchableOpacity style={styles.forgotPasswordBtn}>
+						<TouchableOpacity
+							style={styles.forgotPasswordBtn}
+						    onPress={onPressForgotPassword}
+						>
 							<Text style={styles.forgotPasswordText}>
 								Forgot Password
 							</Text>

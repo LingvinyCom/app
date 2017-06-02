@@ -8,6 +8,7 @@ import Logotip from '../components/Logo';
 import Title from '../components/Title/';
 import Form from '../components/Form/';
 import Footer from '../components/Footer/';
+import ErrorModal from '../../../components/errorModal';
 
 import styles from './styles';
 
@@ -15,8 +16,16 @@ import styles from './styles';
     auth: allStores.auth,
 }))
 export default class SignIn extends Component {
-
+    constructor(props) {
+        super(props);
+        this.state = {
+            isShowErrorModal: false,
+        };
+    }
   login() {
+        this.setState({
+            isShowErrorModal: true,
+        });
 		this.props.auth.login(
 			this.props.auth.email,
 			this.props.auth.password,
@@ -33,6 +42,7 @@ export default class SignIn extends Component {
         <Form
           auth={this.props.auth}
           isShowForgotPassword={true}
+          onPressForgotPassword={() => navigate('ForgotPassword')}
           onPress={this.login.bind(this)}
         />
         <Footer
@@ -40,8 +50,14 @@ export default class SignIn extends Component {
           clickableText={'Sign Up'}
           onPressText={() => navigate('Registration')}
         />
+          <ErrorModal
+              modalVisible={this.state.isShowErrorModal}
+              hideModal={ () => this.setState({ isShowErrorModal: false }) }
+              titleError={'Unable to Login'}
+              descriptionError={"Incorrect Username or Password"}
+              textBtn={'Try again'}
+          />
       </View>
     );
   }
 }
-

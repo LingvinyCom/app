@@ -13,4 +13,5 @@ export default {
     orange: '#FFAB6F',
     violet: '#987BF5',
     btnBorderColor: '#C6C8CB',
+    lightOrange: '#FFAB00',
 };

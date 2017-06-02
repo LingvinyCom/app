@@ -11,7 +11,7 @@ import {
 import ServicesItem from './components/ServicesItem/';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import Colors from '../../config/colors.config';
+import COLORS from '../../config/colors.config';
 import styles from './styles';
 
 const ServicesModal = (props: Object) => {
@@ -32,7 +32,7 @@ const ServicesModal = (props: Object) => {
 						<Icon
 							name="close"
 							size={26}
-							color={Colors.lightGray}
+							color={COLORS.lightGray}
 						/>
 					</TouchableOpacity>
 					<View style={styles.modalBody}>

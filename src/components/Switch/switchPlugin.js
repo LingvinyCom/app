@@ -9,7 +9,7 @@ import {
     TouchableWithoutFeedback,
 } from 'react-native';
 
-import Colors from '../../config/colors.config';
+import COLORS from '../../config/colors.config';
 
 type Props = {
     test: string,
@@ -39,10 +39,10 @@ export class Switch extends Component {
         disabled: false,
         activeText: 'On',
         inActiveText: 'Off',
-        backgroundActive: Colors.green,
-        backgroundInactive: Colors.lightGray,
-        circleActiveColor: Colors.white,
-        circleInActiveColor: Colors.white,
+        backgroundActive: COLORS.green,
+        backgroundInactive: COLORS.lightGray,
+        circleActiveColor: COLORS.white,
+        circleInActiveColor: COLORS.white,
     };
     handleSwitch: Function;
     animateSwitch: Function;
@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
         width: 56,
         height: 30,
         borderRadius: 15,
-        backgroundColor: Colors.black,
+        backgroundColor: COLORS.black,
     },
     animatedContainer: {
         flex: 1,
@@ -172,7 +172,7 @@ const styles = StyleSheet.create({
         width: 22,
         height: 22,
         borderRadius: 11,
-        backgroundColor: Colors.white,
+        backgroundColor: COLORS.white,
         borderWidth: 1,
         borderColor: 'transparent',
     },

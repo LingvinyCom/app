@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import SwiperSlider from './../../components/Swiper';
 import RoundedButton from './../../components/RoundedButton';
+import SendNotificationsModal from './components/sendNotificationsModal';
 
 import styles from './styles';
 
@@ -29,6 +30,18 @@ const slides = [
 ];
 
 export default class FirstLaunch extends Component {
+  constructor(props: Object) {
+    super(props);
+    this.state = {
+      isShowNotificationsModal: true,
+    };
+  }
+    _confirrmModal() {
+      console.log("btn modal Allow was pressed");
+      this.setState ({
+          isShowNotificationsModal: false,
+      });
+    };
   render() {
     const { navigate } = this.props.navigation;
 
@@ -41,6 +54,11 @@ export default class FirstLaunch extends Component {
             onPress={() => navigate('Registration')}
           />
         </View>
+        <SendNotificationsModal
+            modalVisible={this.state.isShowNotificationsModal}
+            hideModal={ () => this.setState({ isShowNotificationsModal: false }) }
+            confirmModal={this._confirrmModal.bind(this) }
+        />
       </View>
     );
   }

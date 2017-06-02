@@ -7,7 +7,7 @@ import {
 	View,
 } from 'react-native';
 
-import Colors from '../../config/colors.config';
+import COLORS from '../../config/colors.config';
 import styles from './styles';
 
 export default class SimpleInput extends Component {
@@ -18,7 +18,7 @@ export default class SimpleInput extends Component {
 
   static defaultProps = {
     maxLength: 3,
-		placeholderTextColor: Colors.gray,
+	placeholderTextColor: COLORS.gray,
   };
 
 	render() {

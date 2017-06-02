@@ -9,7 +9,7 @@ import Input from '../../../../../components/SimpleInput/';
 import Switch from '../../../../../components/Switch/';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import Colors from '../../../../../config/colors.config';
+import COLORS from '../../../../../config/colors.config';
 import styles from './syles';
 
 
@@ -44,11 +44,11 @@ export default class CollapseMenu extends Component {
 							<Icon
 								name="add"
 								size={24}
-								color={Colors.lightGray} /> ||
+								color={COLORS.lightGray} /> ||
 							<Icon
 								name="remove"
 								size={24}
-								color={Colors.lightGray} />
+								color={COLORS.lightGray} />
 						}
 					</Text>
 				</View>

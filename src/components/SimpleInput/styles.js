@@ -1,7 +1,7 @@
 // @flow
 
 import { StyleSheet, Dimensions } from 'react-native';
-import Colors from '../../config/colors.config';
+import COLORS from '../../config/colors.config';
 
 /**
  *  @TODO: Add _t_styles.
@@ -21,12 +21,12 @@ const styles = {
 		paddingVertical: 0,
 		paddingHorizontal: 0,
 		fontSize: 14,
-		color: Colors.gray,
+		color: COLORS.gray,
 		overflow: 'hidden',
 	},
 	label: {
 		fontSize: 14,
-		color: Colors.gray,
+		color: COLORS.gray,
 	},
 };
 

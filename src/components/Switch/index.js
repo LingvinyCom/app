@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 
 import CustomSwitch from './customSwitch';
-import Colors from '../../config/colors.config';
+import COLORS from '../../config/colors.config';
 
 const Switch = (props: Object) => (
 	<View style={styles.switchBlock}>
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     },
     switchLabel: {
     	fontSize: 14,
-	    color: Colors.gray,
+	    color: COLORS.gray,
     },
     switchWrapper: {
     },

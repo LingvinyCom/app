@@ -7,7 +7,7 @@ import {
 	Text,
 } from 'react-native';
 
-import Colors from '../../../../config/colors.config';
+import COLORS from '../../../../config/colors.config';
 
 const Description = (props: Object) => (
 	<View style={styles.wrapper}>
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     },
     text: {
         fontSize: 14,
-        color: Colors.lightGray,
+        color: COLORS.gray,
         lineHeight: 20,
         textAlign: 'center',
     },

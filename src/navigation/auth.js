@@ -3,6 +3,9 @@ import Registration from './../containers/auth/Registration/';
 import AddMail from './../containers/auth/AddMail/';
 import SignIn from './../containers/auth/SignIn/';
 import ForgotPassword from './../containers/auth/ForgotPassword/';
+import CongratulationsContainer from './../containers/auth/Congratulations';
+import Sidebar from './../containers/Sidebar';
+import Inbox from './../containers/Inbox';
 
 /**
  *  @TODO: Place navigationOptions header:null global.
@@ -38,4 +41,22 @@ export default {
       header: null,
     },
   },
+  CongratulationsContainer: {
+    screen: CongratulationsContainer,
+    navigationOptions: {
+      header: null,
+    }
+  },
+  Sidebar: {
+    screen: Sidebar,
+    navigationOptions: {
+      header: null,
+      }
+  },
+    Inbox: {
+        screen: Inbox,
+        navigationOptions: {
+            header: null,
+        }
+    },
 };

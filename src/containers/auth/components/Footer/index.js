@@ -7,7 +7,7 @@ import {
 	StyleSheet,
 } from 'react-native';
 
-import Colors from '../../../../config/colors.config';
+import COLORS from '../../../../config/colors.config';
 
 const Footer = (props: Object) => (
 	<View style={styles.footer}>
@@ -28,11 +28,11 @@ const styles = StyleSheet.create({
     },
     text: {
         fontSize: 14,
-        color: Colors.lightGray,
+        color: COLORS.lightGray,
         paddingRight: 12,
     },
     clickableText: {
         fontSize: 14,
-        color: Colors.green,
+        color: COLORS.green,
     },
 });
