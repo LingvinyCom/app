@@ -1,7 +1,7 @@
 // @flow
 
 import React, { Component } from 'react';
-import { View, Text, TextInput, TouchableOpacity, ScrollView, ListView, TouchableWithoutFeedback } from 'react-native';
+import { View, ScrollView, ListView } from 'react-native';
 
 import MessegesBlockInfo from './components/messagesInfoBlock';
 import SearchBlock from './components/searchBlock';
@@ -12,8 +12,6 @@ import Swipeout from 'react-native-swipeout';
 import rows from './data';
 
 import styles from './styles';
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import COLORS from '../../config/colors.config';
 
 export default class Inbox extends Component {
   state: {

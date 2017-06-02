@@ -14,10 +14,10 @@ class Navigator extends Component {
 	//     };
 	// }
 		return {
-			initialRouteName: 'FirstLaunch',
+			// initialRouteName: 'FirstLaunch',
 			// initialRouteName: 'Inbox',
 			// initialRouteName: 'Registration',
-			// initialRouteName: 'SignIn',
+			initialRouteName: 'SignIn',
 			// initialRouteName: 'Login',
 			// initialRouteName: 'AddMail',
 			// initialRouteName: 'ForgotPassword',

@@ -36,11 +36,14 @@ export default class FirstLaunch extends Component {
   constructor(props: Object) {
     super(props);
     this.state = {
-      isShowNotificationsModal: true,
+      isShowNotificationsModal: false,
     };
   }
 
   confirmModal() {
+    /**
+     * @TODO: Add 'allow push notif' functionality.
+     */
     console.log("btn modal Allow was pressed");
     this.setState({ isShowNotificationsModal: false });
   }

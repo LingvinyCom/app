@@ -13,12 +13,25 @@ import { API_URL } from '../../config/api.config';
  * @returns {Promise}
  */
 export function postRequest(url: string, body: Object): Promise<> {
-	return fetch(`${API_URL}${url}`, {
-			method: 'POST',
-			headers: {
-				'Accept': 'application/json',
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(body)
-	}).then((response) => response.json());
+	return new Promise((resolve, reject) => {
+		fetch(`${API_URL}${url}`, {
+					method: 'POST',
+					headers: {
+						'Accept': 'application/json',
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify(body)
+			})
+			.then((response) => response.json())
+			.then((data) => {
+				switch (data._code) {
+						case 200:
+							resolve(data);
+							break;
+						default:
+							reject(data);
+							break;
+					}
+			});
+	});
 }

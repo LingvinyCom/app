@@ -1,15 +1,11 @@
 // @flow
 
-
 import { observable, action } from 'mobx';
-
-import { login } from './../utils/request/';
-
 
 
 class AuthStore {
-  @observable email: string = '';
-  @observable password: string = '';
+  @observable email: string = 'tech@lingviny.com';
+  @observable password: string = 'secretstring';
 
 	@observable hostName: string = '';
 	@observable userName: string = '';

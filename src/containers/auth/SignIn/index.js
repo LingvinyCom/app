@@ -19,39 +19,31 @@ import styles from './styles';
     app: allStores.app,
 }))
 export default class SignIn extends Component {
-    state = {
-      isShowErrorModal: Boolean,
-    }
+  state = {
+    isShowErrorModal: Boolean,
+  }
 
-    constructor(props: Object) {
-        super(props);
-        this.state = {
-            isShowErrorModal: false,
-        };
-    }
+  constructor(props: Object) {
+  super(props);
+    this.state = {
+      isShowErrorModal: false,
+    };
+  }
 
   login() {
-    this.setState({
-      isShowErrorModal: true,
-    });
-
     this.props.app.showLoader = true;
-    login(
-      this.props.auth.email,
-      this.props.auth.password)
-			.then((data) => {
-				switch (data._code) {
-					case 200:
-						this.props.auth.uid = data.lingviny_token;
-            this.props.navigation.navigate('Inbox');
-						break;
-					default:
-            this.props.auth.requestError = 'Error';
-						break;
-				}
+
+    login(this.props.auth.email, this.props.auth.password)
+      .then((data) => {
+        this.props.auth.uid = data.lingviny_token;
+        this.props.navigation.navigate('Inbox');
+      }).catch(() => {
+        this.props.auth.requestError = 'Error';
+        this.setState({ isShowErrorModal: true });
+      }).finally(() => {
         this.props.app.showLoader = false;
-		});
-	}
+      });
+  }
 
   render() {
     const { navigate } = this.props.navigation;
@@ -73,11 +65,11 @@ export default class SignIn extends Component {
           onPressText={() => navigate('Registration')}
         />
         <ErrorModal
-            modalVisible={this.state.isShowErrorModal}
-            hideModal={ () => this.setState({ isShowErrorModal: false }) }
-            titleError={'Unable to Login'}
-            descriptionError={"Incorrect Username or Password"}
-            textBtn={'Try again'}
+          modalVisible={this.state.isShowErrorModal}
+          hideModal={ () => this.setState({ isShowErrorModal: false }) }
+          titleError={'Unable to Login'}
+          descriptionError={"Incorrect Username or Password"}
+          textBtn={'Try again'}
         />
       </View>
     );
