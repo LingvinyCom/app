@@ -34,11 +34,6 @@ export default class CollapseMenu extends Component {
 	render() {
 		const { hostName, userName, password, authentication, serverPort } = this.props.auth;
 		const { isCollapsed } = this.state;
-		// const iconProps = {
-		// 	name: "add",
-		// 	size: {24,
-		// 	color: {COLORS.lightGray};
-		// };
 
 		return (
 			<View>
@@ -48,20 +43,14 @@ export default class CollapseMenu extends Component {
 						style={styles.collapseIcon}
 						onPress={this.toggleMenu.bind(this)}
 					>
-						{
-							this.state.isCollapsed &&
-							<Icon
-								name="add"
-								size={24}
-								color={COLORS.lightGray} /> ||
-							<Icon
-								name="remove"
-								size={24}
-								color={COLORS.lightGray} />
-						}
+						<Icon
+							name={isCollapsed ? 'add' : 'remove'}
+							size={24}
+							color={COLORS.lightGray}
+						/>
 					</Text>
 				</View>
-				<Collapsible collapsed={this.state.isCollapsed}>
+				<Collapsible collapsed={isCollapsed}>
 					<View>
 						<Input
 							label={'HOST NAME'}

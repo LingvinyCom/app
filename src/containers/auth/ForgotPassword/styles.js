@@ -14,6 +14,9 @@ const styles = {
 		alignItems: 'center',
 		backgroundColor: COLORS.white,
 	},
+    form: {
+		marginTop: 40,
+    },
 };
 
 const exportStyles = StyleSheet.create(styles);

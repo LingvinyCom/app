@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StackNavigator } from 'react-navigation';
 
 import Auth from './auth';
+import SplashScreen from 'react-native-splash-screen';
 
 import styles from './styles';
 
@@ -14,6 +15,7 @@ class Navigator extends Component {
 	// }
 		return {
 			initialRouteName: 'FirstLaunch',
+			// initialRouteName: 'Inbox',
 			// initialRouteName: 'Registration',
 			// initialRouteName: 'SignIn',
 			// initialRouteName: 'Login',
@@ -24,6 +26,10 @@ class Navigator extends Component {
 
 	initRouter() {
 		return StackNavigator({ ...Auth, }, this.setNavigatorConfig());
+	}
+
+	componentDidMount() {
+		SplashScreen.hide();
 	}
 
 	render() {

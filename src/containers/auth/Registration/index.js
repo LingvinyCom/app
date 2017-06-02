@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import { inject } from 'mobx-react';
 import {
+  Linking,
   View,
   ScrollView,
 } from 'react-native';
@@ -23,12 +24,14 @@ import styles from './styles';
 export default class Registration extends Component {
 	state: {
 		isShowServicesModal: boolean,
+		url: string,
 	}
 
 	constructor(props: Object) {
 		super(props);
 		this.state = {
 			isShowServicesModal: false,
+			url: 'https://lingviny.com/policy',
 		};
 	}
 
@@ -39,6 +42,16 @@ export default class Registration extends Component {
 	toggleServicesModal(value: boolean) {
 		this.setState({ isShowServicesModal: value });
 	}
+
+	handleClick = () => {
+			Linking.canOpenURL(this.state.url).then(supported => {
+					if (supported) {
+							Linking.openURL(this.state.url);
+					} else {
+							console.log('Don\'t know how to open URI: ' + this.state.url);
+					}
+			});
+	};
 
 	render() {
 		const { navigate } = this.props.navigation;
@@ -98,7 +111,7 @@ export default class Registration extends Component {
 						modalVisible={this.state.isShowServicesModal}
 						hideModal={() => this.toggleServicesModal(false)}
 						servicesList={servicesList}
-						onPressPolicy={() => console.log("onPress Policy")}
+						onPressPolicy={this.handleClick.bind(this)}
 						onPressOther={() => {
 							this.toggleServicesModal(false);
 							navigate('AddMail');

@@ -1,11 +1,9 @@
 // @flow
 
 import React from 'react';
+import { Switch } from './switchPlugin';
 
 import COLORS from '../../config/colors.config';
-
-/* CUSTOM MODULES */
-import { Switch } from './switchPlugin';
 
 type Props = {
     switchValue: boolean,
@@ -13,20 +11,16 @@ type Props = {
 };
 
 const CustomSwitch = (props: Props) => {
-    const { switchValue, onChangeHandler} = props;
-    return (
-        <Switch
-            value={switchValue}
-            onValueChange={onChangeHandler}
-            disabled={false}
-            activeText={'on'}
-            inActiveText={'off'}
-            backgroundActive={COLORS.switchActiveGreen}
-            backgroundInactive={COLORS.nonActiveSwitchBackgroundColor}
-            circleActiveColor={COLORS.lightgreen}
-            circleInActiveColor={COLORS.white}
-        />
-    );
+  const { switchValue, onChangeHandler} = props;
+  return (
+    <Switch
+      value={switchValue}
+      onValueChange={onChangeHandler}
+      disabled={false}
+      activeText={'on'}
+      inActiveText={'off'}
+    />
+  );
 };
 
 export default CustomSwitch;

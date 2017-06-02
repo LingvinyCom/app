@@ -20,17 +20,17 @@ const Switch = (props: Object) => (
 export default Switch;
 
 const styles = StyleSheet.create({
-    switchBlock: {
-    	flexDirection: 'row',
-	    justifyContent: 'space-between',
-	    alignItems: 'center',
-	    marginBottom: 35,
-	    marginHorizontal: 40,
-    },
-    switchLabel: {
-    	fontSize: 14,
-	    color: COLORS.gray,
-    },
-    switchWrapper: {
-    },
+	switchBlock: {
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+		alignItems: 'center',
+		marginBottom: 35,
+		marginHorizontal: 40,
+	},
+	switchLabel: {
+		fontSize: 14,
+		color: COLORS.gray,
+	},
+	switchWrapper: {
+	},
 });

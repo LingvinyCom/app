@@ -18,4 +18,3 @@ const Footer = (props: Object) => (
 );
 
 export default Footer;
-

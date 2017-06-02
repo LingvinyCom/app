@@ -23,16 +23,18 @@ export default class ForgotPassword extends Component {
 				<Description
 					text={`Please enter your email. We will send your password to this email account`}
 				/>
-				<Input
-					label={'EMAIL'}
-					value={'...'}
-					onChangeText={(text: string) => this.props.auth.setValue({'email': text})}
-					placeholder={'Enter an Email'}
-				/>
-				<RoundedButton
-					text={'Recover Password'}
-					onPress={() => console.log('onPress ')}
-				/>
+				<View style={styles.form}>
+					<Input
+						label={'EMAIL'}
+						value={'...'}
+						onChangeText={(text: string) => this.props.auth.setValue({'email': text})}
+						placeholder={'Enter an Email'}
+					/>
+					<RoundedButton
+						text={'Recover Password'}
+						onPress={() => console.log('onPress ')}
+					/>
+				</View>
 			</View>
 		);
 	}

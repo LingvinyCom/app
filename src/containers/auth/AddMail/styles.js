@@ -1,19 +1,22 @@
 // @flow
 
-import { StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 import COLORS from '../../../config/colors.config';
+
+const DeviceHeight = Dimensions.get('window').height;
 
 /**
  *  @TODO: Add _t_styles.
  */
 const styles = {
-	scollableWrapper: {
-    flex: 1,
+  screenWrapper: {
     backgroundColor: COLORS.white,
   },
   pageWrapper: {
+    justifyContent: 'space-between',
+    alignItems: 'stretch',
     backgroundColor: COLORS.white,
-  justifyContent: 'space-between',
+    minHeight: DeviceHeight - 115,
   },
   pageContent: {
     paddingTop: 40,
