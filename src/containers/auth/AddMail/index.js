@@ -42,7 +42,9 @@ export default class AddMail extends Component {
 								placeholder={"Enter a Password"}
 							/>
 						</View>
-						<CollapseMenu />
+						<CollapseMenu
+							auth={this.props.auth}
+						/>
 					</View>
 					<RoundedButton
 						text={'Done'}

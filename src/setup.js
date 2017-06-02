@@ -1,13 +1,10 @@
 // @flow
 
 
-/* REACT */
 import React, { Component } from 'react';
 
-/* MODULES */
 import { Provider } from 'mobx-react';
 
-/* CUSTOM MODULES */
 import store from './store';
 import App from './app';
 

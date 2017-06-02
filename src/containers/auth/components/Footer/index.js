@@ -4,10 +4,9 @@ import React from 'react';
 import {
 	View,
 	Text,
-	StyleSheet,
 } from 'react-native';
 
-import Colors from '../../../../config/colors.config';
+import styles from './styles';
 
 const Footer = (props: Object) => (
 	<View style={styles.footer}>
@@ -20,19 +19,3 @@ const Footer = (props: Object) => (
 
 export default Footer;
 
-const styles = StyleSheet.create({
-    footer: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        paddingBottom: 45,
-    },
-    text: {
-        fontSize: 14,
-        color: Colors.lightGray,
-        paddingRight: 12,
-    },
-    clickableText: {
-        fontSize: 14,
-        color: Colors.green,
-    },
-});

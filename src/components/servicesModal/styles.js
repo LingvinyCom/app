@@ -1,7 +1,7 @@
 // @flow
 
 import { StyleSheet, Dimensions } from 'react-native';
-import Colors from '../../config/colors.config';
+import COLORS from '../../config/colors.config';
 
 const WidthDevice = Dimensions.get('window').width;
 /**
@@ -16,7 +16,7 @@ const styles = {
     },
     modalContent: {
         width: WidthDevice - 40,
-        backgroundColor: Colors.white,
+        backgroundColor: COLORS.white,
         borderRadius: 3,
         padding: 30,
     },
@@ -28,7 +28,7 @@ const styles = {
     modalTitle: {
         textAlign: 'center',
         fontSize: 19,
-        color: Colors.gray,
+        color: COLORS.gray,
         marginBottom: 15,
     },
     wrapperBtn: {
@@ -43,7 +43,7 @@ const styles = {
     },
     textBtn: {
         fontSize: 16,
-        color: Colors.gray,
+        color: COLORS.gray,
     },
     servicesList: {
         marginBottom: 40,
@@ -54,7 +54,7 @@ const styles = {
     },
     policyBtntext: {
         fontSize: 12,
-        color: Colors.blue,
+        color: COLORS.blue,
     },
 };
 

@@ -6,22 +6,16 @@ import COLORS from '../../../../config/colors.config';
 /**
  *  @TODO: Add _t_styles.
  */
-
 const styles = {
 	wrapper: {
-		justifyContent: 'center',
-		alignItems: 'center',
+		paddingHorizontal: 60,
 		marginBottom: 30,
 	},
 	text: {
-		fontSize: 22,
-		color: COLORS.gray,
-		paddingBottom: 7,
-	},
-	border: {
-		width: 45,
-		height: 3,
-		backgroundColor: COLORS.green,
+		fontSize: 14,
+		color: COLORS.lightGray,
+		lineHeight: 20,
+		textAlign: 'center',
 	},
 };
 

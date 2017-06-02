@@ -6,22 +6,20 @@ import COLORS from '../../../../config/colors.config';
 /**
  *  @TODO: Add _t_styles.
  */
-
 const styles = {
-	wrapper: {
-		justifyContent: 'center',
+	footer: {
+		flexDirection: 'row',
 		alignItems: 'center',
-		marginBottom: 30,
+		paddingBottom: 45,
 	},
 	text: {
-		fontSize: 22,
-		color: COLORS.gray,
-		paddingBottom: 7,
+		fontSize: 14,
+		color: COLORS.lightGray,
+		paddingRight: 12,
 	},
-	border: {
-		width: 45,
-		height: 3,
-		backgroundColor: COLORS.green,
+	clickableText: {
+		fontSize: 14,
+		color: COLORS.green,
 	},
 };
 

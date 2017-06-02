@@ -17,11 +17,22 @@ import styles from './styles';
 export default class Form extends Component {
 	// props = {}
 
-	// static defaultProps = {}
+	static defaultProps: {
+		buttonLabel: string,
+		auth: Object,
+		isShowForgotPassword: Boolean,
+		onPressForgotPassword: Function,
+	}
+
+	static defaultProps = {
+		buttonLabel: 'Continue',
+		isShowForgotPassword: false,
+		onPressForgotPassword: () => console.log('onPressForgotPassword'),
+	}
 
 	render() {
 		const { email, password, requestError } = this.props.auth;
-		const { component, isShowForgotPassword } = this.props;
+		const { component, isShowForgotPassword, onPressForgotPassword, buttonLabel } = this.props;
 
 		return (
 			<View style={styles.form}>
@@ -30,7 +41,6 @@ export default class Form extends Component {
 					value={email}
 					onChangeText={(text: string) => this.props.auth.setValue({'email': text})}
 					placeholder={'Enter an Email'}
-					underlineColorAndroid={'transparent'}
 				/>
 				{
 					component
@@ -43,12 +53,14 @@ export default class Form extends Component {
 					value={password}
 					onChangeText={(text: string) => this.props.auth.setValue({'password': text})}
 					placeholder={'Enter a Password'}
-					underlineColorAndroid={'transparent'}
 				/>
 				{
 					isShowForgotPassword &&
 					<View style={styles.forgotPasswordWrapper}>
-						<TouchableOpacity style={styles.forgotPasswordBtn}>
+						<TouchableOpacity
+							style={styles.forgotPasswordBtn}
+							onPress={onPressForgotPassword}
+							>
 							<Text style={styles.forgotPasswordText}>
 								Forgot Password
 							</Text>
@@ -56,7 +68,7 @@ export default class Form extends Component {
 					</View>
 				}
 				<RoundedButton
-					text={'Login'}
+					text={buttonLabel}
 					onPress={this.props.onPress}
         />
 			</View>

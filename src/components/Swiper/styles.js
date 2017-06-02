@@ -1,7 +1,7 @@
 // @flow
 
 import { StyleSheet } from 'react-native';
-import Colors from '../../config/colors.config';
+import COLORS from '../../config/colors.config';
 
 /**
  *  @TODO: Add _t_styles.
@@ -27,7 +27,7 @@ const styles = {
 	onboardingTitle: {
 		fontSize: 20,
 		lineHeight: 28,
-		color: Colors.gray,
+		color: COLORS.gray,
 		paddingHorizontal: 60,
 		marginBottom: 30,
 		textAlign: 'center',
@@ -39,22 +39,22 @@ const styles = {
 		paddingHorizontal: 50,
 		fontSize: 14,
 		lineHeight: 23,
-		color: Colors.gray,
+		color: COLORS.gray,
 		textAlign: 'center',
 	},
 	swiperDot: {
-		backgroundColor: Colors.white,
+		backgroundColor: COLORS.white,
 		borderWidth: 1,
-		borderColor: Colors.borderColor,
+		borderColor: COLORS.borderColor,
 		width: 8,
 		height: 8,
 		borderRadius: 4,
 		margin: 5,
 	},
 	swiperActiveDot: {
-		backgroundColor: Colors.white,
+		backgroundColor: COLORS.white,
 		borderWidth: 1,
-		borderColor: Colors.blue,
+		borderColor: COLORS.blue,
 		width: 8,
 		height: 8,
 		borderRadius: 4,

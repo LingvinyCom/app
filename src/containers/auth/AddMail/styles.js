@@ -1,7 +1,7 @@
 // @flow
 
 import { StyleSheet } from 'react-native';
-import Colors from '../../../config/colors.config';
+import COLORS from '../../../config/colors.config';
 
 /**
  *  @TODO: Add _t_styles.
@@ -9,10 +9,10 @@ import Colors from '../../../config/colors.config';
 const styles = {
 	scollableWrapper: {
     flex: 1,
-    backgroundColor: Colors.white,
+    backgroundColor: COLORS.white,
   },
   pageWrapper: {
-    backgroundColor: Colors.white,
+    backgroundColor: COLORS.white,
   justifyContent: 'space-between',
   },
   pageContent: {

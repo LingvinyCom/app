@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { observer } from 'mobx-react';
 import {
 	View,
 	Text,
@@ -9,10 +10,10 @@ import Input from '../../../../../components/SimpleInput/';
 import Switch from '../../../../../components/Switch/';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import Colors from '../../../../../config/colors.config';
+import COLORS from '../../../../../config/colors.config';
 import styles from './syles';
 
-
+@observer
 export default class CollapseMenu extends Component {
 	state: {
 		isCollapsed: Boolean,
@@ -31,6 +32,14 @@ export default class CollapseMenu extends Component {
 	}
 
 	render() {
+		const { hostName, userName, password, authentication, serverPort } = this.props.auth;
+		const { isCollapsed } = this.state;
+		// const iconProps = {
+		// 	name: "add",
+		// 	size: {24,
+		// 	color: {COLORS.lightGray};
+		// };
+
 		return (
 			<View>
 				<View style={styles.titleCollapse}>
@@ -44,11 +53,11 @@ export default class CollapseMenu extends Component {
 							<Icon
 								name="add"
 								size={24}
-								color={Colors.lightGray} /> ||
+								color={COLORS.lightGray} /> ||
 							<Icon
 								name="remove"
 								size={24}
-								color={Colors.lightGray} />
+								color={COLORS.lightGray} />
 						}
 					</Text>
 				</View>
@@ -56,17 +65,17 @@ export default class CollapseMenu extends Component {
 					<View>
 						<Input
 							label={'HOST NAME'}
-							value={'...'}
+							value={hostName}
 							onChangeText={(text: string) => this.props.auth.setValue({'hostName': text})}
 						/>
 						<Input
 							label={'USER NAME'}
-							value={'...'}
+							value={userName}
 							onChangeText={(text: string) => this.props.auth.setValue({'userName': text})}
 						/>
 						<Input
 							label={'PASSWORD'}
-							value={'...'}
+							value={password}
 							onChangeText={(text: string) => this.props.auth.setValue({'password': text})}
 						/>
 						<Switch
@@ -75,12 +84,12 @@ export default class CollapseMenu extends Component {
 						/>
 						<Input
 							label={'AUTHENTICATION'}
-							value={'...'}
+							value={authentication}
 							onChangeText={(text: string) => this.props.auth.setValue({'authentication': text})}
 						/>
 						<Input
 							label={'SERVER PORT'}
-							value={'...'}
+							value={serverPort}
 							onChangeText={(text: string) => this.props.auth.setValue({'serverPort': text})}
 						/>
 					</View>

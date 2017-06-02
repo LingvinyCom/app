@@ -20,5 +20,5 @@ export function postRequest(url: string, body: Object): Promise<> {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify(body)
-	});
+	}).then((response) => response.json());
 }

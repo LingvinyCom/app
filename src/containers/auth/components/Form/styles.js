@@ -1,7 +1,7 @@
 // @flow
 
 import { StyleSheet } from 'react-native';
-import Colors from '../../../../config/colors.config';
+import COLORS from '../../../../config/colors.config';
 
 /**
  *  @TODO: Add _t_styles.
@@ -23,7 +23,7 @@ const styles = {
 	},
 	forgotPasswordText: {
 		fontSize: 14,
-		color: Colors.lightGray,
+		color: COLORS.lightGray,
 	},
 };
 

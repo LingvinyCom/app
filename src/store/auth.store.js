@@ -23,21 +23,6 @@ class AuthStore {
   @action setValue(params: Object): void {
     Object.assign(this, params);
   }
-
-  @action login(email: string, password: string): void  {
-    login(email, password).then((res) => {
-			switch (res.status) {
-				case 200:
-					// @TODO: CHECK if success to write value.
-					this.uid = 'Token';
-					break;
-				default:
-					// @TODO: CHECK if error to write value.
-					this.requestError = 'Error';
-					break;
-			}
-		});
-  }
 }
 
 const authStore = new AuthStore();

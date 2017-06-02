@@ -7,33 +7,45 @@ import {
 	View,
 } from 'react-native';
 
-import Colors from '../../config/colors.config';
+import COLORS from '../../config/colors.config';
 import styles from './styles';
 
 export default class SimpleInput extends Component {
 	props: {
+		label?: string,
     maxLength?: number,
+    placeholder: string,
 		placeholderTextColor?: string,
-  };
+		underlineColorAndroid?: string,
+		onChangeText: Function,
+  }
+
+	static defaultProps: {
+		maxLength: number,
+		placeholderTextColor: string,
+		underlineColorAndroid: string,
+	}
 
   static defaultProps = {
-    maxLength: 3,
-		placeholderTextColor: Colors.gray,
+    maxLength: 40,
+		placeholderTextColor: COLORS.gray,
+		underlineColorAndroid: 'transparent',
   };
 
 	render() {
+		const { label } = this.props;
+
 		return (
 			<View style={styles.wrapper}>
 				{
-					this.props.label &&
+					label &&
 					<View style={styles.labelWrapper}>
-					<Text style={styles.label}>{this.props.label}</Text>
+					<Text style={styles.label}>{label}</Text>
 					</View>
 				}
 				<TextInput
 					style={styles.input}
 					{...this.props}
-					underlineColorAndroid={'transparent'}
 				/>
 			</View>
 		);

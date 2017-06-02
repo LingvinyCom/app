@@ -7,7 +7,7 @@ import {
 	Text,
 } from 'react-native';
 
-import Colors from '../../../../config/colors.config';
+import styles from './styles';
 
 const Description = (props: Object) => (
 	<View style={styles.wrapper}>
@@ -16,16 +16,3 @@ const Description = (props: Object) => (
 );
 
 export default Description;
-
-const styles = StyleSheet.create({
-    wrapper: {
-        paddingHorizontal: 60,
-        marginBottom: 30,
-    },
-    text: {
-        fontSize: 14,
-        color: Colors.lightGray,
-        lineHeight: 20,
-        textAlign: 'center',
-    },
-});

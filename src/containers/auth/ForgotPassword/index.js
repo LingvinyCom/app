@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 import { inject } from 'mobx-react';
 import {
   View,
-  StyleSheet,
 } from 'react-native';
 
 import Logotip from '../components/Logo';
@@ -31,7 +30,7 @@ export default class ForgotPassword extends Component {
 					placeholder={'Enter an Email'}
 				/>
 				<RoundedButton
-					text={'FORGET????'}
+					text={'Recover Password'}
 					onPress={() => console.log('onPress ')}
 				/>
 			</View>

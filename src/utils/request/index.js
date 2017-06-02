@@ -13,7 +13,12 @@ import { postRequest } from './helperFunctions';
  * @returns {Promise}
  */
 export function login(email: string, password: string): Promise<> {
-		return postRequest('login/', { email, password });
+
+		email = 'tech@lingviny.com';
+		password = 'secretstring';
+
+		console.debug('DONT FORGET TO REMOVE:', email, password);
+		return postRequest('api/auth/login', { email, password });
 }
 
 
