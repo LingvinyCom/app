@@ -33,7 +33,7 @@ class Navigator extends Component {
 
 
 	initRouter() {
-		return DrawerNavigator({...Sidebar}, this.setNavigatorConfig());
+		return DrawerNavigator({...Sidebar});
 	}
 
 	componentDidMount() {

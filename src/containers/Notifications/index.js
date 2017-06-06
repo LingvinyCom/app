@@ -4,7 +4,7 @@ import React, {Component} from 'react';
 import {View, ScrollView, ListView} from 'react-native';
 
 import RouterHeader from '../../components/Inbox/routerHeader';
-import InboxItem from '../../components/Inbox/inboxItem';
+import NotificatiobItem from './components/NotificationItem';
 import Swipeout from 'react-native-swipeout';
 import rows from './data';
 
@@ -39,13 +39,12 @@ export default class Notifications extends Component {
 				scroll={event => console.log('scroll event') }
 				style={styles.swipeoutList}
 			>
-				<InboxItem
+				<NotificatiobItem
 					onPress={ () => console.log('press children') }
 					title={rowData.title}
 					theme={rowData.theme}
 					description={rowData.description}
 					time={rowData.time}
-					itemStatus={rowData.itemStatus}
 				/>
 			</Swipeout>
 		);
