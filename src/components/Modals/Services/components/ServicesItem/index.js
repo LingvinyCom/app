@@ -1,6 +1,6 @@
 // @flow
 
-import React, { Component } from 'react';
+import React from 'react';
 import {
 	View,
 	Image,
@@ -9,16 +9,16 @@ import {
 
 import styles from './../../styles';
 
-export default class ServicesItem extends Component {
-	render() {
-		const { imgUrl, onPress  } = this.props;
-		return (
-			<View style={styles.wrapperBtn}>
-				<TouchableOpacity onPress={onPress}>
-					<Image source={imgUrl}/>
-				</TouchableOpacity>
-			</View>
-		);
-	}
+type PropsType = {
+	onPress: Function,
+	image: number,
 }
+const ServicesItem = (props: PropsType) => (
+	<View style={styles.wrapperBtn}>
+		<TouchableOpacity onPress={props.onPress}>
+			<Image source={props.image}/>
+		</TouchableOpacity>
+	</View>
+);
 
+export default ServicesItem;

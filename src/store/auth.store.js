@@ -7,7 +7,9 @@ class AuthStore {
   @observable email: string = 'tech@lingviny.com';
   @observable password: string = 'secretstring';
 
-	@observable hostName: string = '';
+  @observable selectedDomain: ?Object = null;
+
+  @observable hostName: string = '';
 	@observable userName: string = '';
 	@observable hostPassword: string = '';
 	@observable useSsl: boolean = false;

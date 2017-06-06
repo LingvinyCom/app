@@ -1,6 +1,6 @@
 // @flow
 
-import { action, observable } from 'mobx';
+import { observable } from 'mobx';
 
 
 class AppStore {

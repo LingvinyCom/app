@@ -13,6 +13,7 @@ import { API_URL } from '../../config/api.config';
  * @returns {Promise}
  */
 export function postRequest(url: string, body: Object): Promise<> {
+	console.log('DATA ===>', body);
 	return new Promise((resolve, reject) => {
 		fetch(`${API_URL}${url}`, {
 					method: 'POST',
@@ -23,14 +24,15 @@ export function postRequest(url: string, body: Object): Promise<> {
 					body: JSON.stringify(body)
 			})
 			.then((response) => {
-				/**
-				 * If no content resolve();
-				 * Needed only for 204 status code.
-				 */
-				if (response.status === 204) {
-					return resolve();
-				} else {
-					return response.json();
+				switch (response.status) {
+					case 204:
+						resolve();
+						break;
+					case 400:
+						reject();
+						break;
+					default:
+						return response.json();
 				}
 			})
 			.then((data) => {

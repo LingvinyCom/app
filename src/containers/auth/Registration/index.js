@@ -14,63 +14,24 @@ import Input from './../../../components/SimpleInput/';
 import Footer from '../../../components/Auth/Footer/';
 import Logotip from '../../../components/Auth/Logo';
 import PATTERN_CONFIG from '../../../config/pattern.config';
+import APP_CONFIG from '../../../config/app.config';
 import * as Modals from '../../../components/Modals/';
 import * as Buttons from './../../../components/Buttons/';
 
+import { signUp } from '../../../utils/request/';
+
 import styles from './styles';
 
-const domains = [
-	{
-		id: 1,
-		domain: 'icloud.com',
-		image: require('../../../assets/img/icloud.png'),
-	},
-	{
-		id: 2,
-		domain: 'gmail.com',
-		image: require('../../../assets/img/google.png'),
-	},
-	{
-		id: 3,
-		domain: 'yahoo.com',
-		image: require('../../../assets/img/yahoo.png'),
-	},
-	{
-		id: 4,
-		domain: 'aol.com',
-		image: require('../../../assets/img/logo.png'), // NO IMAGE!!!!!!!!
-	},
-	{
-		id: 5,
-		domain: 'outlook.com',
-		image: require('../../../assets/img/outlook.png'),
-	},
-	{
-		id: 6,
-		domain: 'hotmail.com',
-		image: require('../../../assets/img/logo.png'), // NO IMAGE!!!!!!!!
-	},
-	{
-		id: 7,
-		domain: 'mail.ru',
-		image: require('../../../assets/img/logo.png'), // NO IMAGE!!!!!!!!
-	},
-	{
-		id: 8,
-		domain: 'yandex.ru',
-		image: require('../../../assets/img/logo.png'), // NO IMAGE!!!!!!!!
-	},
-];
 
 @inject((allStores) => ({
 	auth: allStores.auth,
+	app: allStores.app,
 }))
 @observer
 export default class Registration extends Component {
 	state: {
 		isShowServicesModal: boolean,
 		isCollapsed: boolean,
-		selectedDomainIage: ?number,
 	}
 
 	timer: ? number;
@@ -80,7 +41,6 @@ export default class Registration extends Component {
 		this.state = {
 			isShowServicesModal: false,
 			isCollapsed: true,
-			selectedDomainIage: null,
 		};
 	}
 
@@ -94,18 +54,13 @@ export default class Registration extends Component {
 		const isEmailValid = email && PATTERN_CONFIG.email.test(email);
 
 		if (isEmailValid && domain) {
-			const existed = domains.find((d) => d.domain === domain);
+			const existed = APP_CONFIG.EMAIL_DOMAINS.find((d) => d.domain === domain);
 			if (existed) {
-				this.setState({
-					isCollapsed: false,
-					selectedDomainIage: existed.image,
-				});
+				this.props.auth.selectedDomain = existed;
 			} else {
-				this.setState({
-					isCollapsed: false,
-					selectedDomainIage: null,
-				});
+				this.props.auth.selectedDomain = null;
 			}
+			this.setState({ isCollapsed: false });
 		} else {
 			this.setState({isCollapsed: true});
 		}
@@ -118,7 +73,22 @@ export default class Registration extends Component {
 	}
 
 	registration() {
-		console.log('onPress registration');
+		this.props.app.showLoader = true;
+		const payload = {
+			email: this.props.auth.email,
+			password: this.props.auth.password,
+			id: this.props.auth.selectedDomain.id,
+		};
+
+		signUp(payload)
+			.then((data) => {
+				this.props.auth.uid = data.lingviny_token;
+				this.props.navigation.navigate('Congratulations');
+			}).catch(() => {
+			this.props.auth.requestError = 'Error';
+		}).finally(() => {
+			this.props.app.showLoader = false;
+		});
 	}
 
 	toggleServicesModal(value: boolean) {
@@ -139,34 +109,6 @@ export default class Registration extends Component {
 
 	render() {
 		const {navigate} = this.props.navigation;
-		const servicesList = [
-			{
-				title: 'google',
-				imgUrl: require('../../../assets/img/google.png'),
-				onPress: () => console.log("onPress btn google"),
-			},
-			{
-				title: 'exchange',
-				imgUrl: require('../../../assets/img/exchange.png'),
-				onPress: () => console.log("onPress btn exchange"),
-			},
-			{
-				title: 'yahoo',
-				imgUrl: require('../../../assets/img/yahoo.png'),
-				onPress: () => console.log("onPress btn yahoo"),
-			},
-			{
-				title: 'icloud',
-				imgUrl: require('../../../assets/img/icloud.png'),
-				onPress: () => console.log("onPress btn icloud"),
-			},
-			{
-				title: 'outlook',
-				imgUrl: require('../../../assets/img/outlook.png'),
-				onPress: () => console.log("onPress btn outlook"),
-			},
-		];
-
 		return (
 			<ScrollView>
 				<View style={styles.registrationWrapper}>
@@ -186,9 +128,9 @@ export default class Registration extends Component {
 
 						<Collapsible collapsed={this.state.isCollapsed}>
 							{
-								this.state.selectedDomainIage ?
+								this.props.auth.selectedDomain ?
 									<Buttons.WithImage
-										img={this.state.selectedDomainIage}
+										img={this.props.auth.selectedDomain.image}
 										color={'transparent'}
 									/> :
 									<Buttons.Rounded
@@ -220,7 +162,11 @@ export default class Registration extends Component {
 					<Modals.Services
 						modalVisible={this.state.isShowServicesModal}
 						hideModal={() => this.toggleServicesModal(false)}
-						servicesList={servicesList}
+						servicesList={APP_CONFIG.EMAIL_DOMAINS}
+						onPressItem={(selected) => {
+							this.props.auth.selectedDomain = selected;
+							this.toggleServicesModal(false);
+						}}
 						onPressPolicy={this.handleClick.bind(this)}
 						onPressOther={() => {
 							this.toggleServicesModal(false);

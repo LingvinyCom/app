@@ -12,13 +12,38 @@ import Input from '../../../components/SimpleInput';
 import CollapseMenu from './components/CollapseMenu/';
 import * as Buttons from './../../../components/Buttons/';
 
+import { signUp } from '../../../utils/request/';
 import styles from './styles';
 
 
 @inject((allStores) => ({
     auth: allStores.auth,
+    app: allStores.app,
 }))
 export default class AddMail extends Component {
+	registration() {
+		this.props.app.showLoader = true;
+		const payload = {
+			email: this.props.auth.email,
+			password: this.props.auth.password,
+			hostName: this.props.auth.hostName,
+			userName: this.props.auth.userName,
+			hostPassword: this.props.auth.hostPassword,
+			is_ssl: this.props.auth.useSsl,
+			server_port: this.props.auth.serverPort,
+		};
+
+		signUp(payload)
+			.then((data) => {
+				this.props.auth.uid = data.lingviny_token;
+				this.props.navigation.navigate('Congratulations');
+			}).catch(() => {
+			this.props.auth.requestError = 'Error';
+		}).finally(() => {
+			this.props.app.showLoader = false;
+		});
+	}
+
 	render() {
 		const { email, password } = this.props.auth;
 
@@ -48,7 +73,7 @@ export default class AddMail extends Component {
 						<View>
 							<Buttons.Rounded
 								text={'Done'}
-								onPress={() => console.log('onPress Done')}
+								onPress={this.registration.bind(this)}
 							/>
 						</View>
 					</View>
