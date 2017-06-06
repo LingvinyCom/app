@@ -19,7 +19,7 @@ export default class WithImageButton extends Component {
 				color={this.props.color}
 			>
 				<Image
-					style={{flex:1, marginVertical: 5,}}
+					style={styles.img}
 					source={this.props.img}
 				  resizeMode="contain"
 				/>

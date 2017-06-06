@@ -17,4 +17,4 @@ export default () => (
 			No emails yet
 		</Text>
 	</View>
-)
+);
