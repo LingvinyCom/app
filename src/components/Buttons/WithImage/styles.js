@@ -1,7 +1,7 @@
 // @flow
 
 import { StyleSheet, Dimensions } from 'react-native';
-import COLORS from '../../config/colors.config';
+import COLORS from '../../../config/colors.config';
 
 const WidthDevice = Dimensions.get('window').width;
 /**
@@ -22,14 +22,7 @@ const styles = {
 		backgroundColor: 'transparent',
 		borderWidth: 1,
 		borderColor: COLORS.btnBorderColor,
-	},
-	text: {
-		color: COLORS.white,
-		fontSize: 16,
-	},
-	textGray: {
-		color: COLORS.gray,
-	},
+	}
 };
 
 const exportStyles = StyleSheet.create(styles);

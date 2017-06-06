@@ -1,38 +1,121 @@
 // @flow
 
 import React, { Component } from 'react';
-import { inject } from 'mobx-react';
+import { inject, observer } from 'mobx-react'; 
 import {
   Linking,
   View,
   ScrollView,
 } from 'react-native';
-
-import Title from '../components/Title/';
-import Description from '../components/Description/';
-import Form from '../components/Form/';
-import RoundedButton from './../../../components/RoundedButton/';
-import Footer from '../components/Footer/';
-import Logotip from '../components/Logo';
-import ServicesModal from '../../../components/ServicesModal';
+import Collapsible from 'react-native-collapsible';
+import Title from '../../../components/Auth/Title/';
+import Description from '../../../components/Auth/Description/';
+import Input from './../../../components/SimpleInput/';
+import Footer from '../../../components/Auth/Footer/';
+import Logotip from '../../../components/Auth/Logo';
+import PATTERN_CONFIG from '../../../config/pattern.config';
+import * as Modals from '../../../components/Modals/';
+import * as Buttons from './../../../components/Buttons/';
 
 import styles from './styles';
+
+const domains = [
+	// ICloud @icloud.com
+	{
+		domain: 'icloud.com',
+		image: require('../../../assets/img/icloud.png'),
+	},
+	// Exchange ??????????
+	// Google @gmail.com
+	{
+		domain: 'gmail.com',
+		image: require('../../../assets/img/google.png'),
+	},
+	// Yahoo @yahoo.com
+	{
+		domain: 'yahoo.com',
+		image: require('../../../assets/img/yahoo.png'),
+	},
+	// Aol   @aol.com
+	{
+		domain: 'aol.com',
+		image: require('../../../assets/img/logo.png'), // NO IMAGE!!!!!!!!
+	},
+	// Outlook @outlook.com
+	{
+		domain: 'outlook.com',
+		image: require('../../../assets/img/outlook.png'),
+	},
+	// Hotmail @hotmail.com
+	{
+		domain: 'hotmail.com',
+		image: require('../../../assets/img/logo.png'), // NO IMAGE!!!!!!!!
+	},
+	// Mail.ru @mail.ru
+	{
+		domain: 'mail.ru',
+		image: require('../../../assets/img/logo.png'), // NO IMAGE!!!!!!!!
+	},
+	// Yandex @yandex.ru
+	{
+		domain: 'yandex.ru',
+		image: require('../../../assets/img/logo.png'), // NO IMAGE!!!!!!!!
+	},
+];
 
 @inject((allStores) => ({
     auth: allStores.auth,
 }))
+@observer
 export default class Registration extends Component {
 	state: {
 		isShowServicesModal: boolean,
-		url: string,
+		isCollapsed: boolean,
+		selectedDomainIage: ?number,
 	}
+
+	timer: ? number;
 
 	constructor(props: Object) {
 		super(props);
 		this.state = {
 			isShowServicesModal: false,
-			url: 'https://lingviny.com/policy',
+			isCollapsed: true,
+			selectedDomainIage: null,
 		};
+	}
+
+	componentWillMount() {
+		this.timer = null;
+		this.detectEmailDomain(this.props.auth.email);
+	}
+
+	detectEmailDomain(email: string) {
+		const domain = email.substring(email.lastIndexOf("@") + 1);
+		const isEmailValid = email && PATTERN_CONFIG.email.test(email);
+
+		if (isEmailValid && domain) {
+			const existed = domains.find((d) => d.domain === domain);
+			if (existed) {
+				this.setState({
+					isCollapsed: false,
+					selectedDomainIage: existed.image,
+				});
+			} else {
+				this.setState({
+					isCollapsed: false,
+					selectedDomainIage: null,
+				});
+			}
+		} else {
+			this.setState({ isCollapsed: true });
+		}
+	}
+
+	onChangeEmail(text: string) {
+		this.props.auth.setValue({'email': text});
+		clearTimeout(this.timer);
+    this.timer = setTimeout(this.detectEmailDomain.bind(this, text), 1000);
 	}
 
 	registration() {
@@ -44,13 +127,15 @@ export default class Registration extends Component {
 	}
 
 	handleClick = () => {
-			Linking.canOpenURL(this.state.url).then(supported => {
-					if (supported) {
-							Linking.openURL(this.state.url);
-					} else {
-							console.log('Don\'t know how to open URI: ' + this.state.url);
-					}
-			});
+		const policyLink = 'https://lingviny.com/policy';
+
+		Linking.canOpenURL(policyLink).then(supported => {
+			if (supported) {
+				Linking.openURL(policyLink);
+			} else {
+				console.log('Don\'t know how to open URI: ' + policyLink);
+			}
+		});
 	};
 
 	render() {
@@ -91,23 +176,49 @@ export default class Registration extends Component {
 					<Description
 						text={`Please enter your credentials for the existing mailbox you'll be working with and we'll take care of all the rest`}
 					/>
-					<Form
-						auth={this.props.auth}
-						onPress={this.registration.bind(this)}
-						component={
-							<RoundedButton
-								text={'Choose Mail Service'}
-								onPress={() => this.toggleServicesModal(true)}
-								color={'transparent'}
-							/>
-						}
-					/>
+
+					<View style={styles.form}>
+						<Input
+							label={'EMAIL'}
+							value={this.props.auth.email}
+							onChangeText={(text: string) => this.onChangeEmail(text)}
+							placeholder={'Enter an Email'}
+						/>
+
+						<Collapsible collapsed={this.state.isCollapsed}>
+							{
+								this.state.selectedDomainIage ?
+								<Buttons.WithImage
+									img={this.state.selectedDomainIage}
+									color={'transparent'}
+								/> :
+								<Buttons.Rounded
+									text={'Choose Mail Service'}
+									onPress={() => this.toggleServicesModal(true)}
+									color={'transparent'}
+								/>
+							}
+						</Collapsible>
+
+						<Input
+							label={'PASSWORD'}
+							secureTextEntry={true}
+							value={this.props.auth.password}
+							onChangeText={(text: string) => this.props.auth.setValue({'password': text})}
+							placeholder={'Enter a Password'}
+						/>
+						<Buttons.Rounded
+							text={'Continue'}
+							onPress={this.registration.bind(this)}
+						/>
+					</View>
+
 					<Footer
 						text={'Already a member?'}
 						clickableText={'Login'}
 						onPressText={() => navigate('SignIn')}
 					/>
-					<ServicesModal
+					<Modals.Services
 						modalVisible={this.state.isShowServicesModal}
 						hideModal={() => this.toggleServicesModal(false)}
 						servicesList={servicesList}

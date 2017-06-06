@@ -15,6 +15,7 @@ export default class SimpleInput extends Component {
 		label?: string,
     maxLength?: number,
     placeholder: string,
+		keyboardType?: string,
 		placeholderTextColor?: string,
 		underlineColorAndroid?: string,
 		onChangeText: Function,
@@ -22,12 +23,14 @@ export default class SimpleInput extends Component {
 
 	static defaultProps: {
 		maxLength: number,
+		keyboardType: string,
 		placeholderTextColor: string,
 		underlineColorAndroid: string,
 	}
 
   static defaultProps = {
     maxLength: 40,
+		keyboardType: 'default',
 		placeholderTextColor: COLORS.gray,
 		underlineColorAndroid: 'transparent',
   };

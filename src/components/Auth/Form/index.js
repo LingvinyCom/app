@@ -7,8 +7,8 @@ import {
 	Text,
 } from 'react-native';
 import { observer } from 'mobx-react';
-import Input from '../../../../components/SimpleInput/';
-import RoundedButton from '../../../../components/RoundedButton/';
+import Input from '../../SimpleInput/';
+import * as Buttons from '../../Buttons/';
 
 import styles from './styles';
 
@@ -67,7 +67,7 @@ export default class Form extends Component {
 						</TouchableOpacity>
 					</View>
 				}
-				<RoundedButton
+				<Buttons.Rounded
 					text={buttonLabel}
 					onPress={this.props.onPress}
         />

@@ -11,7 +11,7 @@ import {
 import ServicesItem from './components/ServicesItem/';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import COLORS from '../../config/colors.config';
+import COLORS from '../../../config/colors.config';
 import styles from './styles';
 
 const ServicesModal = (props: Object) => {
@@ -21,7 +21,7 @@ const ServicesModal = (props: Object) => {
 			animationType={"fade"}
 			transparent={true}
 			visible={modalVisible}
-			onRequestClose={() => {alert("Modal has been closed.");}}
+			onRequestClose={() => console.log("Modal has been closed.")}
 		>
 			<View style={styles.modalWrapper}>
 				<View style={styles.modalContent}>

@@ -11,52 +11,9 @@ import Inbox from './../containers/Inbox';
  *  @TODO: Place navigationOptions header:null global.
  */
 export default {
-  FirstLaunch: {
-    screen: FirstLaunch,
-    navigationOptions: {
-      header: null,
-    },
-  },
-  Registration: {
-    screen: Registration,
-    navigationOptions: {
-      header: null,
-    },
-  },
-  AddMail: {
-    screen: AddMail,
-    navigationOptions: {
-      header: null,
-    },
-  },
-  SignIn: {
-    screen: SignIn,
-    navigationOptions: {
-      header: null,
-    },
-  },
-  ForgotPassword: {
-    screen: ForgotPassword,
-    navigationOptions: {
-      header: null,
-    },
-  },
-  Congratulations: {
-    screen: Congratulations,
-    navigationOptions: {
-      header: null,
-    }
-  },
-  Sidebar: {
-    screen: Sidebar,
-    navigationOptions: {
-      header: null,
-      }
-  },
-    Inbox: {
-        screen: Inbox,
-        navigationOptions: {
-            header: null,
-        }
-    },
+  FirstLaunch: { screen: FirstLaunch },
+  Registration: { screen: Registration },
+  AddMail: { screen: AddMail },
+  SignIn: { screen: SignIn },
+  ForgotPassword: { screen: ForgotPassword },
 };

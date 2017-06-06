@@ -4,14 +4,15 @@ import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 import {
   View,
+	KeyboardAvoidingView,
 } from 'react-native';
 
-import Logotip from '../components/Logo';
-import Title from '../components/Title/';
-import Description from '../components/Description/';
+import Logotip from '../../../components/Auth/Logo';
+import Title from '../../../components/Auth/Title/';
+import Description from '../../../components/Auth/Description/';
 import Input from '../../../components/SimpleInput/';
-import RoundedButton from '../../../components/RoundedButton/';
-import ErrorModal from '../../../components/errorModal';
+import * as Modals from '../../../components/Modals';
+import * as Buttons from '../../../components/Buttons/';
 
 import { resetPassword } from '../../../utils/request/';
 
@@ -53,7 +54,10 @@ export default class ForgotPassword extends Component {
 
 	render() {
 		return (
-			<View style={styles.forgotPassWrapper}>
+			<KeyboardAvoidingView
+				behavior="padding"
+				style={styles.forgotPassWrapper}
+      >
 				<Logotip/>
 				<Title text={'Forgot Password?'}/>
 				<Description
@@ -66,19 +70,19 @@ export default class ForgotPassword extends Component {
 						onChangeText={(text: string) => this.props.auth.setValue({'email': text})}
 						placeholder={'Enter an Email'}
 					/>
-					<RoundedButton
+					<Buttons.Rounded
 						text={'Recover Password'}
 						onPress={this.recoverPassword.bind(this)}
 					/>
 				</View>
-				<ErrorModal
+				<Modals.Error
           modalVisible={this.state.isShowErrorModal}
           hideModal={ () => this.setState({ isShowErrorModal: false }) }
           titleError={'Unable to Login'}
           descriptionError={"Incorrect Username or Password"}
           textBtn={'Try again'}
         />
-			</View>
+			</KeyboardAvoidingView>
 		);
 	}
 }

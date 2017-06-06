@@ -1,6 +1,5 @@
 // @flow
 
-
 import React, { PureComponent } from 'react';
 import { ActivityIndicator } from 'react-native';
 

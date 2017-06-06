@@ -4,11 +4,11 @@ import React, { Component } from 'react';
 import { inject } from 'mobx-react';
 import { View } from 'react-native';
 
-import Logotip from '../components/Logo';
-import Title from '../components/Title/';
-import Form from '../components/Form/';
-import Footer from '../components/Footer/';
-import ErrorModal from '../../../components/errorModal';
+import Logotip from '../../../components/Auth/Logo';
+import Title from '../../../components/Auth/Title/';
+import Form from '../../../components/Auth/Form/';
+import Footer from '../../../components/Auth/Footer/';
+import * as Modals from '../../../components/Modals/';
 
 import { login } from '../../../utils/request/';
 
@@ -24,7 +24,7 @@ export default class SignIn extends Component {
   }
 
   constructor(props: Object) {
-  super(props);
+    super(props);
     this.state = {
       isShowErrorModal: false,
     };
@@ -64,7 +64,7 @@ export default class SignIn extends Component {
           clickableText={'Sign Up'}
           onPressText={() => navigate('Registration')}
         />
-        <ErrorModal
+        <Modals.Error
           modalVisible={this.state.isShowErrorModal}
           hideModal={ () => this.setState({ isShowErrorModal: false }) }
           titleError={'Unable to Login'}

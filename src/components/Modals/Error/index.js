@@ -10,7 +10,7 @@ import {
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import COLORS from '../../config/colors.config';
+import COLORS from '../../../config/colors.config';
 import styles from './styles';
 
 const ErrorModal = (props: Object) => {

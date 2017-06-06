@@ -1,3 +1,5 @@
+// @flow
+
 import React, { Component } from 'react';
 import { observer } from 'mobx-react';
 import {
@@ -16,10 +18,10 @@ import styles from './syles';
 @observer
 export default class CollapseMenu extends Component {
 	state: {
-		isCollapsed: Boolean,
+		isCollapsed: boolean,
 	}
 
-	constructor(props) {
+	constructor(props: Object) {
 		super(props);
 
 		this.state = {
@@ -32,7 +34,7 @@ export default class CollapseMenu extends Component {
 	}
 
 	render() {
-		const { hostName, userName, password, authentication, serverPort } = this.props.auth;
+		const { hostName, userName, hostPassword, authentication, serverPort } = this.props.auth;
 		const { isCollapsed } = this.state;
 
 		return (
@@ -55,30 +57,35 @@ export default class CollapseMenu extends Component {
 						<Input
 							label={'HOST NAME'}
 							value={hostName}
+							placeholder={'Host Name'}
 							onChangeText={(text: string) => this.props.auth.setValue({'hostName': text})}
 						/>
 						<Input
 							label={'USER NAME'}
 							value={userName}
+							placeholder={'User Name'}
 							onChangeText={(text: string) => this.props.auth.setValue({'userName': text})}
 						/>
 						<Input
 							label={'PASSWORD'}
-							value={password}
-							onChangeText={(text: string) => this.props.auth.setValue({'password': text})}
+							value={hostPassword}
+							placeholder={'Password'}
+							onChangeText={(text: string) => this.props.auth.setValue({'hostPassword': text})}
 						/>
 						<Switch
 							label={'USE SSL'}
-							onPress={() => console.log('onPress Switch')}
+							onPress={(a) => console.log('onPress Switch', a)}
 						/>
 						<Input
 							label={'AUTHENTICATION'}
 							value={authentication}
+							placeholder={'Authentication'}
 							onChangeText={(text: string) => this.props.auth.setValue({'authentication': text})}
 						/>
 						<Input
 							label={'SERVER PORT'}
 							value={serverPort}
+							placeholder={'Server Port'}
 							onChangeText={(text: string) => this.props.auth.setValue({'serverPort': text})}
 						/>
 					</View>

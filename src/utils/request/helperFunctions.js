@@ -28,8 +28,11 @@ export function postRequest(url: string, body: Object): Promise<> {
 						case 200:
 							resolve(data);
 							break;
+						case 204:
+							resolve();
+							break;
 						default:
-							reject(data);
+							reject();
 							break;
 					}
 			});

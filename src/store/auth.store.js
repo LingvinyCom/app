@@ -11,7 +11,7 @@ class AuthStore {
 	@observable userName: string = '';
 	@observable hostPassword: string = '';
 	@observable useSsl: boolean = false;
-	@observable serverPort: number = 0;
+	@observable serverPort: string = '';
 
   @observable uid: string = '';
   @observable requestError: string = '';
