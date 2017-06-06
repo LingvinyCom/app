@@ -23,14 +23,19 @@ export function postRequest(url: string, body: Object): Promise<> {
 					body: JSON.stringify(body)
 			})
 			.then((response) => {
-				return response.json();
+				/**
+				 * If no content resolve();
+				 * Needed only for 204 status code.
+				 */
+				if (response.status === 204) {
+					return resolve();
+				} else {
+					return response.json();
+				}
 			})
 			.then((data) => {
 				switch (data._code) {
 						case 200:
-							resolve(data);
-							break;
-						case 204:
 							resolve(data);
 							break;
 						default:
