@@ -10,8 +10,8 @@ const styles = StyleSheet.create({
 		paddingHorizontal: 20,
 		backgroundColor: COLORS.blue,
 		borderRadius: 3,
-		marginBottom: 15,
 		marginTop: 20,
+		marginHorizontal: 20,
 	},
 	infoBlockText: {
 		color: COLORS.white,

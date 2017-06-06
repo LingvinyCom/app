@@ -1,15 +1,18 @@
 // @flow
 
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 
-import COLORS from '../../../../config/colors.config';
+import COLORS from '../../../config/colors.config';
+const {width} = Dimensions.get('window');
 
 const styles = StyleSheet.create({
 	inboxItem: {
 		flexDirection: 'row',
 		justifyContent: 'space-between',
+		width: width - 40,
 		paddingVertical: 15,
 		paddingHorizontal: 20,
+		backgroundColor: COLORS.white,
 	},
 	inboxItemHeader: {
 		flexDirection: 'row',
@@ -28,6 +31,12 @@ const styles = StyleSheet.create({
 		overflow: 'hidden',
 		color: COLORS.white,
 		fontSize: 12,
+	},
+	inboxItemStatusPr: {
+		backgroundColor: COLORS.orange,
+	},
+	inboxItemStatusWr: {
+		backgroundColor: COLORS.red,
 	},
 	inboxItemTheme: {
 		fontSize: 14,

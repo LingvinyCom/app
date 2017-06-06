@@ -8,7 +8,7 @@ import styles from './styles';
 export default () => (
 	<View style={styles.container}>
 		<View style={styles.imgWrapper}>
-			<Image source={require('../../../../assets/img/inbox-icon.png')}/>
+			<Image source={require('../../../assets/img/inbox-icon.png')}/>
 			<View style={styles.countMessages}>
 				<Text style={styles.countMessagesText}>0</Text>
 			</View>

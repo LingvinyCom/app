@@ -2,7 +2,7 @@
 
 import {StyleSheet, Dimensions} from 'react-native';
 
-import COLORS from '../../../../config/colors.config';
+import COLORS from '../../../config/colors.config';
 
 const DeviceWidth = Dimensions.get('window').width;
 
@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
 		paddingVertical: 10,
 		justifyContent: 'center',
 		alignItems: 'center',
+		backgroundColor: COLORS.headerBackgroundColor,
 	},
 	inputWrapper: {
 		backgroundColor: COLORS.white,
@@ -38,6 +39,9 @@ const styles = StyleSheet.create({
 		position: 'absolute',
 		top: 19,
 		right: 32,
+	},
+	icon: {
+		backgroundColor: COLORS.white,
 	},
 });
 

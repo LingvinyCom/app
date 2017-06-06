@@ -2,7 +2,7 @@
 
 import { StyleSheet, Dimensions } from 'react-native';
 
-import COLORS from '../../../../config/colors.config';
+import COLORS from '../../../config/colors.config';
 
 const DeviceWidth = Dimensions.get('window').width;
 

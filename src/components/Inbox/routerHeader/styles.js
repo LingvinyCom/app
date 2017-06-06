@@ -2,7 +2,7 @@
 
 import { StyleSheet } from 'react-native';
 
-import COLORS from '../../../../config/colors.config';
+import COLORS from '../../../config/colors.config';
 
 const styles = StyleSheet.create({
 	routerHeader: {
@@ -11,6 +11,7 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		paddingHorizontal: 20,
 		paddingVertical: 10,
+		backgroundColor: COLORS.headerBackgroundColor,
 	},
 	routerTitle: {
 		fontSize: 18,
