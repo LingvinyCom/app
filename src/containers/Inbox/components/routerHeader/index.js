@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 
 import styles from './styles';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -15,23 +15,19 @@ const RouterHeader = (props: Props) => {
 	const { titlePage } = props;
 	return (
 		<View style={styles.routerHeader}>
-			<View style={styles.routerIconLeft}>
-				<Icon
-					name="menu"
-					size={24}
-					color={COLORS.blue}
-				/>
-			</View>
+			<TouchableOpacity style={styles.routerIconLeft}>
+				<Image source={require('../../../../assets/img/menu-icon.png')} />
+			</TouchableOpacity>
 			<View>
 				<Text style={styles.routerTitle}>{titlePage }</Text>
 			</View>
-			<View style={styles.routerIconRight}>
+			<TouchableOpacity style={styles.routerIconRight}>
 				<Icon
 					name="notifications"
 					size={24}
 					color={COLORS.gray}
 				/>
-			</View>
+			</TouchableOpacity>
 		</View>
 	);
 };

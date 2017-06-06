@@ -2,7 +2,7 @@
 
 import React, {Component} from 'react';
 import {inject} from 'mobx-react';
-import {View} from 'react-native';
+import {View, KeyboardAvoidingView} from 'react-native';
 
 import Logotip from '../../../components/Auth/Logo';
 import Title from '../../../components/Auth/Title/';
@@ -49,7 +49,10 @@ export default class SignIn extends Component {
 		const {navigate} = this.props.navigation;
 
 		return (
-			<View style={styles.signinWrapper}>
+			<KeyboardAvoidingView
+				style={styles.signinWrapper}
+				behavior="position"
+			>
 				<Logotip/>
 				<Title text={'Login to Continue'}/>
 				<Form
@@ -71,7 +74,7 @@ export default class SignIn extends Component {
 					descriptionError={"Incorrect Username or Password"}
 					textBtn={'Try again'}
 				/>
-			</View>
+			</KeyboardAvoidingView>
 		);
 	}
 }

@@ -5,6 +5,7 @@ import {
 	View,
 	Text,
 	TouchableOpacity,
+	TouchableWithoutFeedback,
 	Modal,
 } from 'react-native';
 
@@ -23,7 +24,8 @@ const ServicesModal = (props: Object) => {
 			visible={modalVisible}
 			onRequestClose={() => console.log("Modal has been closed.")}
 		>
-			<View style={styles.modalWrapper}>
+			<TouchableWithoutFeedback onPress={ hideModal }>
+				<View style={styles.modalWrapper}>
 				<View style={styles.modalContent}>
 					<TouchableOpacity
 						style={styles.modalCLose}
@@ -66,6 +68,7 @@ const ServicesModal = (props: Object) => {
 					</View>
 				</View>
 			</View>
+			</TouchableWithoutFeedback>
 		</Modal>
 	);
 };

@@ -10,6 +10,7 @@ import InboxItem from './components/inboxItem';
 import NewMessageBtn from './components/newMessageBtn';
 import Swipeout from 'react-native-swipeout';
 import rows from './data';
+import EmptyInbox from './components/emptyInbox';
 
 import styles from './styles';
 
@@ -62,14 +63,20 @@ export default class Inbox extends Component {
 				<View style={styles.pageContent}>
 					<View>
 						<ScrollView>
-							<MessegesBlockInfo onPress={() => console.log(" hide this block") }/>
-							<View style={styles.inboxList}>
-								<ListView
-									scrollEnabled
-									dataSource={this.state.dataSource}
-									renderRow={this._renderRow.bind(this)}
-								/>
-							</View>
+							{
+								this.state.dataSource &&
+								<EmptyInbox /> ||
+								<View>
+									<MessegesBlockInfo onPress={() => console.log(" hide this block") }/>
+									<View style={styles.inboxList}>
+										<ListView
+											scrollEnabled
+											dataSource={this.state.dataSource}
+											renderRow={this._renderRow.bind(this)}
+										/>
+									</View>
+								</View>
+							}
 						</ScrollView>
 					</View>
 					<NewMessageBtn onPress={() => console.log("create new message Item")}/>

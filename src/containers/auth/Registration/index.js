@@ -4,6 +4,7 @@ import React, {Component} from 'react';
 import {inject, observer} from 'mobx-react';
 import {
 	Linking,
+	KeyboardAvoidingView,
 	View,
 	ScrollView,
 } from 'react-native';
@@ -142,9 +143,9 @@ export default class Registration extends Component {
 		const {navigate} = this.props.navigation;
 		const servicesList = [
 			{
-				title: 'google',
-				imgUrl: require('../../../assets/img/google.png'),
-				onPress: () => console.log("onPress btn google"),
+				title: 'icloud',
+				imgUrl: require('../../../assets/img/icloud.png'),
+				onPress: () => console.log("onPress btn icloud"),
 			},
 			{
 				title: 'exchange',
@@ -152,25 +153,47 @@ export default class Registration extends Component {
 				onPress: () => console.log("onPress btn exchange"),
 			},
 			{
+				title: 'google',
+				imgUrl: require('../../../assets/img/logo.png'),
+				onPress: () => console.log("onPress btn google"),
+			},
+			{
 				title: 'yahoo',
 				imgUrl: require('../../../assets/img/yahoo.png'),
 				onPress: () => console.log("onPress btn yahoo"),
-			},
-			{
-				title: 'icloud',
-				imgUrl: require('../../../assets/img/icloud.png'),
-				onPress: () => console.log("onPress btn icloud"),
 			},
 			{
 				title: 'outlook',
 				imgUrl: require('../../../assets/img/outlook.png'),
 				onPress: () => console.log("onPress btn outlook"),
 			},
+			{
+				title: 'aol',
+				imgUrl: require('../../../assets/img/aol-mail.jpg'),
+				onPress: () => console.log("onPress btn aol"),
+			},
+			{
+				title: 'hotmail',
+				imgUrl: require('../../../assets/img/hot-mail.jpg'),
+				onPress: () => console.log("onPress btn hotmail"),
+			},
+			{
+				title: 'mail.ru',
+				imgUrl: require('../../../assets/img/mailru_logo.jpg'),
+				onPress: () => console.log("onPress btn mail.ru"),
+			},
+			{
+				title: 'yandex',
+				imgUrl: require('../../../assets/img/yandex-promotion-sites.jpg'),
+				onPress: () => console.log("onPress btn yandex"),
+			},
 		];
 
 		return (
-			<ScrollView>
-				<View style={styles.registrationWrapper}>
+				<KeyboardAvoidingView
+					style={styles.registrationWrapper}
+				  behavior="position"
+				>
 					<Logotip/>
 					<Title text={'New to Lingviny?'}/>
 					<Description
@@ -178,13 +201,13 @@ export default class Registration extends Component {
 					/>
 
 					<View style={styles.form}>
-						<Input
-							label={'EMAIL'}
-							value={this.props.auth.email}
-							onChangeText={(text: string) => this.onChangeEmail(text)}
-							placeholder={'Enter an Email'}
-						/>
-
+							<Input
+								label={'EMAIL'}
+								value={this.props.auth.email}
+								onChangeText={(text: string) => this.onChangeEmail(text)}
+								placeholder={'Enter an Email'}
+								keyboardType="email-address"
+							/>
 						<Collapsible collapsed={this.state.isCollapsed}>
 							{
 								this.state.selectedDomainIage ?
@@ -228,8 +251,7 @@ export default class Registration extends Component {
 							navigate('AddMail');
 						}}
 					/>
-				</View>
-			</ScrollView>
+				</KeyboardAvoidingView>
 		);
 	}
 }

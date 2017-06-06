@@ -55,7 +55,7 @@ export default class ForgotPassword extends Component {
 	render() {
 		return (
 			<KeyboardAvoidingView
-				behavior="padding"
+				behavior="position"
 				style={styles.forgotPassWrapper}
 			>
 				<Logotip/>
@@ -69,6 +69,7 @@ export default class ForgotPassword extends Component {
 						value={this.props.auth.email}
 						onChangeText={(text: string) => this.props.auth.setValue({'email': text})}
 						placeholder={'Enter an Email'}
+						keyboardType="email-address"
 					/>
 					<Buttons.Rounded
 						text={'Recover Password'}

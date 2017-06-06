@@ -32,11 +32,15 @@ const styles = {
 		marginBottom: 15,
 	},
 	wrapperBtn: {
-		paddingVertical: 15,
+		paddingVertical: 10,
 		borderBottomWidth: 1,
 		borderColor: COLORS.blackWhite,
 		justifyContent: 'center',
 		alignItems: 'center',
+	},
+	img: {
+		maxWidth: 100,
+		height: 25,
 	},
 	noBorder: {
 		borderBottomWidth: 0,

@@ -15,7 +15,10 @@ export default class ServicesItem extends Component {
 		return (
 			<View style={styles.wrapperBtn}>
 				<TouchableOpacity onPress={onPress}>
-					<Image source={imgUrl}/>
+					<Image
+						source={imgUrl}
+					  style={styles.img}
+					/>
 				</TouchableOpacity>
 			</View>
 		);

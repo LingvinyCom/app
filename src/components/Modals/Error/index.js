@@ -5,7 +5,9 @@ import {
 	View,
 	Text,
 	TouchableOpacity,
+	TouchableWithoutFeedback,
 	Modal,
+	Image,
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -15,15 +17,15 @@ import styles from './styles';
 
 const ErrorModal = (props: Object) => {
 	const {modalVisible, hideModal, titleError, descriptionError, textBtn, typeModal} = props;
-	const renderIconModal = () => {
-		let IconCustom = {
-			name: typeModal === 'warning' ? "warning" : "error",
-			size: 50,
-			color: typeModal === 'warning' ? COLORS.lightOrange : COLORS.red,
-			color: COLORS.red,
-		};
-		return <Icon {...IconCustom}/>;
-	};
+	// const renderIconModal = () => {
+	// 	let IconCustom = {
+	// 		name: typeModal === 'warning' ? "warning" : "error",
+	// 		size: 50,
+	// 		color: typeModal === 'warning' ? COLORS.lightOrange : COLORS.red,
+	// 		color: COLORS.red,
+	// 	};
+	// 	return <Icon {...IconCustom}/>;
+	// };
 	return (
 		<Modal
 			animationType={"fade"}
@@ -34,34 +36,38 @@ const ErrorModal = (props: Object) => {
 			}}
 			typeModal={typeModal}
 		>
-			<View style={styles.modalWrapper}>
-				<View style={styles.modalContent}>
-					<View
-						style={styles.modalIconError}
-						onPress={hideModal}
-					>
-						{ renderIconModal() }
-					</View>
-					<View style={styles.modalBody}>
-						<Text style={styles.modalTitle}>
-							{ titleError }
-						</Text>
-						<Text style={styles.modalDescription}>
-							{ descriptionError }
-						</Text>
-						<TouchableOpacity
-							style={styles.button}
+			<TouchableWithoutFeedback onPress={hideModal}>
+				<View style={styles.modalWrapper}>
+					<View style={styles.modalContent}>
+						<View
+							style={styles.modalIconError}
 							onPress={hideModal}
 						>
-							<Text
-								style={styles.text}
-							>
-								{textBtn}
+							<Image
+								source={typeModal === 'warning' ? require('../../../assets/img/warning-icon-new.png') : require('../../../assets/img/error-icon-new.png')}
+							/>
+						</View>
+						<View style={styles.modalBody}>
+							<Text style={styles.modalTitle}>
+								{ titleError }
 							</Text>
-						</TouchableOpacity>
+							<Text style={styles.modalDescription}>
+								{ descriptionError }
+							</Text>
+							<TouchableOpacity
+								style={styles.button}
+								onPress={hideModal}
+							>
+								<Text
+									style={styles.text}
+								>
+									{textBtn}
+								</Text>
+							</TouchableOpacity>
+						</View>
 					</View>
 				</View>
-			</View>
+			</TouchableWithoutFeedback>
 		</Modal>
 	);
 };

@@ -18,9 +18,9 @@ class Navigator extends Component {
 			navigationOptions: {
 				header: null,
 			},
-			// initialRouteName: 'FirstLaunch',
-			// initialRouteName: 'Inbox',
-			initialRouteName: 'Registration',
+			//  initialRouteName: 'FirstLaunch',
+			 initialRouteName: 'Inbox',
+			// initialRouteName: 'Registration',
 			// initialRouteName: 'SignIn',
 			// initialRouteName: 'Login',
 			// initialRouteName: 'AddMail',
