@@ -1,9 +1,9 @@
 // @flow
 
-import React, { Component } from 'react';
-import { inject, observer } from 'mobx-react';
+import React, {Component} from 'react';
+import {inject, observer} from 'mobx-react';
 import {
-  View,
+	View,
 	KeyboardAvoidingView,
 } from 'react-native';
 
@@ -14,7 +14,7 @@ import Input from '../../../components/SimpleInput/';
 import * as Modals from '../../../components/Modals';
 import * as Buttons from '../../../components/Buttons/';
 
-import { resetPassword } from '../../../utils/request/';
+import {resetPassword} from '../../../utils/request/';
 
 import styles from './styles';
 
@@ -27,37 +27,37 @@ import styles from './styles';
 @observer
 export default class ForgotPassword extends Component {
 	state = {
-    isShowErrorModal: Boolean,
-  }
+		isShowErrorModal: Boolean,
+	}
 
-  constructor(props: Object) {
-  super(props);
-    this.state = {
-      isShowErrorModal: false,
-    };
-  }
+	constructor(props: Object) {
+		super(props);
+		this.state = {
+			isShowErrorModal: false,
+		};
+	}
 
 	recoverPassword() {
-    this.props.app.showLoader = true;
+		this.props.app.showLoader = true;
 
-    resetPassword(this.props.auth.email)
-      .then((data) => {
+		resetPassword(this.props.auth.email)
+			.then((data) => {
 				console.log('SUCCESS');
-        this.props.navigation.navigate('SignIn');
-      }).catch(() => {
-        this.props.auth.requestError = 'Error';
-         this.setState({ isShowErrorModal: true });
-      }).finally(() => {
-        this.props.app.showLoader = false;
-      });
-  }
+				this.props.navigation.navigate('SignIn');
+			}).catch(() => {
+			this.props.auth.requestError = 'Error';
+			this.setState({isShowErrorModal: true});
+		}).finally(() => {
+			this.props.app.showLoader = false;
+		});
+	}
 
 	render() {
 		return (
 			<KeyboardAvoidingView
 				behavior="padding"
 				style={styles.forgotPassWrapper}
-      >
+			>
 				<Logotip/>
 				<Title text={'Forgot Password?'}/>
 				<Description
@@ -76,12 +76,12 @@ export default class ForgotPassword extends Component {
 					/>
 				</View>
 				<Modals.Error
-          modalVisible={this.state.isShowErrorModal}
-          hideModal={ () => this.setState({ isShowErrorModal: false }) }
-          titleError={'Unable to Login'}
-          descriptionError={"Incorrect Username or Password"}
-          textBtn={'Try again'}
-        />
+					modalVisible={this.state.isShowErrorModal}
+					hideModal={ () => this.setState({isShowErrorModal: false}) }
+					titleError={'Unable to Login'}
+					descriptionError={"Incorrect Username or Password"}
+					textBtn={'Try again'}
+				/>
 			</KeyboardAvoidingView>
 		);
 	}

@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { StackNavigator } from 'react-navigation';
+import React, {Component} from 'react';
+import {StackNavigator} from 'react-navigation';
 import SplashScreen from 'react-native-splash-screen';
 
 import Auth from './auth';
@@ -9,11 +9,11 @@ import styles from './styles';
 
 class Navigator extends Component {
 	setNavigatorConfig() {
-	// if (this.props.auth.isHydrated && this.props.auth.uid) {
-	//     return {
-	//     initialRouteName: 'MainTabs'
-	//     };
-	// }
+		// if (this.props.auth.isHydrated && this.props.auth.uid) {
+		//     return {
+		//     initialRouteName: 'MainTabs'
+		//     };
+		// }
 		return {
 			navigationOptions: {
 				header: null,
@@ -29,7 +29,7 @@ class Navigator extends Component {
 	}
 
 	initRouter() {
-		return StackNavigator({ ...Auth, ...Main }, this.setNavigatorConfig());
+		return StackNavigator({...Auth, ...Main}, this.setNavigatorConfig());
 	}
 
 	componentDidMount() {
@@ -41,7 +41,7 @@ class Navigator extends Component {
 		// 	return null;
 		// };
 		const Router = this.initRouter();
-		return <Router style={styles.routerContainer} />;
+		return <Router style={styles.routerContainer}/>;
 	}
 }
 

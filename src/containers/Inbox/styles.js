@@ -7,7 +7,7 @@ import COLORS from '../../config/colors.config';
 const styles = StyleSheet.create({
 	mainContainer: {
 		flex: 1,
-		backgroundColor: '#F5F6F8',
+		backgroundColor: COLORS.blackWhite,
 	},
 	pageContent: {
 		backgroundColor: COLORS.white,

@@ -1,6 +1,6 @@
 // @flow
 
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 import COLORS from '../../../config/colors.config';
 
 /**
@@ -14,9 +14,9 @@ const styles = {
 		alignItems: 'center',
 		backgroundColor: COLORS.white,
 	},
-    form: {
+	form: {
 		marginTop: 40,
-    },
+	},
 };
 
 const exportStyles = StyleSheet.create(styles);

@@ -12,7 +12,7 @@ const styles = {
 		width: WidthDevice - 80,
 		marginHorizontal: 40,
 		borderBottomWidth: 1,
-		borderColor: '#c8c7cc',
+		borderColor: COLORS.btnBorderColor,
 		marginBottom: 30,
 	},
 	input: {

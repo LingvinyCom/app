@@ -13,7 +13,7 @@ const styles = {
 		alignItems: 'center',
 		height: 60,
 		paddingHorizontal: 40,
-		backgroundColor: '#F5F6F8',
+		backgroundColor: COLORS.blackWhite,
 		marginBottom: 30,
 	},
 	title: {

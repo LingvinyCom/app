@@ -1,11 +1,11 @@
 // @flow
 
-import React, { Component } from 'react';
-import { inject, observer } from 'mobx-react'; 
+import React, {Component} from 'react';
+import {inject, observer} from 'mobx-react';
 import {
-  Linking,
-  View,
-  ScrollView,
+	Linking,
+	View,
+	ScrollView,
 } from 'react-native';
 import Collapsible from 'react-native-collapsible';
 import Title from '../../../components/Auth/Title/';
@@ -64,7 +64,7 @@ const domains = [
 ];
 
 @inject((allStores) => ({
-    auth: allStores.auth,
+	auth: allStores.auth,
 }))
 @observer
 export default class Registration extends Component {
@@ -108,14 +108,14 @@ export default class Registration extends Component {
 				});
 			}
 		} else {
-			this.setState({ isCollapsed: true });
+			this.setState({isCollapsed: true});
 		}
 	}
 
 	onChangeEmail(text: string) {
 		this.props.auth.setValue({'email': text});
 		clearTimeout(this.timer);
-    this.timer = setTimeout(this.detectEmailDomain.bind(this, text), 1000);
+		this.timer = setTimeout(this.detectEmailDomain.bind(this, text), 1000);
 	}
 
 	registration() {
@@ -123,7 +123,7 @@ export default class Registration extends Component {
 	}
 
 	toggleServicesModal(value: boolean) {
-		this.setState({ isShowServicesModal: value });
+		this.setState({isShowServicesModal: value});
 	}
 
 	handleClick = () => {
@@ -139,7 +139,7 @@ export default class Registration extends Component {
 	};
 
 	render() {
-		const { navigate } = this.props.navigation;
+		const {navigate} = this.props.navigation;
 		const servicesList = [
 			{
 				title: 'google',
@@ -188,15 +188,15 @@ export default class Registration extends Component {
 						<Collapsible collapsed={this.state.isCollapsed}>
 							{
 								this.state.selectedDomainIage ?
-								<Buttons.WithImage
-									img={this.state.selectedDomainIage}
-									color={'transparent'}
-								/> :
-								<Buttons.Rounded
-									text={'Choose Mail Service'}
-									onPress={() => this.toggleServicesModal(true)}
-									color={'transparent'}
-								/>
+									<Buttons.WithImage
+										img={this.state.selectedDomainIage}
+										color={'transparent'}
+									/> :
+									<Buttons.Rounded
+										text={'Choose Mail Service'}
+										onPress={() => this.toggleServicesModal(true)}
+										color={'transparent'}
+									/>
 							}
 						</Collapsible>
 

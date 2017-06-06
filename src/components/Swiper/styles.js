@@ -11,10 +11,10 @@ const styles = {
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
-		backgroundColor: '#fff',
+		backgroundColor: COLORS.white,
 	},
 	text: {
-		color: '#000',
+		color: COLORS.black,
 		fontSize: 30,
 		fontWeight: 'bold'
 	},
@@ -22,7 +22,7 @@ const styles = {
 		height: 100,
 		justifyContent: 'center',
 		alignItems: 'center',
-		backgroundColor: '#fff',
+		backgroundColor: COLORS.white,
 	},
 	onboardingTitle: {
 		fontSize: 20,

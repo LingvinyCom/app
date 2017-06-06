@@ -1,16 +1,16 @@
 // @flow
 
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 
 import styles from './styles';
 
 type Props = {
-    onPress: Function,
+	onPress: Function,
 };
 
 const MessegesBlockInfo = (props: Props) => {
-	const { onPress } = props;
+	const {onPress} = props;
 	return (
 		<View style={styles.infoBlock}>
 			<Text style={styles.infoBlockText}>

@@ -1,21 +1,21 @@
 // @flow
 
 import React from 'react';
-import { View, Text, TouchableWithoutFeedback } from 'react-native';
+import {View, Text, TouchableWithoutFeedback} from 'react-native';
 
 import styles from './styles';
 
 type Props = {
-    onPress: Function,
-    title: string,
-    status?: string,
-    theme: string,
-    description: string,
-    time: string,
+	onPress: Function,
+	title: string,
+	status?: string,
+	theme: string,
+	description: string,
+	time: string,
 };
 
 const InboxItem = (props: Props) => {
-	const { onPress, title, status, theme, description, time, itemStatus  } = props;
+	const {onPress, title, status, theme, description, time, itemStatus} = props;
 	return (
 		<TouchableWithoutFeedback onPress={onPress}>
 			<View style={styles.inboxItem}>
