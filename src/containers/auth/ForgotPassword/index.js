@@ -42,15 +42,14 @@ export default class ForgotPassword extends Component {
 
 		resetPassword(this.props.auth.email)
 			.then((data) => {
-				console.log('SUCCESS');
-				this.props.navigation.navigate('SignIn');
-			}).catch(() => {
-			this.props.auth.requestError = 'Error';
-			this.setState({isShowErrorModal: true});
-		}).finally(() => {
-			this.props.app.showLoader = false;
-		});
-	}
+        this.props.navigation.navigate('SignIn');
+      }).catch(() => {
+        this.props.auth.requestError = 'Error';
+         this.setState({ isShowErrorModal: true });
+      }).finally(() => {
+        this.props.app.showLoader = false;
+      });
+  }
 
 	render() {
 		return (

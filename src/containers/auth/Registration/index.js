@@ -20,44 +20,43 @@ import * as Buttons from './../../../components/Buttons/';
 import styles from './styles';
 
 const domains = [
-	// ICloud @icloud.com
 	{
+		id: 1,
 		domain: 'icloud.com',
 		image: require('../../../assets/img/icloud.png'),
 	},
-	// Exchange ??????????
-	// Google @gmail.com
 	{
+		id: 2,
 		domain: 'gmail.com',
 		image: require('../../../assets/img/google.png'),
 	},
-	// Yahoo @yahoo.com
 	{
+		id: 3,
 		domain: 'yahoo.com',
 		image: require('../../../assets/img/yahoo.png'),
 	},
-	// Aol   @aol.com
 	{
+		id: 4,
 		domain: 'aol.com',
 		image: require('../../../assets/img/logo.png'), // NO IMAGE!!!!!!!!
 	},
-	// Outlook @outlook.com
 	{
+		id: 5,
 		domain: 'outlook.com',
 		image: require('../../../assets/img/outlook.png'),
 	},
-	// Hotmail @hotmail.com
 	{
+		id: 6,
 		domain: 'hotmail.com',
 		image: require('../../../assets/img/logo.png'), // NO IMAGE!!!!!!!!
 	},
-	// Mail.ru @mail.ru
 	{
+		id: 7,
 		domain: 'mail.ru',
 		image: require('../../../assets/img/logo.png'), // NO IMAGE!!!!!!!!
 	},
-	// Yandex @yandex.ru
 	{
+		id: 8,
 		domain: 'yandex.ru',
 		image: require('../../../assets/img/logo.png'), // NO IMAGE!!!!!!!!
 	},

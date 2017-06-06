@@ -22,17 +22,19 @@ export function postRequest(url: string, body: Object): Promise<> {
 					},
 					body: JSON.stringify(body)
 			})
-			.then((response) => response.json())
+			.then((response) => {
+				return response.json();
+			})
 			.then((data) => {
 				switch (data._code) {
 						case 200:
 							resolve(data);
 							break;
 						case 204:
-							resolve();
+							resolve(data);
 							break;
 						default:
-							reject();
+							reject(data);
 							break;
 					}
 			});
