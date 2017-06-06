@@ -7,10 +7,10 @@ import {
 	ScrollView,
 } from 'react-native';
 
-import Title from '../components/Title/';
+import Title from '../../../components/Auth/Title/';
 import Input from '../../../components/SimpleInput';
 import CollapseMenu from './components/CollapseMenu/';
-import RoundedButton from './../../../components/RoundedButton/';
+import * as Buttons from './../../../components/Buttons/';
 
 import styles from './styles';
 
@@ -43,10 +43,10 @@ export default class AddMail extends Component {
 									placeholder={"Enter a Password"}
 								/>
 							</View>
-							<CollapseMenu />
+							<CollapseMenu auth={this.props.auth}/>
 						</View>
 						<View>
-							<RoundedButton
+							<Buttons.Rounded
 								text={'Done'}
 								onPress={() => console.log('onPress Done')}
 							/>

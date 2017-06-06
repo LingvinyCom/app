@@ -1,4 +1,7 @@
+// @flow
+
 import React, { Component } from 'react';
+import { observer } from 'mobx-react';
 import {
 	View,
 	Text,
@@ -12,13 +15,13 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import COLORS from '../../../../../config/colors.config';
 import styles from './syles';
 
-
+@observer
 export default class CollapseMenu extends Component {
 	state: {
-		isCollapsed: Boolean,
+		isCollapsed: boolean,
 	}
 
-	constructor(props) {
+	constructor(props: Object) {
 		super(props);
 
 		this.state = {
@@ -31,6 +34,9 @@ export default class CollapseMenu extends Component {
 	}
 
 	render() {
+		const { hostName, userName, hostPassword, authentication, serverPort } = this.props.auth;
+		const { isCollapsed } = this.state;
+
 		return (
 			<View>
 				<View style={styles.titleCollapse}>
@@ -39,48 +45,47 @@ export default class CollapseMenu extends Component {
 						style={styles.collapseIcon}
 						onPress={this.toggleMenu.bind(this)}
 					>
-						{
-							this.state.isCollapsed &&
-							<Icon
-								name="add"
-								size={24}
-								color={COLORS.lightGray} /> ||
-							<Icon
-								name="remove"
-								size={24}
-								color={COLORS.lightGray} />
-						}
+						<Icon
+							name={isCollapsed ? 'add' : 'remove'}
+							size={24}
+							color={COLORS.lightGray}
+						/>
 					</Text>
 				</View>
-				<Collapsible collapsed={this.state.isCollapsed}>
+				<Collapsible collapsed={isCollapsed}>
 					<View>
 						<Input
 							label={'HOST NAME'}
-							value={'...'}
+							value={hostName}
+							placeholder={'Host Name'}
 							onChangeText={(text: string) => this.props.auth.setValue({'hostName': text})}
 						/>
 						<Input
 							label={'USER NAME'}
-							value={'...'}
+							value={userName}
+							placeholder={'User Name'}
 							onChangeText={(text: string) => this.props.auth.setValue({'userName': text})}
 						/>
 						<Input
 							label={'PASSWORD'}
-							value={'...'}
-							onChangeText={(text: string) => this.props.auth.setValue({'password': text})}
+							value={hostPassword}
+							placeholder={'Password'}
+							onChangeText={(text: string) => this.props.auth.setValue({'hostPassword': text})}
 						/>
 						<Switch
 							label={'USE SSL'}
-							onPress={() => console.log('onPress Switch')}
+							onPress={(a) => console.log('onPress Switch', a)}
 						/>
 						<Input
 							label={'AUTHENTICATION'}
-							value={'...'}
+							value={authentication}
+							placeholder={'Authentication'}
 							onChangeText={(text: string) => this.props.auth.setValue({'authentication': text})}
 						/>
 						<Input
 							label={'SERVER PORT'}
-							value={'...'}
+							value={serverPort}
+							placeholder={'Server Port'}
 							onChangeText={(text: string) => this.props.auth.setValue({'serverPort': text})}
 						/>
 					</View>

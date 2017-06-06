@@ -1,36 +1,31 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
 	View,
 	Text,
-	StyleSheet,
 } from 'react-native';
+import { SwitchPlugin } from './SwitchPlugin';
 
-import CustomSwitch from './customSwitch';
-import COLORS from '../../config/colors.config';
+import styles from './styles';
+
+
+// type Props = {
+//     switchValue: boolean,
+//     onPress: Function
+// };
 
 const Switch = (props: Object) => (
 	<View style={styles.switchBlock}>
 		<Text style={styles.switchLabel}>{props.label}</Text>
 		<View style={styles.switchWrapper}>
-			<CustomSwitch/>
+			<SwitchPlugin
+				value={props.switchValue}
+				onValueChange={props.onPress}
+				disabled={false}
+				activeText={'on'}
+				inActiveText={'off'}
+    />
 		</View>
 	</View>
 );
 
 export default Switch;
-
-const styles = StyleSheet.create({
-    switchBlock: {
-    	flexDirection: 'row',
-	    justifyContent: 'space-between',
-	    alignItems: 'center',
-	    marginBottom: 35,
-	    marginHorizontal: 40,
-    },
-    switchLabel: {
-    	fontSize: 14,
-	    color: COLORS.gray,
-    },
-    switchWrapper: {
-    },
-});

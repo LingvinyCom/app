@@ -44,6 +44,7 @@
 		A7DB9D891F054A79B54C397F /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6707EFC641A4EF2A439D3B3 /* Foundation.ttf */; };
 		B0E340C9254B4A38A0B12F01 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D737AA3F1755437DA4F30AFA /* Ionicons.ttf */; };
 		B7B41CAEE70740589148898A /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B9F016C9910E4C67BD0F6595 /* MaterialCommunityIcons.ttf */; };
+		C867A5152A4F4D09A59E21C7 /* libRNSVG.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C6BAA5FFD7444CC9E113D4B /* libRNSVG.a */; };
 		D05B79504BD0454AAEDC69BF /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C69A56141DBB4ABA991A4636 /* MaterialIcons.ttf */; };
 		D240DD24D152467F8B69BE8A /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57C0E246B8154C2597455FFD /* EvilIcons.ttf */; };
 		EC8B5857100D4332ABF4A5FA /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C42924F9F9B2431FBDF7E2C1 /* Octicons.ttf */; };
@@ -253,6 +254,20 @@
 			proxyType = 2;
 			remoteGlobalIDString = 58B5119B1A9E6C1200147676;
 			remoteInfo = RCTText;
+		};
+		DC1F1F971EE062E200205F8F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9EC56A95977348198937D2B5 /* RNSVG.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0CF68AC11AF0540F00FF9E5C;
+			remoteInfo = RNSVG;
+		};
+		DC1F1F9A1EE062E200205F8F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 79BB365E5E284214B89BEEF9 /* RNVectorIcons.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5DBEB1501B18CEA900B34395;
+			remoteInfo = RNVectorIcons;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -923,6 +938,20 @@
 			fileType = archive.ar;
 			path = libRCTText.a;
 			remoteRef = 832341B41AAA6A8300B99B32 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		DC1F1F981EE062E200205F8F /* libRNSVG.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNSVG.a;
+			remoteRef = DC1F1F971EE062E200205F8F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		DC1F1F9B1EE062E200205F8F /* libRNVectorIcons.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNVectorIcons.a;
+			remoteRef = DC1F1F9A1EE062E200205F8F /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

@@ -2,14 +2,13 @@
 
 import React, { Component, PropTypes } from 'react';
 import {
-    View,
     Text,
-    StyleSheet,
     Animated,
     TouchableWithoutFeedback,
 } from 'react-native';
 
 import COLORS from '../../config/colors.config';
+import styles from './styles';
 
 type Props = {
     test: string,
@@ -32,7 +31,7 @@ type  ContextProps = {
     value: boolean,
 };
 
-export class Switch extends Component {
+export class SwitchPlugin extends Component {
     static defaultProps = {
         value: false,
         onValueChange: () => null,
@@ -154,36 +153,3 @@ export class Switch extends Component {
     }
 }
 
-const styles = StyleSheet.create({
-    container: {
-        width: 56,
-        height: 30,
-        borderRadius: 15,
-        backgroundColor: COLORS.black,
-    },
-    animatedContainer: {
-        flex: 1,
-        width: 56,
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    circle: {
-        width: 22,
-        height: 22,
-        borderRadius: 11,
-        backgroundColor: COLORS.white,
-        borderWidth: 1,
-        borderColor: 'transparent',
-    },
-    text: {
-        color: 'transparent',
-        backgroundColor: 'transparent',
-    },
-    paddingRight: {
-        paddingRight: 1,
-    },
-    paddingLeft: {
-        paddingLeft: 1,
-    },
-});

@@ -7,8 +7,8 @@ import {
 	Text,
 } from 'react-native';
 import { observer } from 'mobx-react';
-import Input from '../../../../components/SimpleInput/';
-import RoundedButton from '../../../../components/RoundedButton/';
+import Input from '../../SimpleInput/';
+import * as Buttons from '../../Buttons/';
 
 import styles from './styles';
 
@@ -17,11 +17,23 @@ import styles from './styles';
 export default class Form extends Component {
 	// props = {}
 
-	// static defaultProps = {}
+	static defaultProps: {
+		buttonLabel: string,
+		auth: Object,
+		isShowForgotPassword: Boolean,
+		onPressForgotPassword: Function,
+	}
+
+	static defaultProps = {
+		buttonLabel: 'Continue',
+		isShowForgotPassword: false,
+		onPressForgotPassword: () => console.log('onPressForgotPassword'),
+	}
 
 	render() {
 		const { email, password, requestError } = this.props.auth;
-		const { component, isShowForgotPassword, onPressForgotPassword } = this.props;
+		const { component, isShowForgotPassword, onPressForgotPassword, buttonLabel } = this.props;
+
 		return (
 			<View style={styles.form}>
 				<Input
@@ -29,7 +41,6 @@ export default class Form extends Component {
 					value={email}
 					onChangeText={(text: string) => this.props.auth.setValue({'email': text})}
 					placeholder={'Enter an Email'}
-					underlineColorAndroid={'transparent'}
 				/>
 				{
 					component
@@ -42,23 +53,22 @@ export default class Form extends Component {
 					value={password}
 					onChangeText={(text: string) => this.props.auth.setValue({'password': text})}
 					placeholder={'Enter a Password'}
-					underlineColorAndroid={'transparent'}
 				/>
 				{
 					isShowForgotPassword &&
 					<View style={styles.forgotPasswordWrapper}>
 						<TouchableOpacity
 							style={styles.forgotPasswordBtn}
-						    onPress={onPressForgotPassword}
-						>
+							onPress={onPressForgotPassword}
+							>
 							<Text style={styles.forgotPasswordText}>
 								Forgot Password
 							</Text>
 						</TouchableOpacity>
 					</View>
 				}
-				<RoundedButton
-					text={'Login'}
+				<Buttons.Rounded
+					text={buttonLabel}
 					onPress={this.props.onPress}
         />
 			</View>

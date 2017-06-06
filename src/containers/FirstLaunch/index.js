@@ -3,10 +3,9 @@
 import React, { Component } from 'react';
 import {
   View,
-  StyleSheet,
 } from 'react-native';
 import SwiperSlider from './../../components/Swiper';
-import RoundedButton from './../../components/RoundedButton';
+import * as Buttons from './../../components/Buttons';
 import SendNotificationsModal from './components/sendNotificationsModal';
 
 import styles from './styles';
@@ -30,18 +29,25 @@ const slides = [
 ];
 
 export default class FirstLaunch extends Component {
+  state: {
+    isShowNotificationsModal: boolean,
+  }
+
   constructor(props: Object) {
     super(props);
     this.state = {
-      isShowNotificationsModal: true,
+      isShowNotificationsModal: false,
     };
   }
-    _confirrmModal() {
-      console.log("btn modal Allow was pressed");
-      this.setState ({
-          isShowNotificationsModal: false,
-      });
-    };
+
+  confirmModal() {
+    /**
+     * @TODO: Add 'allow push notif' functionality.
+     */
+    console.log("btn modal Allow was pressed");
+    this.setState({ isShowNotificationsModal: false });
+  }
+
   render() {
     const { navigate } = this.props.navigation;
 
@@ -49,7 +55,7 @@ export default class FirstLaunch extends Component {
       <View style={styles.wrapper}>
         <SwiperSlider slides={slides}/>
         <View style={styles.btnWrapper}>
-          <RoundedButton
+          <Buttons.Rounded
             text={'Skip'}
             onPress={() => navigate('Registration')}
           />
@@ -57,7 +63,7 @@ export default class FirstLaunch extends Component {
         <SendNotificationsModal
             modalVisible={this.state.isShowNotificationsModal}
             hideModal={ () => this.setState({ isShowNotificationsModal: false }) }
-            confirmModal={this._confirrmModal.bind(this) }
+            confirmModal={this.confirmModal.bind(this) }
         />
       </View>
     );

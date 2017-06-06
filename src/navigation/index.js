@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { StackNavigator } from 'react-navigation';
+import SplashScreen from 'react-native-splash-screen';
 
 import Auth from './auth';
-import SplashScreen from 'react-native-splash-screen';
+import Main from './main';
 
 import styles from './styles';
 
@@ -14,8 +15,12 @@ class Navigator extends Component {
 	//     };
 	// }
 		return {
-			initialRouteName: 'Inbox',
-			// initialRouteName: 'Registration',
+			navigationOptions: {
+				header: null,
+			},
+			// initialRouteName: 'FirstLaunch',
+			// initialRouteName: 'Inbox',
+			initialRouteName: 'Registration',
 			// initialRouteName: 'SignIn',
 			// initialRouteName: 'Login',
 			// initialRouteName: 'AddMail',
@@ -24,11 +29,13 @@ class Navigator extends Component {
 	}
 
 	initRouter() {
-		return StackNavigator({ ...Auth, }, this.setNavigatorConfig());
+		return StackNavigator({ ...Auth, ...Main }, this.setNavigatorConfig());
 	}
-    componentDidMount() {
-        SplashScreen.hide();
-    }
+
+	componentDidMount() {
+		SplashScreen.hide();
+	}
+
 	render() {
 		// if (!this.props.auth.isHydrated) {
 		// 	return null;

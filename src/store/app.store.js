@@ -3,7 +3,10 @@
 import { action, observable } from 'mobx';
 
 
-class AppStore {}
+class AppStore {
+	@observable showLoader: boolean = false;
+
+}
 
 const appStore = new AppStore();
 

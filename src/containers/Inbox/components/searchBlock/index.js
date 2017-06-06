@@ -12,27 +12,27 @@ type Props = {
 };
 
 const SearchBlock = (props: Props) =>  {
-    const { onPress } = props;
-    return(
-        <View style={styles.searchHeader}>
-            <View style={styles.inputWrapper}>
-                <TextInput
-                    style={styles.input}
-                    placeholder={"Search"}
-                />
-            </View>
-            <TouchableOpacity
-                style={styles.searchBtn}
-                onPress={onPress}
-            >
-                <Icon
-                    name="search"
-                    size={24}
-                    color="#97999B"
-                />
-            </TouchableOpacity>
-        </View>
-    );
+	const { onPress } = props;
+	return (
+		<View style={styles.searchHeader}>
+			<View style={styles.inputWrapper}>
+				<TextInput
+					style={styles.input}
+					placeholder={"Search"}
+				/>
+		</View>
+			<TouchableOpacity
+				style={styles.searchBtn}
+				onPress={onPress}
+			>
+				<Icon
+					name="search"
+					size={24}
+					color={COLORS.lightGray}
+				/>
+			</TouchableOpacity>
+		</View>
+	);
 };
 
 export default SearchBlock;
