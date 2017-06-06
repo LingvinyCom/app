@@ -33,7 +33,7 @@ const Sidebar = DrawerNavigator(
 					/>
 					<DrawerItems {...props} />
 				</ScrollView>
-			)
+			);
 		},
 		contentOptions: {
 			style: {
