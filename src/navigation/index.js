@@ -1,29 +1,39 @@
-import React, { Component } from 'react';
-import { StackNavigator } from 'react-navigation';
-
-import { inject, observer } from 'mobx-react';
+import React, {Component} from 'react';
+import {StackNavigator} from 'react-navigation';
+import SplashScreen from 'react-native-splash-screen';
 
 import Auth from './auth';
+import Main from './main';
+
+import styles from './styles';
 
 class Navigator extends Component {
-	constructor(props: Object): void {
-		super(props);
-	}
-
 	setNavigatorConfig() {
-	// if (this.props.auth.isHydrated && this.props.auth.uid) {
-	//     return {
-	//     initialRouteName: 'MainTabs'
-	//     };
-	// }
+		// if (this.props.auth.isHydrated && this.props.auth.uid) {
+		//     return {
+		//     initialRouteName: 'MainTabs'
+		//     };
+		// }
 		return {
-			initialRouteName: 'Login',
+			navigationOptions: {
+				header: null,
+			},
 			// initialRouteName: 'FirstLaunch',
+			// initialRouteName: 'Inbox',
+			initialRouteName: 'Registration',
+			// initialRouteName: 'SignIn',
+			// initialRouteName: 'Login',
+			// initialRouteName: 'AddMail',
+			// initialRouteName: 'ForgotPassword',
 		};
 	}
 
 	initRouter() {
-		return StackNavigator({ ...Auth, }, this.setNavigatorConfig());
+		return StackNavigator({...Auth, ...Main}, this.setNavigatorConfig());
+	}
+
+	componentDidMount() {
+		SplashScreen.hide();
 	}
 
 	render() {
@@ -31,7 +41,7 @@ class Navigator extends Component {
 		// 	return null;
 		// };
 		const Router = this.initRouter();
-		return <Router />;
+		return <Router style={styles.routerContainer}/>;
 	}
 }
 

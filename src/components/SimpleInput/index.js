@@ -2,28 +2,48 @@
 
 import React, { Component } from 'react';
 import {
-	StyleSheet,
 	TextInput,
 	Text,
 	View,
 } from 'react-native';
 
+import COLORS from '../../config/colors.config';
+import styles from './styles';
+
 export default class SimpleInput extends Component {
-	// constructor(props: Object): void {
-	// 	super(props);
-	// }
+	props: {
+		label?: string,
+    maxLength?: number,
+    placeholder: string,
+		keyboardType?: string,
+		placeholderTextColor?: string,
+		underlineColorAndroid?: string,
+		onChangeText: Function,
+  }
 
-	// props = {}
+	static defaultProps: {
+		maxLength: number,
+		keyboardType: string,
+		placeholderTextColor: string,
+		underlineColorAndroid: string,
+	}
 
-	// static defaultProps = {}
+  static defaultProps = {
+    maxLength: 40,
+		keyboardType: 'default',
+		placeholderTextColor: COLORS.gray,
+		underlineColorAndroid: 'transparent',
+  };
 
 	render() {
+		const { label } = this.props;
+
 		return (
-			<View>
+			<View style={styles.wrapper}>
 				{
-					this.props.label &&
-					<View style={styles.label}>
-						<Text>EMAIL</Text>
+					label &&
+					<View style={styles.labelWrapper}>
+					<Text style={styles.label}>{label}</Text>
 					</View>
 				}
 				<TextInput
@@ -34,24 +54,3 @@ export default class SimpleInput extends Component {
 		);
 	}
 }
-
-const styles = StyleSheet.create({
-	input: {
-		marginLeft: 'auto',
-		marginRight: 'auto',
-		paddingVertical: 0,
-		paddingHorizontal: 10,
-		width: 285,
-		height: 36,
-		borderRadius: 3,
-		borderWidth: 1,
-		marginBottom: 10,
-		borderColor: '#c8c7cc',
-		fontSize: 14,
-		color: '#646464',
-		overflow: 'hidden',
-	},
-	label: {
-
-	},
-});
