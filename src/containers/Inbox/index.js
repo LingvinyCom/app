@@ -57,11 +57,9 @@ export default class Inbox extends Component {
 	}
 	static navigationOptions = {
 		drawerLabel: 'Inbox',
-		drawerIcon: ({ tintColor }) => (
-			<Icon
-				name="inbox"
-				size={20}
-				color={COLORS.iconGray}
+		drawerIcon: () => (
+			<Image
+				source={require('../../assets/img/inbox-item.png')}
 			/>
 		),
 	};

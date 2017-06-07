@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
 		paddingVertical: 25,
 		paddingHorizontal: 30,
 		backgroundColor: COLORS.blackWhite,
+		margin: 0,
 	},
 	accountAvatar: {
 		width: 42,

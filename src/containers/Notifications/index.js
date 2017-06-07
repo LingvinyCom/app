@@ -1,7 +1,7 @@
 // @flow
 
 import React, {Component} from 'react';
-import {View, ScrollView, ListView} from 'react-native';
+import {View, ScrollView, ListView, Image} from 'react-native';
 
 import RouterHeader from '../../components/Inbox/routerHeader';
 import NotificatiobItem from './components/NotificationItem';
@@ -51,12 +51,8 @@ export default class Notifications extends Component {
 	}
 	static navigationOptions = {
 		drawerLabel: 'Notifications',
-		drawerIcon: ({ tintColor }) => (
-			<Icon
-				name="send"
-				size={20}
-				color={COLORS.iconGray}
-			/>
+		drawerIcon: () => (
+			<Image source={require('../../assets/img/bell-icon.png')} />
 		),
 	};
 	render() {

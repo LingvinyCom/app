@@ -4,15 +4,31 @@ import {ScrollView} from 'react-native';
 
 import Inbox from './../containers/Inbox';
 import Sent from './../containers/Sent';
-import Notifications from './../containers/Notifications';
 import BalanceBlock from './../containers/Sidebar/components/balanceBlock';
 import Account from './../containers/Sidebar/components/account';
+import TranslatedItems from './../containers/TranslatedItems';
+import Archive from './../containers/Archive';
+import Spam from './../containers/Spam';
+import Drafts from './../containers/Drafts';
+import JohnFolder from './../containers/JohnFolder';
+import OfficeEmail from './../containers/OfficeEmail';
+import BillingPayments from './../containers/BillingPayments';
+import AccountSettings from './../containers/AccountSettings';
+
+import COLORS from './../config/colors.config';
 
 const Sidebar = DrawerNavigator(
 	{
 		Inbox: {screen: Inbox},
 		Sent: {screen: Sent},
-		Notifications: {screen: Notifications}
+		TranslatedItems: {screen: TranslatedItems},
+		Archive: {screen: Archive},
+		Spam: {screen: Spam},
+		Drafts: {screen: Drafts},
+		JohnFolder: {screen: JohnFolder},
+		OfficeEmail: {screen: OfficeEmail},
+		BillingPayments: {screen: BillingPayments},
+		AccountSettings: {screen: AccountSettings},
 	},
 	{
 		initialRouteName: 'Inbox',
@@ -37,10 +53,17 @@ const Sidebar = DrawerNavigator(
 		},
 		contentOptions: {
 			style: {
-				marginTop: 25,
-			}
+				padding: 0,
+				marginTop: 0,
+			},
+			inactiveTintColor: COLORS.gray,
+			activeTintColor: COLORS.blue,
+			activeBackgroundColor: COLORS.blackWhite,
+			labelStyle: {
+				fontSize: 14,
+				fontWeight: 'normal',
+			},
 		}
-
 	});
 
 export default {
