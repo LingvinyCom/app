@@ -101,6 +101,6 @@ export default class EmailAccountBlock extends Component {
 					</Text>
 				</TouchableOpacity>
 			</View>
-		)
+		);
 	}
 }
