@@ -80,7 +80,6 @@ export default class Registration extends Component {
 	registration() {
 		const { email, password, selectedDomain } = this.props.auth;
 		const checked = checkFields([email, password, selectedDomain.id]);
-		
 		if (!checked.error) {
 			this.props.app.showLoader = true;
 			const payload = {

@@ -59,6 +59,6 @@ export default class ChangePassword extends Component {
 					</View>
 				</View>
 			</View>
-		)
+		);
 	}
 }
