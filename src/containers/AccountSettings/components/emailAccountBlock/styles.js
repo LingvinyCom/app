@@ -69,6 +69,15 @@ const styles = StyleSheet.create({
 		fontSize: 14,
 		color: COLORS.white,
 	},
+	dropdownOptions: {
+		width: 105,
+		borderRadius: 5,
+		alignItems: 'center',
+	},
+	dropdownText: {
+		fontSize: 14,
+		color: COLORS.gray,
+	},
 });
 
 export default styles;

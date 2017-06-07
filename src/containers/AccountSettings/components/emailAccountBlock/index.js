@@ -2,6 +2,8 @@
 
 import React, { Component } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
+
+import Menu, { MenuContext, MenuOptions, MenuOption, MenuTrigger } from 'react-native-menu';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import styles from './styles';
@@ -41,44 +43,55 @@ export default class EmailAccountBlock extends Component {
 						Email Accounts
 					</Text>
 				</View>
-				<View style={styles.emailsList}>
-					{
-						emailsList.map((item, index) =>
-							<TouchableOpacity
-								key={index}
-								style={styles.wrapper}
-								onPress={() => {this._chooseItem(item, index);}}
-							>
-								<View style={styles.details}>
-									{
-										(index === this.state.isEmailActiveIndex) && <View style={styles.activeDotAccount} />
-									}
-									<Text style={styles.accountEmail}>
-										{item.accountEmail}
-									</Text>
-									<View style={styles.countEmailsWrapper}>
-										<Text style={styles.countInboxEmails}>
-											{item.countInboxEmails}
+				<MenuContext>
+					<View style={styles.emailsList}>
+						{
+							emailsList.map((item, index) =>
+								<TouchableOpacity
+									key={index}
+									style={styles.wrapper}
+									onPress={() => {this._chooseItem(item, index);}}
+								>
+									<View style={styles.details}>
+										{
+											(index === this.state.isEmailActiveIndex) && <View style={styles.activeDotAccount} />
+										}
+										<Text style={styles.accountEmail}>
+											{item.accountEmail}
 										</Text>
+										<View style={styles.countEmailsWrapper}>
+											<Text style={styles.countInboxEmails}>
+												{item.countInboxEmails}
+											</Text>
+										</View>
 									</View>
-								</View>
-								{
-									(index === this.state.isEmailActiveIndex) &&
-									<TouchableOpacity
-										style={styles.editEmailBtn}
-										onPress={item.onPressEditEmail}
-									>
-										<Icon
-											name="more-vert"
-											size={26}
-											color={COLORS.gray}
-										/>
-									</TouchableOpacity>
-								}
-							</TouchableOpacity>
-						)
-					}
-				</View>
+									{
+										(index === this.state.isEmailActiveIndex) &&
+										<View>
+												<Menu onSelect={(value) => alert(`User selected NAvigate TO ${value}`)}>
+													<MenuTrigger>
+														<Icon
+															name="more-vert"
+														  size={26}
+														  color={COLORS.lightGray}
+														/>
+													</MenuTrigger>
+													<MenuOptions optionsContainerStyle={styles.dropdownOptions}>
+														<MenuOption value={"Delete"}>
+															<Text style={styles.dropdownText}>Delete</Text>
+														</MenuOption>
+														<MenuOption value={"Edit"}>
+															<Text style={styles.dropdownText}>Edit</Text>
+														</MenuOption>
+													</MenuOptions>
+												</Menu>
+										</View>
+									}
+								</TouchableOpacity>
+							)
+						}
+					</View>
+				</MenuContext>
 				<TouchableOpacity
 					style={styles.addBtn}
 					onPress={onPressAddEmailAccount}
