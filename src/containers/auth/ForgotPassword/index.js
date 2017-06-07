@@ -29,7 +29,7 @@ export default class ForgotPassword extends Component {
 	state = {
 		isShowErrorModal: Boolean,
 		isShowInfoModal: Boolean,
-		properties: Object,
+		propsModal: Object,
 	}
 
 	constructor(props: Object) {
@@ -37,7 +37,7 @@ export default class ForgotPassword extends Component {
 		this.state = {
 			isShowErrorModal: false,
 			isShowInfoModal: false,
-			properties: {},
+			propsModal: {},
 		};
 	}
 
@@ -47,7 +47,7 @@ export default class ForgotPassword extends Component {
 		resetPassword(this.props.auth.email)
 			.then((data) => {
         this.setState({ isShowInfoModal: true });
-      }).catch(() => {
+      }).catch((error) => {
         this.setState({ isShowErrorModal: true });
       }).finally(() => {
         this.props.app.showLoader = false;

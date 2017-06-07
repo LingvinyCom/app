@@ -13,7 +13,7 @@ import { postRequest } from './helperFunctions';
  * @returns {Promise}
  */
 export function login(email: string, password: string): Promise<> {
-	return postRequest('api/auth/login', { email, password });
+	return postRequest('auth/login', { email, password });
 }
 
 
@@ -25,7 +25,7 @@ export function login(email: string, password: string): Promise<> {
  * @returns {Promise}
  */
 export function resetPassword(email: string): Promise<> {
-	return postRequest('api/auth/password_reset', { email });
+	return postRequest('auth/reset-password', { email });
 }
 
 /**
@@ -36,5 +36,5 @@ export function resetPassword(email: string): Promise<> {
  * @returns {Promise}
  */
 export function signUp(payload: Object): Promise<> {
-	return postRequest('api/client/create', payload);
+	return postRequest('client', payload);
 }

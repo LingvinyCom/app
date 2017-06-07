@@ -34,7 +34,7 @@ export default class CollapseMenu extends Component {
 	}
 
 	render() {
-		const { hostName, userName, hostPassword, authentication, serverPort } = this.props.auth;
+		const { host, username, hostPassword, serverPort } = this.props.auth;
 		const { isCollapsed } = this.state;
 
 		return (
@@ -56,15 +56,15 @@ export default class CollapseMenu extends Component {
 					<View>
 						<Input
 							label={'HOST NAME'}
-							value={hostName}
+							value={host}
 							placeholder={'Host Name'}
-							onChangeText={(text: string) => this.props.auth.setValue({'hostName': text})}
+							onChangeText={(text: string) => this.props.auth.setValue({'host': text})}
 						/>
 						<Input
 							label={'USER NAME'}
-							value={userName}
+							value={username}
 							placeholder={'User Name'}
-							onChangeText={(text: string) => this.props.auth.setValue({'userName': text})}
+							onChangeText={(text: string) => this.props.auth.setValue({'username': text})}
 						/>
 						<Input
 							label={'PASSWORD'}
@@ -74,13 +74,7 @@ export default class CollapseMenu extends Component {
 						/>
 						<Switch
 							label={'USE SSL'}
-							onPress={(value: boolean) => this.props.auth.setValue({ 'useSsl': value})}
-						/>
-						<Input
-							label={'AUTHENTICATION'}
-							value={authentication}
-							placeholder={'Authentication'}
-							onChangeText={(text: string) => this.props.auth.setValue({'authentication': text})}
+							onPress={(value: boolean) => this.props.auth.setValue({'useSsl': value})}
 						/>
 						<Input
 							label={'SERVER PORT'}

@@ -16,7 +16,7 @@ type PropsType = {
 const ServicesItem = (props: PropsType) => (
 	<View style={styles.wrapperBtn}>
 		<TouchableOpacity onPress={props.onPress}>
-			<Image source={props.image}/>
+			<Image source={props.image} style={styles.img}/>
 		</TouchableOpacity>
 	</View>
 );

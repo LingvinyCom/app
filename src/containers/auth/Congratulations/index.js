@@ -10,6 +10,7 @@ import styles from './styles';
 
 export default class Congratulations extends Component {
 	render() {
+		const { navigate } = this.props.navigation;
 		return (
 			<View style={styles.pageContainer}>
 				<Text style={styles.pageTitle}>Congratulations</Text>
@@ -20,7 +21,7 @@ export default class Congratulations extends Component {
 				<Buttons.Rounded
 					color={"blue"}
 					text={"Continue to inbox"}
-					onPress={() => console.log(" Continue to inbox btn was pressed")}
+					onPress={() => navigate('FirstLaunch', { logedIn: true })}
 				/>
 			</View>
 		);

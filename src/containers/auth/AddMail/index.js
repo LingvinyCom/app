@@ -14,7 +14,8 @@ import * as Buttons from './../../../components/Buttons/';
 import * as Modals from './../../../components/Modals/';
 
 import { signUp } from '../../../utils/request/';
-import { checkFields } from '../../../utils/request/helperFunctions';
+import { checkFields } from '../../../utils/commonFunctions';
+
 import styles from './styles';
 
 
@@ -25,38 +26,56 @@ import styles from './styles';
 export default class AddMail extends Component {
 	state = {
 		isShowErrorModal: Boolean,
+		propsModal: Object,
 	}
 
 	constructor(props: Object) {
 		super(props);
 		this.state = {
 			isShowErrorModal: false,
+			propsModal: {},
 		};
 	}
 
 	signUp() {
-		// const checked = checkFields([]);
-		this.props.app.showLoader = true;
+		const {
+			email, password, host, username, hostPassword, serverPort, useSsl,
+		} = this.props.auth;
+		const checked = checkFields([
+			email, password, host, username, hostPassword, serverPort, useSsl
+		]);
 
-		const payload = {
-			email: this.props.auth.email,
-			password: this.props.auth.password,
-			hostName: this.props.auth.hostName,
-			userName: this.props.auth.userName,
-			hostPassword: this.props.auth.hostPassword,
-			is_ssl: this.props.auth.useSsl,
-			server_port: this.props.auth.serverPort,
-		};
+		if (!checked.error) {
+			this.props.app.showLoader = true;
+			const payload = {
+				email: email,
+				password: password,
+				new_engine: {
+					host,
+					username,
+					password: hostPassword,
+					server_port: serverPort,
+					is_ssl: useSsl,
+				}
+			};
 
-		signUp(payload)
-			.then((data) => {
-				this.props.auth.uid = data.lingviny_token;
-				this.props.navigation.navigate('Congratulations');
-			}).catch(() => {
-				this.setState({isShowErrorModal: true});
-		}).finally(() => {
-			this.props.app.showLoader = false;
-		});
+			signUp(payload)
+				.then((data) => {
+					this.props.auth.uid = data.lingviny_token;
+					this.props.navigation.navigate('Congratulations');
+				}).catch((error) => {
+					this.setState({ isShowErrorModal: true, propsModal: {} });
+				}).finally(() => {
+					this.props.app.showLoader = false;
+				});
+		} else {
+			this.setState({
+				isShowErrorModal: true,
+				propsModal: {
+					description: checked.message,
+				},
+			});
+		}
 	}
 
 	render() {
@@ -94,13 +113,14 @@ export default class AddMail extends Component {
 						</View>
 					</View>
 				</ScrollView>
-				<Modals.Error
-					modalVisible={this.state.isShowErrorModal}
-					hideModal={ () => this.setState({isShowErrorModal: false}) }
-					titleError={'Unable to Login'}
-					descriptionError={"Incorrect Username or Password"}
-					textBtn={'Try again'}
-				/>
+				<Modals.Notify
+						show={this.state.isShowErrorModal}
+						type={'error'}
+						title={'Unable to Signup'}
+						description={this.state.propsModal.description || 'Something went wrong.'}
+						btnLabel={'Try again'}
+						hideModal={() => this.setState({isShowErrorModal: false})}
+					/>
 			</View>
 		);
 	}

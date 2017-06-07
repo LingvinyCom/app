@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 import SwiperSlider from './../../components/Swiper';
 import * as Buttons from './../../components/Buttons';
-import SendNotificationsModal from './components/sendNotificationsModal';
+import * as Modals from '../../components/Modals/';
 
 import styles from './styles';
 
@@ -40,30 +40,40 @@ export default class FirstLaunch extends Component {
 		};
 	}
 
-	confirmModal() {
+	onClickSkip(navigate: Function, state: Object) {
+		if (state && state.params && state.params.logedIn) {
+			this.setState({ isShowNotificationsModal: true });
+		} else {
+			navigate('Registration');
+		}
+	}
+
+	disAllowNotifications(navigate: Function) {
+		this.setState({ isShowNotificationsModal: false }, () => navigate('Inbox'));
+	}
+
+	allowNotifications(navigate: Function) {
 		/**
 		 * @TODO: Add 'allow push notif' functionality.
 		 */
-		console.log("btn modal Allow was pressed");
-		this.setState({isShowNotificationsModal: false});
+		this.setState({ isShowNotificationsModal: false }, () => navigate('Inbox'));
 	}
 
 	render() {
-		const {navigate} = this.props.navigation;
-
+		const { navigate, state } = this.props.navigation;
 		return (
 			<View style={styles.wrapper}>
 				<SwiperSlider slides={slides}/>
 				<View style={styles.btnWrapper}>
 					<Buttons.Rounded
 						text={'Skip'}
-						onPress={() => navigate('Registration')}
+						onPress={this.onClickSkip.bind(this, navigate, state)}
 					/>
 				</View>
-				<SendNotificationsModal
-					modalVisible={this.state.isShowNotificationsModal}
-					hideModal={ () => this.setState({isShowNotificationsModal: false}) }
-					confirmModal={this.confirmModal.bind(this) }
+				<Modals.AllowNotifications
+					show={this.state.isShowNotificationsModal}
+					onDecline={this.disAllowNotifications.bind(this, navigate)}
+					onAccept={this.allowNotifications.bind(this, navigate)}
 				/>
 			</View>
 		);

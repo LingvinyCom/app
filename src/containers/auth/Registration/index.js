@@ -19,7 +19,7 @@ import * as Modals from '../../../components/Modals/';
 import * as Buttons from './../../../components/Buttons/';
 
 import { signUp } from '../../../utils/request/';
-import { checkFields } from '../../../utils/request/helperFunctions';
+import { checkFields } from '../../../utils/commonFunctions';
 
 import styles from './styles';
 
@@ -79,22 +79,22 @@ export default class Registration extends Component {
 
 	registration() {
 		const { email, password, selectedDomain } = this.props.auth;
-		const checked = checkFields([email, password, selectedDomain.id]);
-		
+		const checked = checkFields([email, password, selectedDomain.engine_id]);
+
 		if (!checked.error) {
 			this.props.app.showLoader = true;
 			const payload = {
 				email,
 				password,
-				id: selectedDomain ? selectedDomain.id : null,
+				engine_id: selectedDomain ? selectedDomain.engine_id : null,
 			};
 
 			signUp(payload)
 			.then((data) => {
 				this.props.auth.uid = data.lingviny_token;
 				this.props.navigation.navigate('Congratulations');
-			}).catch(() => {
-				this.setState({ isShowErrorModal: true });
+			}).catch((error) => {
+				this.setState({ isShowErrorModal: true, propsModal: {} });
 			}).finally(() => {
 				this.props.app.showLoader = false;
 			});

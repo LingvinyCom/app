@@ -9,13 +9,13 @@ class AuthStore {
 
   @observable selectedDomain: Object = {};
 
-  @observable hostName: string = '';
-	@observable userName: string = '';
+  @observable host: string = '';
+	@observable username: string = '';
 	@observable hostPassword: string = '';
 	@observable useSsl: boolean = false;
 	@observable serverPort: string = '';
 
-  @observable uid: string = '';
+  @observable userAccount: Object = {};
 
   @action setValue(params: Object): void {
     Object.assign(this, params);

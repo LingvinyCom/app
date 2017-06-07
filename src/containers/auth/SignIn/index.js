@@ -2,7 +2,7 @@
 
 import React, {Component} from 'react';
 import {inject} from 'mobx-react';
-import {View, KeyboardAvoidingView} from 'react-native';
+import {KeyboardAvoidingView} from 'react-native';
 
 import Logotip from '../../../components/Auth/Logo';
 import Title from '../../../components/Auth/Title/';
@@ -37,7 +37,7 @@ export default class SignIn extends Component {
 			.then((data) => {
 				this.props.auth.uid = data.lingviny_token;
 				this.props.navigation.navigate('Inbox');
-			}).catch(() => {
+			}).catch((error) => {
 			this.setState({isShowErrorModal: true});
 		}).finally(() => {
 			this.props.app.showLoader = false;
