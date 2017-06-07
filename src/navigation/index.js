@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import {StackNavigator} from 'react-navigation';
+import {StackNavigator, DrawerNavigator } from 'react-navigation';
 import SplashScreen from 'react-native-splash-screen';
 
 import Auth from './auth';
 import Main from './main';
+import Sidebar from './sidebar';
 
 import styles from './styles';
 
@@ -18,17 +19,19 @@ class Navigator extends Component {
 			navigationOptions: {
 				header: null,
 			},
-			// initialRouteName: 'FirstLaunch',
-			// initialRouteName: 'Inbox',
+			//  initialRouteName: 'FirstLaunch',
+			//  initialRouteName: 'Inbox',
 			initialRouteName: 'Registration',
 			// initialRouteName: 'SignIn',
 			// initialRouteName: 'Login',
 			// initialRouteName: 'AddMail',
 			// initialRouteName: 'ForgotPassword',
+			// initialRouteName: 'Sidebar',
 		};
 	}
 
 	initRouter() {
+		// return DrawerNavigator({...Sidebar}, this.setNavigatorConfig());
 		return StackNavigator({...Auth, ...Main}, this.setNavigatorConfig());
 	}
 

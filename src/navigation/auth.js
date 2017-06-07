@@ -16,4 +16,5 @@ export default {
 	AddMail: {screen: AddMail},
 	SignIn: {screen: SignIn},
 	ForgotPassword: {screen: ForgotPassword},
+	Sidebar: {screen: Sidebar},
 };

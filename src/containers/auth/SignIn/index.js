@@ -2,7 +2,7 @@
 
 import React, {Component} from 'react';
 import {inject} from 'mobx-react';
-import {View} from 'react-native';
+import {View, KeyboardAvoidingView} from 'react-native';
 
 import Logotip from '../../../components/Auth/Logo';
 import Title from '../../../components/Auth/Title/';
@@ -38,7 +38,6 @@ export default class SignIn extends Component {
 				this.props.auth.uid = data.lingviny_token;
 				this.props.navigation.navigate('Inbox');
 			}).catch(() => {
-			this.props.auth.requestError = 'Error';
 			this.setState({isShowErrorModal: true});
 		}).finally(() => {
 			this.props.app.showLoader = false;
@@ -47,9 +46,11 @@ export default class SignIn extends Component {
 
 	render() {
 		const {navigate} = this.props.navigation;
-
 		return (
-			<View style={styles.signinWrapper}>
+			<KeyboardAvoidingView
+				style={styles.signinWrapper}
+				behavior="position"
+			>
 				<Logotip/>
 				<Title text={'Login to Continue'}/>
 				<Form
@@ -64,14 +65,15 @@ export default class SignIn extends Component {
 					clickableText={'Sign Up'}
 					onPressText={() => navigate('Registration')}
 				/>
-				<Modals.Error
-					modalVisible={this.state.isShowErrorModal}
-					hideModal={ () => this.setState({isShowErrorModal: false}) }
-					titleError={'Unable to Login'}
-					descriptionError={"Incorrect Username or Password"}
-					textBtn={'Try again'}
+				<Modals.Notify
+					show={this.state.isShowErrorModal}
+					type={'error'}
+					title={'Unable to Login'}
+					description={'Incorrect Username or Password'}
+					btnLabel={'Try again'}
+					hideModal={() => this.setState({isShowErrorModal: false})}
 				/>
-			</View>
+			</KeyboardAvoidingView>
 		);
 	}
 }

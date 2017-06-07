@@ -5,7 +5,7 @@ import { View, TouchableOpacity } from 'react-native';
 
 import styles from './styles';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import COLORS from '../../../../config/colors.config';
+import COLORS from '../../../config/colors.config';
 
 const NewMessageBtn = (props: Object) => {
 	const { onPress } = props;

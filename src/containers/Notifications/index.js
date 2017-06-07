@@ -1,22 +1,18 @@
 // @flow
 
 import React, {Component} from 'react';
-import {View, ScrollView, ListView, Image} from 'react-native';
+import {View, ScrollView, ListView} from 'react-native';
 
-import MessegesBlockInfo from './components/messagesInfoBlock';
-import SearchBlock from '../../components/Inbox/searchBlock';
 import RouterHeader from '../../components/Inbox/routerHeader';
 import InboxItem from '../../components/Inbox/inboxItem';
-import NewMessageBtn from '../../components/Inbox/newMessageBtn';
 import Swipeout from 'react-native-swipeout';
 import rows from './data';
-import EmptyInbox from '../../components/Inbox/emptyInbox';
 
 import styles from './styles';
 import COLORS from '../../config/colors.config';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-export default class Inbox extends Component {
+export default class Notifications extends Component {
 	state: {
 		dataSource: Object,
 	}
@@ -46,20 +42,19 @@ export default class Inbox extends Component {
 				<InboxItem
 					onPress={ () => console.log('press children') }
 					title={rowData.title}
-					status={rowData.status}
 					theme={rowData.theme}
 					description={rowData.description}
 					time={rowData.time}
-				  itemStatus={rowData.itemStatus}
+					itemStatus={rowData.itemStatus}
 				/>
 			</Swipeout>
 		);
 	}
 	static navigationOptions = {
-		drawerLabel: 'Inbox',
+		drawerLabel: 'Notifications',
 		drawerIcon: ({ tintColor }) => (
 			<Icon
-				name="inbox"
+				name="send"
 				size={20}
 				color={COLORS.iconGray}
 			/>
@@ -70,14 +65,12 @@ export default class Inbox extends Component {
 			<View style={styles.mainContainer}>
 				<View style={styles.header}>
 					<RouterHeader
-						onPressLeftIcon={ () => this.props.navigation.navigate('DrawerOpen')}
+						onPressLeftIcon={ () => this.props.navigation.navigate('Inbox')}
 						onPressRightIcon={ () => this.props.navigation.navigate('Notifications') }
-						titlePage={"Inbox"}
-						leftIconUrl={require('../../assets/img/menu-icon.png')}
-						rightIconUrl={require('../../assets/img/bell-icon.png')}
-						isShowRightIcon={true}
+						titlePage={"Notifications"}
+						leftIconUrl={require('../../assets/img/arrow-left-icon.png')}
+						isShowRightIcon={false}
 					/>
-					<SearchBlock onPressSearch={() => console.log("something search") }/>
 				</View>
 				<View style={styles.pageContent}>
 					<View>
@@ -86,7 +79,6 @@ export default class Inbox extends Component {
 								!this.state.dataSource &&
 								<EmptyInbox /> ||
 								<View>
-									<MessegesBlockInfo onPress={() => console.log(" hide this block") }/>
 									<View style={styles.inboxList}>
 										<ListView
 											scrollEnabled
@@ -98,7 +90,6 @@ export default class Inbox extends Component {
 							}
 						</ScrollView>
 					</View>
-					<NewMessageBtn onPress={() => console.log("create new message Item")}/>
 				</View>
 			</View>
 		);

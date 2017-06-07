@@ -7,7 +7,7 @@ class AuthStore {
   @observable email: string = 'tech@lingviny.com';
   @observable password: string = 'secretstring';
 
-  @observable selectedDomain: ?Object = null;
+  @observable selectedDomain: Object = {};
 
   @observable hostName: string = '';
 	@observable userName: string = '';
@@ -16,7 +16,6 @@ class AuthStore {
 	@observable serverPort: string = '';
 
   @observable uid: string = '';
-  @observable requestError: string = '';
 
   @action setValue(params: Object): void {
     Object.assign(this, params);

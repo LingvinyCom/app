@@ -8,6 +8,8 @@ export default {
 	green: '#1FCAAF',
 	gray: '#67696C',
 	lightGray: '#97999B',
+	lightGray2: '#EAEDF1',
+	headerBackgroundColor: '#EAEDF1',
 	borderColor: '#979797',
 	red: '#FF8A8A',
 	orange: '#FFAB6F',

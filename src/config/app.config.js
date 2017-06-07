@@ -7,38 +7,43 @@ export default {
 		},
 		{
 			id: 2,
+			domain: 'exchange',
+			image: require('../assets/img/exchange.png'),
+		},
+		{
+			id: 3,
 			domain: 'gmail.com',
 			image: require('../assets/img/google.png'),
 		},
 		{
-			id: 3,
+			id: 4,
 			domain: 'yahoo.com',
 			image: require('../assets/img/yahoo.png'),
 		},
-		// {
-		// 	id: 4,
-		// 	domain: 'aol.com',
-		// 	image: require('../assets/img/logo.png'), // NO IMAGE!!!!!!!!
-		// },
 		{
 			id: 5,
+			domain: 'aol.com',
+			image: require('../assets/img/aol-mail.jpg'),
+		},
+		{
+			id: 6,
 			domain: 'outlook.com',
 			image: require('../assets/img/outlook.png'),
 		},
-		// {
-		// 	id: 6,
-		// 	domain: 'hotmail.com',
-		// 	image: require('../assets/img/logo.png'), // NO IMAGE!!!!!!!!
-		// },
-		// {
-		// 	id: 7,
-		// 	domain: 'mail.ru',
-		// 	image: require('../assets/img/logo.png'), // NO IMAGE!!!!!!!!
-		// },
-		// {
-		// 	id: 8,
-		// 	domain: 'yandex.ru',
-		// 	image: require('../assets/img/logo.png'), // NO IMAGE!!!!!!!!
-		// },
+		{
+			id: 7,
+			domain: 'hotmail.com',
+			image: require('../assets/img/hot-mail.jpg'),
+		},
+		{
+			id: 8,
+			domain: 'mail.ru',
+			image: require('../assets/img/mailru_logo.jpg'),
+		},
+		{
+			id: 9,
+			domain: 'yandex.ru',
+			image: require('../assets/img/yandex-promotion-sites.jpg'),
+		},
 	],
 };

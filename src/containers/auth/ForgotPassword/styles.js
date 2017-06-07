@@ -13,6 +13,7 @@ const styles = {
 		justifyContent: 'center',
 		alignItems: 'center',
 		backgroundColor: COLORS.white,
+		overflow: 'hidden',
 	},
 	form: {
 		marginTop: 40,

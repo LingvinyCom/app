@@ -16,10 +16,13 @@ export default class WithImageButton extends Component {
 		return (
 			<View
 				style={styleButton}
-				onPress={this.props.onPress}
 				color={this.props.color}
 			>
-				<Image source={this.props.img}/>
+				<Image
+					style={styles.img}
+					source={this.props.img}
+				  resizeMode="contain"
+				/>
 			</View>
 		);
 	}

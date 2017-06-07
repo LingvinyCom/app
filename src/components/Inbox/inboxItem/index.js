@@ -12,10 +12,18 @@ type Props = {
 	theme: string,
 	description: string,
 	time: string,
+	itemStatus: string,
 };
 
 const InboxItem = (props: Props) => {
 	const {onPress, title, status, theme, description, time, itemStatus} = props;
+	let statusStyle = styles.inboxItemStatus;
+	if (itemStatus === 'process-translate') {
+		statusStyle = [styles.inboxItemStatus, styles.inboxItemStatusPr];
+	}
+	if (itemStatus === 'wait-for-translate') {
+		statusStyle = [styles.inboxItemStatus, styles.inboxItemStatusWr];
+	}
 	return (
 		<TouchableWithoutFeedback onPress={onPress}>
 			<View style={styles.inboxItem}>
@@ -24,7 +32,7 @@ const InboxItem = (props: Props) => {
 						<Text style={styles.inboxItemTitle}>{ title }</Text>
 						{
 							status &&
-							<Text style={styles.inboxItemStatus}>{ status }</Text>
+							<Text style={statusStyle}>{ status }</Text>
 						}
 					</View>
 					<Text style={styles.inboxItemTheme}>{ theme }</Text>

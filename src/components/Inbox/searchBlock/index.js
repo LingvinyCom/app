@@ -5,14 +5,14 @@ import { View, TextInput, TouchableOpacity } from 'react-native';
 
 import styles from './styles';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import COLORS from '../../../../config/colors.config';
+import COLORS from '../../../config/colors.config';
 
 type Props = {
     onPress: Function,
 };
 
 const SearchBlock = (props: Props) =>  {
-	const { onPress } = props;
+	const { onPressSearch } = props;
 	return (
 		<View style={styles.searchHeader}>
 			<View style={styles.inputWrapper}>
@@ -23,12 +23,13 @@ const SearchBlock = (props: Props) =>  {
 		</View>
 			<TouchableOpacity
 				style={styles.searchBtn}
-				onPress={onPress}
+				onPress={onPressSearch}
 			>
 				<Icon
 					name="search"
 					size={24}
 					color={COLORS.lightGray}
+				  style={styles.icon}
 				/>
 			</TouchableOpacity>
 		</View>

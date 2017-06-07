@@ -1,22 +1,20 @@
 // @flow
 
 import React, {Component} from 'react';
-import {View, ScrollView, ListView, Image} from 'react-native';
+import {View, ScrollView, ListView} from 'react-native';
 
-import MessegesBlockInfo from './components/messagesInfoBlock';
 import SearchBlock from '../../components/Inbox/searchBlock';
 import RouterHeader from '../../components/Inbox/routerHeader';
 import InboxItem from '../../components/Inbox/inboxItem';
 import NewMessageBtn from '../../components/Inbox/newMessageBtn';
 import Swipeout from 'react-native-swipeout';
 import rows from './data';
-import EmptyInbox from '../../components/Inbox/emptyInbox';
 
 import styles from './styles';
 import COLORS from '../../config/colors.config';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-export default class Inbox extends Component {
+export default class Sent extends Component {
 	state: {
 		dataSource: Object,
 	}
@@ -50,16 +48,16 @@ export default class Inbox extends Component {
 					theme={rowData.theme}
 					description={rowData.description}
 					time={rowData.time}
-				  itemStatus={rowData.itemStatus}
+					itemStatus={rowData.itemStatus}
 				/>
 			</Swipeout>
 		);
 	}
 	static navigationOptions = {
-		drawerLabel: 'Inbox',
+		drawerLabel: 'Sent',
 		drawerIcon: ({ tintColor }) => (
 			<Icon
-				name="inbox"
+				name="send"
 				size={20}
 				color={COLORS.iconGray}
 			/>
@@ -72,7 +70,7 @@ export default class Inbox extends Component {
 					<RouterHeader
 						onPressLeftIcon={ () => this.props.navigation.navigate('DrawerOpen')}
 						onPressRightIcon={ () => this.props.navigation.navigate('Notifications') }
-						titlePage={"Inbox"}
+						titlePage={"Sent"}
 						leftIconUrl={require('../../assets/img/menu-icon.png')}
 						rightIconUrl={require('../../assets/img/bell-icon.png')}
 						isShowRightIcon={true}
@@ -86,7 +84,6 @@ export default class Inbox extends Component {
 								!this.state.dataSource &&
 								<EmptyInbox /> ||
 								<View>
-									<MessegesBlockInfo onPress={() => console.log(" hide this block") }/>
 									<View style={styles.inboxList}>
 										<ListView
 											scrollEnabled

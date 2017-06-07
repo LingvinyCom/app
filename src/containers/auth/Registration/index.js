@@ -4,8 +4,8 @@ import React, {Component} from 'react';
 import {inject, observer} from 'mobx-react';
 import {
 	Linking,
+	KeyboardAvoidingView,
 	View,
-	ScrollView,
 } from 'react-native';
 import Collapsible from 'react-native-collapsible';
 import Title from '../../../components/Auth/Title/';
@@ -19,6 +19,7 @@ import * as Modals from '../../../components/Modals/';
 import * as Buttons from './../../../components/Buttons/';
 
 import { signUp } from '../../../utils/request/';
+import { checkFields } from '../../../utils/request/helperFunctions';
 
 import styles from './styles';
 
@@ -32,6 +33,8 @@ export default class Registration extends Component {
 	state: {
 		isShowServicesModal: boolean,
 		isCollapsed: boolean,
+		isShowErrorModal: boolean,
+		propsModal: Object,
 	}
 
 	timer: ? number;
@@ -40,7 +43,9 @@ export default class Registration extends Component {
 		super(props);
 		this.state = {
 			isShowServicesModal: false,
+			isShowErrorModal: false,
 			isCollapsed: true,
+			propsModal: {},
 		};
 	}
 
@@ -58,11 +63,11 @@ export default class Registration extends Component {
 			if (existed) {
 				this.props.auth.selectedDomain = existed;
 			} else {
-				this.props.auth.selectedDomain = null;
+				this.props.auth.selectedDomain = {};
 			}
 			this.setState({ isCollapsed: false });
 		} else {
-			this.setState({isCollapsed: true});
+			this.setState({ isCollapsed: true });
 		}
 	}
 
@@ -73,22 +78,34 @@ export default class Registration extends Component {
 	}
 
 	registration() {
-		this.props.app.showLoader = true;
-		const payload = {
-			email: this.props.auth.email,
-			password: this.props.auth.password,
-			id: this.props.auth.selectedDomain.id,
-		};
+		const { email, password, selectedDomain } = this.props.auth;
+		const checked = checkFields([email, password, selectedDomain.id]);
+		
+		if (!checked.error) {
+			this.props.app.showLoader = true;
+			const payload = {
+				email,
+				password,
+				id: selectedDomain ? selectedDomain.id : null,
+			};
 
-		signUp(payload)
+			signUp(payload)
 			.then((data) => {
 				this.props.auth.uid = data.lingviny_token;
 				this.props.navigation.navigate('Congratulations');
 			}).catch(() => {
-			this.props.auth.requestError = 'Error';
-		}).finally(() => {
-			this.props.app.showLoader = false;
-		});
+				this.setState({ isShowErrorModal: true });
+			}).finally(() => {
+				this.props.app.showLoader = false;
+			});
+		} else {
+			this.setState({
+				isShowErrorModal: true,
+				propsModal: {
+					description: checked.message,
+				},
+			});
+		}
 	}
 
 	toggleServicesModal(value: boolean) {
@@ -109,9 +126,13 @@ export default class Registration extends Component {
 
 	render() {
 		const {navigate} = this.props.navigation;
+		const { isShowServicesModal, isShowErrorModal, isCollapsed, propsModal } = this.state;
+
 		return (
-			<ScrollView>
-				<View style={styles.registrationWrapper}>
+			<KeyboardAvoidingView
+				style={styles.registrationWrapper}
+				behavior="position"
+			>
 					<Logotip/>
 					<Title text={'New to Lingviny?'}/>
 					<Description
@@ -119,16 +140,16 @@ export default class Registration extends Component {
 					/>
 
 					<View style={styles.form}>
-						<Input
-							label={'EMAIL'}
-							value={this.props.auth.email}
-							onChangeText={(text: string) => this.onChangeEmail(text)}
-							placeholder={'Enter an Email'}
-						/>
-
-						<Collapsible collapsed={this.state.isCollapsed}>
+							<Input
+								label={'EMAIL'}
+								value={this.props.auth.email}
+								onChangeText={(text: string) => this.onChangeEmail(text)}
+								placeholder={'Enter an Email'}
+								keyboardType="email-address"
+							/>
+						<Collapsible collapsed={isCollapsed}>
 							{
-								this.props.auth.selectedDomain ?
+								Object.keys(this.props.auth.selectedDomain).length > 0 ?
 									<Buttons.WithImage
 										img={this.props.auth.selectedDomain.image}
 										color={'transparent'}
@@ -160,7 +181,7 @@ export default class Registration extends Component {
 						onPressText={() => navigate('SignIn')}
 					/>
 					<Modals.Services
-						modalVisible={this.state.isShowServicesModal}
+						modalVisible={isShowServicesModal}
 						hideModal={() => this.toggleServicesModal(false)}
 						servicesList={APP_CONFIG.EMAIL_DOMAINS}
 						onPressItem={(selected) => {
@@ -173,8 +194,15 @@ export default class Registration extends Component {
 							navigate('AddMail');
 						}}
 					/>
-				</View>
-			</ScrollView>
+					<Modals.Notify
+						show={isShowErrorModal}
+						type={'error'}
+						title={'Unable to Signup'}
+						description={propsModal.description || 'Something went wrong.'}
+						btnLabel={'Try again'}
+						hideModal={() => this.setState({isShowErrorModal: false})}
+					/>
+				</KeyboardAvoidingView>
 		);
 	}
 }

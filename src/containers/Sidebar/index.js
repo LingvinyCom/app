@@ -41,7 +41,7 @@ export default class Sidebar extends Component {
 			{
 				iconClass: "inbox",
 				title: "Inbox",
-				onPress: () => console.log(" navigate to Inbox "),
+				onPress: () => this.props.navigation.navigate('Inbox'),
 			},
 			{
 				iconClass: "send",
