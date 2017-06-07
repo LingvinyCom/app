@@ -20,20 +20,20 @@ class Navigator extends Component {
 				header: null,
 			},
 			//  initialRouteName: 'FirstLaunch',
-			 initialRouteName: 'Inbox',
-			// initialRouteName: 'Registration',
+			//  initialRouteName: 'Inbox',
+			//initialRouteName: 'Registration',
 			// initialRouteName: 'SignIn',
 			// initialRouteName: 'Login',
 			// initialRouteName: 'AddMail',
 			// initialRouteName: 'ForgotPassword',
 			// initialRouteName: 'Sidebar',
+			initialRouteName: 'ChangePassword',
 		};
 	}
 
-
-
 	initRouter() {
-		return DrawerNavigator({...Sidebar});
+		//return DrawerNavigator({...Sidebar});
+		return StackNavigator({...Auth, ...Main}, this.setNavigatorConfig());
 	}
 
 	componentDidMount() {

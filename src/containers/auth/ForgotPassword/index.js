@@ -28,12 +28,16 @@ import styles from './styles';
 export default class ForgotPassword extends Component {
 	state = {
 		isShowErrorModal: Boolean,
+		isShowInfoModal: Boolean,
+		properties: Object,
 	}
 
 	constructor(props: Object) {
 		super(props);
 		this.state = {
 			isShowErrorModal: false,
+			isShowInfoModal: false,
+			properties: {},
 		};
 	}
 
@@ -42,15 +46,13 @@ export default class ForgotPassword extends Component {
 
 		resetPassword(this.props.auth.email)
 			.then((data) => {
-				console.log('SUCCESS');
-				this.props.navigation.navigate('SignIn');
-			}).catch(() => {
-			this.props.auth.requestError = 'Error';
-			this.setState({isShowErrorModal: true});
-		}).finally(() => {
-			this.props.app.showLoader = false;
-		});
-	}
+        this.setState({ isShowInfoModal: true });
+      }).catch(() => {
+        this.setState({ isShowErrorModal: true });
+      }).finally(() => {
+        this.props.app.showLoader = false;
+      });
+  }
 
 	render() {
 		return (
@@ -76,12 +78,26 @@ export default class ForgotPassword extends Component {
 						onPress={this.recoverPassword.bind(this)}
 					/>
 				</View>
-				<Modals.Error
-					modalVisible={this.state.isShowErrorModal}
-					hideModal={ () => this.setState({isShowErrorModal: false}) }
-					titleError={'Unable to Login'}
-					descriptionError={"Incorrect Username or Password"}
-					textBtn={'Try again'}
+				<Modals.Notify
+					show={this.state.isShowErrorModal}
+					type={'error'}
+					title={'Rocever password'}
+					description={'Incorrect Email'}
+					btnLabel={'Try again'}
+					hideModal={() => this.setState({ isShowErrorModal: false })}
+				/>
+				<Modals.Notify
+					show={this.state.isShowInfoModal}
+					type={'information'}
+					title={'Rocever password'}
+					description={'We just sent you an email with instructions'}
+					btnLabel={'Ok'}
+					hideModal={() => {
+						this.setState(
+							{ isShowInfoModal: false },
+							() => this.props.navigation.navigate('SignIn'),
+						);
+					}}
 				/>
 			</KeyboardAvoidingView>
 		);

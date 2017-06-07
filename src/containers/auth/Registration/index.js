@@ -6,7 +6,6 @@ import {
 	Linking,
 	KeyboardAvoidingView,
 	View,
-	ScrollView,
 } from 'react-native';
 import Collapsible from 'react-native-collapsible';
 import Title from '../../../components/Auth/Title/';
@@ -15,64 +14,27 @@ import Input from './../../../components/SimpleInput/';
 import Footer from '../../../components/Auth/Footer/';
 import Logotip from '../../../components/Auth/Logo';
 import PATTERN_CONFIG from '../../../config/pattern.config';
+import APP_CONFIG from '../../../config/app.config';
 import * as Modals from '../../../components/Modals/';
 import * as Buttons from './../../../components/Buttons/';
 
+import { signUp } from '../../../utils/request/';
+import { checkFields } from '../../../utils/request/helperFunctions';
+
 import styles from './styles';
 
-const domains = [
-	// ICloud @icloud.com
-	{
-		domain: 'icloud.com',
-		image: require('../../../assets/img/icloud.png'),
-	},
-	// Exchange ??????????
-	// Google @gmail.com
-	{
-		domain: 'gmail.com',
-		image: require('../../../assets/img/google.png'),
-	},
-	// Yahoo @yahoo.com
-	{
-		domain: 'yahoo.com',
-		image: require('../../../assets/img/yahoo.png'),
-	},
-	// Aol   @aol.com
-	{
-		domain: 'aol.com',
-		image: require('../../../assets/img/logo.png'), // NO IMAGE!!!!!!!!
-	},
-	// Outlook @outlook.com
-	{
-		domain: 'outlook.com',
-		image: require('../../../assets/img/outlook.png'),
-	},
-	// Hotmail @hotmail.com
-	{
-		domain: 'hotmail.com',
-		image: require('../../../assets/img/logo.png'), // NO IMAGE!!!!!!!!
-	},
-	// Mail.ru @mail.ru
-	{
-		domain: 'mail.ru',
-		image: require('../../../assets/img/logo.png'), // NO IMAGE!!!!!!!!
-	},
-	// Yandex @yandex.ru
-	{
-		domain: 'yandex.ru',
-		image: require('../../../assets/img/logo.png'), // NO IMAGE!!!!!!!!
-	},
-];
 
 @inject((allStores) => ({
 	auth: allStores.auth,
+	app: allStores.app,
 }))
 @observer
 export default class Registration extends Component {
 	state: {
 		isShowServicesModal: boolean,
 		isCollapsed: boolean,
-		selectedDomainIage: ?number,
+		isShowErrorModal: boolean,
+		propsModal: Object,
 	}
 
 	timer: ? number;
@@ -81,8 +43,9 @@ export default class Registration extends Component {
 		super(props);
 		this.state = {
 			isShowServicesModal: false,
+			isShowErrorModal: false,
 			isCollapsed: true,
-			selectedDomainIage: null,
+			propsModal: {},
 		};
 	}
 
@@ -96,20 +59,15 @@ export default class Registration extends Component {
 		const isEmailValid = email && PATTERN_CONFIG.email.test(email);
 
 		if (isEmailValid && domain) {
-			const existed = domains.find((d) => d.domain === domain);
+			const existed = APP_CONFIG.EMAIL_DOMAINS.find((d) => d.domain === domain);
 			if (existed) {
-				this.setState({
-					isCollapsed: false,
-					selectedDomainIage: existed.image,
-				});
+				this.props.auth.selectedDomain = existed;
 			} else {
-				this.setState({
-					isCollapsed: false,
-					selectedDomainIage: null,
-				});
+				this.props.auth.selectedDomain = {};
 			}
+			this.setState({ isCollapsed: false });
 		} else {
-			this.setState({isCollapsed: true});
+			this.setState({ isCollapsed: true });
 		}
 	}
 
@@ -120,7 +78,34 @@ export default class Registration extends Component {
 	}
 
 	registration() {
-		console.log('onPress registration');
+		const { email, password, selectedDomain } = this.props.auth;
+		const checked = checkFields([email, password, selectedDomain.id]);
+		
+		if (!checked.error) {
+			this.props.app.showLoader = true;
+			const payload = {
+				email,
+				password,
+				id: selectedDomain ? selectedDomain.id : null,
+			};
+
+			signUp(payload)
+			.then((data) => {
+				this.props.auth.uid = data.lingviny_token;
+				this.props.navigation.navigate('Congratulations');
+			}).catch(() => {
+				this.setState({ isShowErrorModal: true });
+			}).finally(() => {
+				this.props.app.showLoader = false;
+			});
+		} else {
+			this.setState({
+				isShowErrorModal: true,
+				propsModal: {
+					description: checked.message,
+				},
+			});
+		}
 	}
 
 	toggleServicesModal(value: boolean) {
@@ -141,59 +126,13 @@ export default class Registration extends Component {
 
 	render() {
 		const {navigate} = this.props.navigation;
-		const servicesList = [
-			{
-				title: 'icloud',
-				imgUrl: require('../../../assets/img/icloud.png'),
-				onPress: () => console.log("onPress btn icloud"),
-			},
-			{
-				title: 'exchange',
-				imgUrl: require('../../../assets/img/exchange.png'),
-				onPress: () => console.log("onPress btn exchange"),
-			},
-			{
-				title: 'google',
-				imgUrl: require('../../../assets/img/logo.png'),
-				onPress: () => console.log("onPress btn google"),
-			},
-			{
-				title: 'yahoo',
-				imgUrl: require('../../../assets/img/yahoo.png'),
-				onPress: () => console.log("onPress btn yahoo"),
-			},
-			{
-				title: 'outlook',
-				imgUrl: require('../../../assets/img/outlook.png'),
-				onPress: () => console.log("onPress btn outlook"),
-			},
-			{
-				title: 'aol',
-				imgUrl: require('../../../assets/img/aol-mail.jpg'),
-				onPress: () => console.log("onPress btn aol"),
-			},
-			{
-				title: 'hotmail',
-				imgUrl: require('../../../assets/img/hot-mail.jpg'),
-				onPress: () => console.log("onPress btn hotmail"),
-			},
-			{
-				title: 'mail.ru',
-				imgUrl: require('../../../assets/img/mailru_logo.jpg'),
-				onPress: () => console.log("onPress btn mail.ru"),
-			},
-			{
-				title: 'yandex',
-				imgUrl: require('../../../assets/img/yandex-promotion-sites.jpg'),
-				onPress: () => console.log("onPress btn yandex"),
-			},
-		];
+		const { isShowServicesModal, isShowErrorModal, isCollapsed, propsModal } = this.state;
 
 		return (
-				<KeyboardAvoidingView
-					style={styles.registrationWrapper}
-				  behavior="position"
-				>
+			<KeyboardAvoidingView
+				style={styles.registrationWrapper}
+				behavior="position"
+			>
 					<Logotip/>
 					<Title text={'New to Lingviny?'}/>
 					<Description
@@ -208,11 +147,11 @@ export default class Registration extends Component {
 								placeholder={'Enter an Email'}
 								keyboardType="email-address"
 							/>
-						<Collapsible collapsed={this.state.isCollapsed}>
+						<Collapsible collapsed={isCollapsed}>
 							{
-								this.state.selectedDomainIage ?
+								Object.keys(this.props.auth.selectedDomain).length > 0 ?
 									<Buttons.WithImage
-										img={this.state.selectedDomainIage}
+										img={this.props.auth.selectedDomain.image}
 										color={'transparent'}
 									/> :
 									<Buttons.Rounded
@@ -242,14 +181,26 @@ export default class Registration extends Component {
 						onPressText={() => navigate('SignIn')}
 					/>
 					<Modals.Services
-						modalVisible={this.state.isShowServicesModal}
+						modalVisible={isShowServicesModal}
 						hideModal={() => this.toggleServicesModal(false)}
-						servicesList={servicesList}
+						servicesList={APP_CONFIG.EMAIL_DOMAINS}
+						onPressItem={(selected) => {
+							this.props.auth.selectedDomain = selected;
+							this.toggleServicesModal(false);
+						}}
 						onPressPolicy={this.handleClick.bind(this)}
 						onPressOther={() => {
 							this.toggleServicesModal(false);
 							navigate('AddMail');
 						}}
+					/>
+					<Modals.Notify
+						show={isShowErrorModal}
+						type={'error'}
+						title={'Unable to Signup'}
+						description={propsModal.description || 'Something went wrong.'}
+						btnLabel={'Try again'}
+						hideModal={() => this.setState({isShowErrorModal: false})}
 					/>
 				</KeyboardAvoidingView>
 		);

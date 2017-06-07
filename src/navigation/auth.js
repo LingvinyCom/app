@@ -6,6 +6,7 @@ import ForgotPassword from './../containers/auth/ForgotPassword/';
 import Congratulations from './../containers/auth/Congratulations';
 import Sidebar from './../containers/Sidebar';
 import Inbox from './../containers/Inbox';
+import ChangePassword from './../containers/ChangePassword';
 
 /**
  *  @TODO: Place navigationOptions header:null global.
@@ -17,4 +18,5 @@ export default {
 	SignIn: {screen: SignIn},
 	ForgotPassword: {screen: ForgotPassword},
 	Sidebar: {screen: Sidebar},
+	ChangePassword: {screen: ChangePassword},
 };

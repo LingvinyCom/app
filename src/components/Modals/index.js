@@ -1,7 +1,7 @@
-import Error from './Error/';
+import Notify from './Notify/';
 import Services from './Services/';
 
 export {
-	Error,
+	Notify,
 	Services,
 };

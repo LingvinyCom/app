@@ -16,7 +16,7 @@ import COLORS from '../../../config/colors.config';
 import styles from './styles';
 
 const ServicesModal = (props: Object) => {
-	const { modalVisible, hideModal, servicesList, onPressPolicy, onPressOther } = props;
+	const { modalVisible, hideModal, servicesList, onPressItem, onPressPolicy, onPressOther } = props;
 	return (
 		<Modal
 			animationType={"fade"}
@@ -44,8 +44,8 @@ const ServicesModal = (props: Object) => {
 								servicesList.map((item, index) =>
 									<ServicesItem
 										key={index}
-										imgUrl={item.imgUrl}
-										onPress={item.onPress}
+										image={item.image}
+										onPress={() => onPressItem(item)}
 									/>
 								)
 							}

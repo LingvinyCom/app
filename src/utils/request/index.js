@@ -27,3 +27,14 @@ export function login(email: string, password: string): Promise<> {
 export function resetPassword(email: string): Promise<> {
 	return postRequest('api/auth/password_reset', { email });
 }
+
+/**
+ * Signup to reate account request
+ *
+ * @param {Object} payload - payload
+ *
+ * @returns {Promise}
+ */
+export function signUp(payload: Object): Promise<> {
+	return postRequest('api/client/create', payload);
+}

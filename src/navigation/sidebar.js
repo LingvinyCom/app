@@ -4,8 +4,8 @@ import {ScrollView} from 'react-native';
 
 import Inbox from './../containers/Inbox';
 import Sent from './../containers/Sent';
-import BalanceBlock from './../containers/Sidebar/components/balanceBlock';
-import Account from './../containers/Sidebar/components/account';
+import BalanceBlock from './../containers/Sidebar/components/BalanceBlock';
+import Account from './../containers/Sidebar/components/Account';
 import TranslatedItems from './../containers/TranslatedItems';
 import Archive from './../containers/Archive';
 import Spam from './../containers/Spam';

@@ -32,9 +32,10 @@ const styles = {
 		marginBottom: 15,
 	},
 	wrapperBtn: {
-		paddingVertical: 10,
+		marginHorizontal: 30,
+		paddingVertical: 13,
 		borderBottomWidth: 1,
-		borderColor: COLORS.blackWhite,
+		borderColor: COLORS.lightGray2,
 		justifyContent: 'center',
 		alignItems: 'center',
 	},

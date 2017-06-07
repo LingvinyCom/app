@@ -4,8 +4,8 @@ import React, { Component } from 'react';
 import { Image, ScrollView, View } from 'react-native';
 
 import RouterHeader from '../../components/Inbox/routerHeader';
-import EmailAccountBlock from './components/emailAccountBlock';
-import AccountInfoBlock from './components/accountInfoBlock';
+import EmailAccountBlock from './components/EmailAccountBlock';
+import AccountInfoBlock from './components/AccountInfoBlock';
 
 import styles from './styles';
 

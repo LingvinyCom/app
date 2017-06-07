@@ -38,7 +38,6 @@ export default class SignIn extends Component {
 				this.props.auth.uid = data.lingviny_token;
 				this.props.navigation.navigate('Inbox');
 			}).catch(() => {
-			this.props.auth.requestError = 'Error';
 			this.setState({isShowErrorModal: true});
 		}).finally(() => {
 			this.props.app.showLoader = false;
@@ -47,7 +46,6 @@ export default class SignIn extends Component {
 
 	render() {
 		const {navigate} = this.props.navigation;
-
 		return (
 			<KeyboardAvoidingView
 				style={styles.signinWrapper}
@@ -67,12 +65,13 @@ export default class SignIn extends Component {
 					clickableText={'Sign Up'}
 					onPressText={() => navigate('Registration')}
 				/>
-				<Modals.Error
-					modalVisible={this.state.isShowErrorModal}
-					hideModal={ () => this.setState({isShowErrorModal: false}) }
-					titleError={'Unable to Login'}
-					descriptionError={"Incorrect Username or Password"}
-					textBtn={'Try again'}
+				<Modals.Notify
+					show={this.state.isShowErrorModal}
+					type={'error'}
+					title={'Unable to Login'}
+					description={'Incorrect Username or Password'}
+					btnLabel={'Try again'}
+					hideModal={() => this.setState({isShowErrorModal: false})}
 				/>
 			</KeyboardAvoidingView>
 		);

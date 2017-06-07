@@ -7,14 +7,15 @@ class AuthStore {
   @observable email: string = 'tech@lingviny.com';
   @observable password: string = 'secretstring';
 
-	@observable hostName: string = '';
+  @observable selectedDomain: Object = {};
+
+  @observable hostName: string = '';
 	@observable userName: string = '';
 	@observable hostPassword: string = '';
 	@observable useSsl: boolean = false;
 	@observable serverPort: string = '';
 
   @observable uid: string = '';
-  @observable requestError: string = '';
 
   @action setValue(params: Object): void {
     Object.assign(this, params);

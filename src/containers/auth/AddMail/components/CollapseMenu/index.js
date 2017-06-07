@@ -74,7 +74,7 @@ export default class CollapseMenu extends Component {
 						/>
 						<Switch
 							label={'USE SSL'}
-							onPress={(a) => console.log('onPress Switch', a)}
+							onPress={(value: boolean) => this.props.auth.setValue({ 'useSsl': value})}
 						/>
 						<Input
 							label={'AUTHENTICATION'}
