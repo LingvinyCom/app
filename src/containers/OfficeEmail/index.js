@@ -29,6 +29,6 @@ export default class OfficeEmail extends Component {
 					</Text>
 				</View>
 			</View>
-		)
+		);
 	}
 }

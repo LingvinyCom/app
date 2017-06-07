@@ -29,6 +29,6 @@ export default class BillingPayments extends Component {
 					</Text>
 				</View>
 			</View>
-		)
+		);
 	}
 }

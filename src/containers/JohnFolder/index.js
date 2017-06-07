@@ -29,6 +29,6 @@ export default class JohnFolder extends Component {
 					</Text>
 				</View>
 			</View>
-		)
+		);
 	}
 }

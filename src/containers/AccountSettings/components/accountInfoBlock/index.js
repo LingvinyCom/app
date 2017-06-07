@@ -42,22 +42,22 @@ export default class AccountInfoBlock extends Component {
 						actionsList.map((item, index) =>
 						<TouchableOpacity
 							key={index}
-						  onPress={item.onPress}
-						  style={index === 0 ? [styles.actionItem, {borderTopWidth: 1}] : styles.actionItem}
+							onPress={item.onPress}
+							style={index === 0 ? [styles.actionItem, {borderTopWidth: 1}] : styles.actionItem}
 						>
 							<Text style={styles.actionTitle}>
 								{item.title}
 							</Text>
 							<Icon
 								name="keyboard-arrow-right"
-							  size={30}
-							  color={COLORS.btnBorderColor}
+								size={30}
+								color={COLORS.btnBorderColor}
 							/>
 						</TouchableOpacity>
 						)
 					}
 				</View>
 			</View>
-		)
+		);
 	}
 }

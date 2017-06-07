@@ -13,8 +13,6 @@ import rows from './data';
 import EmptyInbox from '../../components/Inbox/emptyInbox';
 
 import styles from './styles';
-import COLORS from '../../config/colors.config';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export default class Inbox extends Component {
 	state: {

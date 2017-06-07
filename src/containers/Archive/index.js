@@ -29,6 +29,6 @@ export default class Archive extends Component {
 					</Text>
 				</View>
 			</View>
-		)
+		);
 	}
 }

@@ -29,6 +29,6 @@ export default class Drafts extends Component {
 					</Text>
 				</View>
 			</View>
-		)
+		);
 	}
 }

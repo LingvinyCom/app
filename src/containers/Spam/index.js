@@ -29,6 +29,6 @@ export default class Spam extends Component {
 					</Text>
 				</View>
 			</View>
-		)
+		);
 	}
 }

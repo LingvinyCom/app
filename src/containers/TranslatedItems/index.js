@@ -29,6 +29,6 @@ export default class TranslatedItems extends Component {
 					</Text>
 				</View>
 			</View>
-		)
+		);
 	}
 }

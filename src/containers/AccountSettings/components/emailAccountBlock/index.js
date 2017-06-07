@@ -7,7 +7,16 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import styles from './styles';
 import COLORS from '../../../../config/colors.config';
 
+type Props = {
+	isEmailActive: string,
+	isEmailActiveIndex: boolean,
+};
+
 export default class EmailAccountBlock extends Component {
+	state: {
+		isEmailActive: string,
+		isEmailActiveIndex: boolean,
+	};
 	constructor(props:Props) {
 		super(props);
 		this.state = {
