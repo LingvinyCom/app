@@ -9,6 +9,7 @@ import Inbox from './../containers/Inbox';
 import ChangePassword from './../containers/ChangePassword';
 import OrdersHistory from './../containers/OrdersHistory';
 import PaymentsHistory from './../containers/PaymentsHistory';
+import AutoTranslation from './../containers/AutoTranslation';
 
 /**
  *  @TODO: Place navigationOptions header:null global.
@@ -23,4 +24,5 @@ export default {
 	ChangePassword: {screen: ChangePassword},
 	OrdersHistory: {screen: OrdersHistory},
 	PaymentsHistory: {screen: PaymentsHistory},
+	AutoTranslation: {screen: AutoTranslation},
 };

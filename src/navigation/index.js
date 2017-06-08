@@ -30,7 +30,8 @@ class Navigator extends Component {
 			// initialRouteName: 'Sidebar',
 			// initialRouteName: 'ChangePasswosrd',
 			// initialRouteName: 'OrdersHistory',
-			 initialRouteName: 'PaymentsHistory',
+			// initialRouteName: 'PaymentsHistory',
+			 initialRouteName: 'AutoTranslation',
 		};
 	}
 
