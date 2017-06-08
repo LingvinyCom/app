@@ -20,7 +20,7 @@ class Navigator extends Component {
 				header: null,
 			},
 
-			initialRouteName: 'FirstLaunch',
+			// initialRouteName: 'FirstLaunch',
 			//  initialRouteName: 'Inbox',
 			// initialRouteName: 'Registration',
 			// initialRouteName: 'SignIn',
@@ -29,11 +29,13 @@ class Navigator extends Component {
 			// initialRouteName: 'ForgotPassword',
 			// initialRouteName: 'Sidebar',
 			// initialRouteName: 'ChangePasswosrd',
+			// initialRouteName: 'OrdersHistory',
+			 initialRouteName: 'PaymentsHistory',
 		};
 	}
 
 	initRouter() {
-		//return DrawerNavigator({...Sidebar});
+		// return DrawerNavigator({...Sidebar});
 		return StackNavigator({...Auth, ...Main}, this.setNavigatorConfig());
 	}
 
