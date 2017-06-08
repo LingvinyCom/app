@@ -47,7 +47,7 @@ export default class AccountSettings extends Component {
 			},
 			{
 				title: "Auto Translation",
-				onPress: () => console.log("navigate to this Item"),
+				onPress: () => navigate('AutoTranslation'),
 			},
 			{
 				title: "Feedback",

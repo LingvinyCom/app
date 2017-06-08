@@ -20,7 +20,7 @@ class Navigator extends Component {
 			navigationOptions: {
 				header: null,
 			},
-			// initialRouteName: 'FirstLaunch',
+			initialRouteName: 'FirstLaunch',
 			// initialRouteName: 'Inbox',
 			// initialRouteName: 'Registration',
 			// initialRouteName: 'SignIn',
@@ -30,7 +30,8 @@ class Navigator extends Component {
 			// initialRouteName: 'Sidebar',
 			// initialRouteName: 'ChangePasswosrd',
 			// initialRouteName: 'OrdersHistory',
-			//  initialRouteName: 'PaymentsHistory',
+			// initialRouteName: 'PaymentsHistory',
+			//  initialRouteName: 'AutoTranslation',
 		};
 	}
 
