@@ -9,32 +9,22 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export default class AccountInfoBlock extends Component {
 	render() {
-		const {actionsList} = this.props;
+		const { actionsList, navigate } = this.props;
 		return (
 			<View style={styles.container}>
 				<View style={styles.titleWrapper}>
-					<Text style={styles.title}>
-						Account Info
-					</Text>
+					<Text style={styles.title}>Account Info</Text>
 				</View>
 				<View style={styles.emailDescription}>
 					<View style={styles.emailDetails}>
-						<Text style={styles.emailLabel}>
-							EMAIL
-						</Text>
-						<Text style={styles.emailName}>
-							johnsmith@gmail.com
-						</Text>
+						<Text style={styles.emailLabel}>EMAIL</Text>
+						<Text style={styles.emailName}>johnsmith@gmail.com</Text>
 					</View>
 					<TouchableOpacity
 						style={styles.btnWrapper}
-						onPress={() => console.log("change password btn was pressed")}
+						onPress={() => navigate('ChangePassword')}
 					>
-						<Text
-							style={styles.btnText}
-						>
-							Change Password
-						</Text>
+						<Text style={styles.btnText}>Change Password</Text>
 					</TouchableOpacity>
 				</View>
 				<View style={styles.accountActions}>
@@ -45,9 +35,7 @@ export default class AccountInfoBlock extends Component {
 							onPress={item.onPress}
 							style={index === 0 ? [styles.actionItem, {borderTopWidth: 1}] : styles.actionItem}
 						>
-							<Text style={styles.actionTitle}>
-								{item.title}
-							</Text>
+							<Text style={styles.actionTitle}>{item.title}</Text>
 							<Icon
 								name="keyboard-arrow-right"
 								size={30}

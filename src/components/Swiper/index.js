@@ -12,16 +12,14 @@ import styles from './styles';
 
 
 const HeightDevice = Dimensions.get('window').height;
+const swiperProps = {
+	loop: false,
+	height: HeightDevice - 100,
+	dot: <View style={styles.swiperDot}/>,
+	activeDot: <View style={styles.swiperActiveDot}/>,
+};
 
 export default class SwiperSlider extends Component {
-	// constructor(props: Object): void {
-	// 	super(props);
-	// }
-
-	// props = {}
-
-	// static defaultProps = {}
-
 	render() {
 		const {slides} = this.props;
 		return (
@@ -29,13 +27,9 @@ export default class SwiperSlider extends Component {
 				<Swiper {...swiperProps}>
 					{slides.map((slide, idx) => (
 						<View style={styles.slide} key={idx}>
-							<Text style={styles.onboardingTitle}>
-								{slide.title}
-							</Text>
+							<Text style={styles.onboardingTitle}>{slide.title}</Text>
 							<View style={styles.onboardingImageWraper}>
-								<Image
-									source={slide.imgUrl}
-								/>
+								<Image source={slide.imgUrl}/>
 							</View>
 							<Text style={styles.onboardingDescription}>
 								{slide.description}
@@ -48,10 +42,3 @@ export default class SwiperSlider extends Component {
 	}
 }
 
-
-const swiperProps = {
-	loop: false,
-	height: HeightDevice - 100,
-	dot: <View style={styles.swiperDot}/>,
-	activeDot: <View style={styles.swiperActiveDot}/>,
-};

@@ -16,6 +16,9 @@ class AuthStore {
 	@observable serverPort: string = '';
 
   @observable userAccount: Object = {};
+  @observable engine = [];
+  // @observable engine: Array<Object> = [];
+
 
   @action setValue(params: Object): void {
     Object.assign(this, params);

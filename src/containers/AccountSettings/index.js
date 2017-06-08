@@ -53,11 +53,12 @@ export default class AccountSettings extends Component {
 				onPress: () => console.log("navigate to this Item"),
 			},
 		];
+		const { navigate } = this.props.navigation;
 		return (
 			<ScrollView>
 				<View style={styles.pageContainer}>
 					<RouterHeader
-						onPressLeftIcon={ () => this.props.navigation.navigate('DrawerOpen')}
+						onPressLeftIcon={() => navigate('DrawerOpen')}
 						titlePage={"Account Settings"}
 						leftIconUrl={require('../../assets/img/menu-icon.png')}
 						isShowRightIcon={false}
@@ -68,6 +69,7 @@ export default class AccountSettings extends Component {
 							onPressAddEmailAccount={() => console.log("add email account")}
 						/>
 						<AccountInfoBlock
+							navigate={navigate}
 							actionsList={ActionsList}
 						/>
 					</View>

@@ -60,6 +60,7 @@ export default class Sent extends Component {
 		),
 	};
 	render() {
+		// return null;
 		return (
 			<View style={styles.mainContainer}>
 				<View style={styles.header}>

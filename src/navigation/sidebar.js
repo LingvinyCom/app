@@ -17,18 +17,18 @@ import AccountSettings from './../containers/AccountSettings';
 
 import COLORS from './../config/colors.config';
 
-const Sidebar = DrawerNavigator(
+export default DrawerNavigator(
 	{
-		Inbox: {screen: Inbox},
-		Sent: {screen: Sent},
-		TranslatedItems: {screen: TranslatedItems},
-		Archive: {screen: Archive},
-		Spam: {screen: Spam},
-		Drafts: {screen: Drafts},
-		JohnFolder: {screen: JohnFolder},
-		OfficeEmail: {screen: OfficeEmail},
-		BillingPayments: {screen: BillingPayments},
-		AccountSettings: {screen: AccountSettings},
+		Inbox: { name: 'Inbox', screen: Inbox },
+		Sent: { name: 'Sent', screen: Sent },
+		TranslatedItems: { name: 'TranslatedItems', screen: TranslatedItems },
+		Archive: { name: 'Archive', screen: Archive },
+		Spam: { name: 'Spam', screen: Spam },
+		Drafts: { name: 'Drafts', screen: Drafts },
+		JohnFolder: { name: 'JohnFolder', screen: JohnFolder },
+		OfficeEmail: { name: 'OfficeEmail', screen: OfficeEmail },
+		BillingPayments: { name: 'BillingPayments', screen: BillingPayments },
+		AccountSettings: { name: 'AccountSettings', screen: AccountSettings },
 	},
 	{
 		initialRouteName: 'Inbox',
@@ -40,7 +40,7 @@ const Sidebar = DrawerNavigator(
 				<ScrollView>
 					<BalanceBlock
 						balanceValue={250}
-						onPress={ () => console.log("onPress add Btn balance") }
+						onPress={() => console.log('BalanceBlock')}
 					/>
 					<Account
 						avatarText={"TS"}
@@ -63,16 +63,6 @@ const Sidebar = DrawerNavigator(
 				fontSize: 14,
 				fontWeight: 'normal',
 			},
-		}
+		},
 	});
-
-export default {
-	Sidebar: {
-		screen: Sidebar,
-		navigationOptions: {
-			header: null
-		}
-	}
-};
-
 

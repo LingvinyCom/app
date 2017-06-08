@@ -60,7 +60,7 @@ export default class Notifications extends Component {
 			<View style={styles.mainContainer}>
 				<View style={styles.header}>
 					<RouterHeader
-						onPressLeftIcon={ () => this.props.navigation.navigate('Inbox')}
+						onPressLeftIcon={() => this.props.navigation.goBack()}
 						onPressRightIcon={ () => this.props.navigation.navigate('Notifications') }
 						titlePage={"Notifications"}
 						leftIconUrl={require('../../assets/img/arrow-left-icon.png')}

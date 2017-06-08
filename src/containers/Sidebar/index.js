@@ -39,7 +39,8 @@ export default class Sidebar extends Component {
 			{
 				iconClass: "inbox",
 				title: "Inbox",
-				onPress: () => this.props.navigation.navigate('Inbox'),
+				// onPress: () => this.props.navigation.navigate('Inbox'),
+				onPress: () => console.log(" navigate to Inbox "),
 			},
 			{
 				iconClass: "send",
@@ -91,7 +92,8 @@ export default class Sidebar extends Component {
 				onPress: () => console.log(" navigate to Sent "),
 			},
 		];
-		return (
+		return null;
+		/*return (
 			<View style={styles.mainContainer}>
 				<View style={styles.sidebarWrapper}>
 					<ScrollView>
@@ -143,6 +145,6 @@ export default class Sidebar extends Component {
 					</ScrollView>
 				</View>
 			</View>
-		);
+		);*/
 	}
 }

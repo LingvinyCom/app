@@ -1,7 +1,7 @@
 // @flow
 
 
-import { postRequest } from './helperFunctions';
+import { postRequest, getRequest } from './helperFunctions';
 
 
 /**
@@ -49,4 +49,16 @@ export function signUp(payload: Object): Promise<> {
  */
 export function logout(payload: Object): Promise<> {
 	return postRequest('auth/logout', payload);
+}
+
+
+/**
+ * Get Engine
+ *
+ * @param {Object} payload - payload
+ *
+ * @returns {Promise}
+ */
+export function getEngine(): Promise<> {
+	return getRequest('engine');
 }

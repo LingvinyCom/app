@@ -1,5 +1,6 @@
-import React, {Component} from 'react';
-import {StackNavigator, DrawerNavigator } from 'react-navigation';
+import React, { Component } from 'react';
+import { inject } from 'mobx-react';
+import { StackNavigator } from 'react-navigation';
 import SplashScreen from 'react-native-splash-screen';
 
 import Auth from './auth';
@@ -8,20 +9,19 @@ import Sidebar from './sidebar';
 
 import styles from './styles';
 
+@inject((allStores) => {
+	return {
+		auth: allStores.auth,
+	};
+})
 class Navigator extends Component {
 	setNavigatorConfig() {
-		// if (this.props.auth.isHydrated && this.props.auth.userAccount.uid) {
-		//     return {
-		//     initialRouteName: 'MainTabs'
-		//     };
-		// }
 		return {
 			navigationOptions: {
 				header: null,
 			},
-
 			initialRouteName: 'FirstLaunch',
-			//  initialRouteName: 'Inbox',
+			// initialRouteName: 'Inbox',
 			// initialRouteName: 'Registration',
 			// initialRouteName: 'SignIn',
 			// initialRouteName: 'Login',
@@ -33,8 +33,16 @@ class Navigator extends Component {
 	}
 
 	initRouter() {
-		//return DrawerNavigator({...Sidebar});
-		return StackNavigator({...Auth, ...Main}, this.setNavigatorConfig());
+		const RootNavigator = StackNavigator({
+			Drawer: {
+				screen: Sidebar,
+			},
+			...Auth,
+			...Main,
+			},
+			this.setNavigatorConfig(),
+		);
+		return RootNavigator;
 	}
 
 	componentDidMount() {

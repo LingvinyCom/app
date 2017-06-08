@@ -18,7 +18,7 @@ export default class BillingPayments extends Component {
 		return (
 			<View style={styles.pageContainer}>
 				<RouterHeader
-					onPressLeftIcon={ () => this.props.navigation.navigate('Inbox')}
+					onPressLeftIcon={() => this.props.navigation.goBack()}
 					titlePage={"OfficeEmail"}
 					leftIconUrl={require('../../assets/img/arrow-left-icon.png')}
 					isShowRightIcon={false}

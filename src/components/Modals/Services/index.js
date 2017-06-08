@@ -12,11 +12,13 @@ import {
 import ServicesItem from './components/ServicesItem/';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
+import APP_CONFIG from '../../../config/app.config';
 import COLORS from '../../../config/colors.config';
 import styles from './styles';
 
 const ServicesModal = (props: Object) => {
 	const { modalVisible, hideModal, servicesList, onPressItem, onPressPolicy, onPressOther } = props;
+
 	return (
 		<Modal
 			animationType={"fade"}
@@ -44,7 +46,7 @@ const ServicesModal = (props: Object) => {
 								servicesList.map((item, index) =>
 									<ServicesItem
 										key={index}
-										image={item.image}
+										image={APP_CONFIG.EMAIL_ENGINE_IMAGES[item.title]}
 										onPress={() => onPressItem(item)}
 									/>
 								)

@@ -10,7 +10,7 @@ import Form from '../../../components/Auth/Form/';
 import Footer from '../../../components/Auth/Footer/';
 import * as Modals from '../../../components/Modals/';
 
-import {login} from '../../../utils/request/';
+import { login } from '../../../utils/request/';
 
 import styles from './styles';
 
@@ -36,12 +36,12 @@ export default class SignIn extends Component {
 		login(this.props.auth.email, this.props.auth.password)
 			.then((data) => {
 				this.props.auth.userAccount.uid = data.lingviny_token;
-				this.props.navigation.navigate('Inbox');
+				this.props.navigation.navigate('Drawer');
 			}).catch((error) => {
 			this.setState({isShowErrorModal: true});
-		}).finally(() => {
-			this.props.app.showLoader = false;
-		});
+			}).finally(() => {
+				this.props.app.showLoader = false;
+			});
 	}
 
 	render() {

@@ -30,7 +30,7 @@ export default class ChangePassword extends Component {
 				<RouterHeader
 					leftIconUrl={require('../../assets/img/arrow-left-icon.png')}
 					titlePage={"Change Password"}
-					onPressLeftIcon={() => console.log("navigate to Inbox")}
+					onPressLeftIcon={() => this.props.navigation.goBack()}
 					isShowRightIcon={false}
 				/>
 				<View style={styles.pageContent}>

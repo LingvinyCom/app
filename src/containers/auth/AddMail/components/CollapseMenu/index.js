@@ -77,6 +77,7 @@ export default class CollapseMenu extends Component {
 							onPress={(value: boolean) => this.props.auth.setValue({'useSsl': value})}
 						/>
 						<Input
+							keyboardType={'number-pad'}
 							label={'SERVER PORT'}
 							value={serverPort}
 							placeholder={'Server Port'}

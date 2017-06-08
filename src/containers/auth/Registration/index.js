@@ -18,7 +18,7 @@ import APP_CONFIG from '../../../config/app.config';
 import * as Modals from '../../../components/Modals/';
 import * as Buttons from './../../../components/Buttons/';
 
-import { signUp } from '../../../utils/request/';
+import { signUp, getEngine } from '../../../utils/request/';
 import { checkFields } from '../../../utils/commonFunctions';
 
 import styles from './styles';
@@ -54,12 +54,22 @@ export default class Registration extends Component {
 		this.detectEmailDomain(this.props.auth.email);
 	}
 
+	componentDidMount() {
+		getEngine()
+			.then((data) => {
+				this.props.auth.engine = data;
+			}).catch((error) => {
+					this.setState({ isShowErrorModal: true, propsModal: {} });
+			}).finally(() => {
+			});
+	}
+
 	detectEmailDomain(email: string) {
 		const domain = email.substring(email.lastIndexOf("@") + 1);
 		const isEmailValid = email && PATTERN_CONFIG.email.test(email);
 
 		if (isEmailValid && domain) {
-			const existed = APP_CONFIG.EMAIL_DOMAINS.find((d) => d.domain === domain);
+			const existed = this.props.auth.engine.find((d) => d.domain === domain);
 			if (existed) {
 				this.props.auth.selectedDomain = existed;
 			} else {
@@ -79,25 +89,25 @@ export default class Registration extends Component {
 
 	registration() {
 		const { email, password, selectedDomain } = this.props.auth;
-		const checked = checkFields([email, password, selectedDomain.engine_id]);
+		const checked = checkFields([email, password, selectedDomain.id]);
 
 		if (!checked.error) {
 			this.props.app.showLoader = true;
 			const payload = {
 				email,
 				password,
-				engine_id: selectedDomain ? selectedDomain.engine_id : null,
+				engine_id: selectedDomain ? selectedDomain.id : null,
 			};
 
 			signUp(payload)
-			.then((data) => {
-				this.props.auth.userAccount.uid = data.lingviny_token;
-				this.props.navigation.navigate('Congratulations');
-			}).catch((error) => {
-				this.setState({ isShowErrorModal: true, propsModal: {} });
-			}).finally(() => {
-				this.props.app.showLoader = false;
-			});
+				.then((data) => {
+					this.props.auth.userAccount.uid = data.lingviny_token;
+					this.props.navigation.navigate('Congratulations');
+				}).catch((error) => {
+					this.setState({ isShowErrorModal: true, propsModal: {} });
+				}).finally(() => {
+					this.props.app.showLoader = false;
+				});
 		} else {
 			this.setState({
 				isShowErrorModal: true,
@@ -151,7 +161,7 @@ export default class Registration extends Component {
 							{
 								Object.keys(this.props.auth.selectedDomain).length > 0 ?
 									<Buttons.WithImage
-										img={this.props.auth.selectedDomain.image}
+										img={APP_CONFIG.EMAIL_ENGINE_IMAGES[this.props.auth.selectedDomain.title]}
 										onPress={() => this.toggleServicesModal(true)}
 										color={'transparent'}
 									/> :
@@ -184,7 +194,7 @@ export default class Registration extends Component {
 					<Modals.Services
 						modalVisible={isShowServicesModal}
 						hideModal={() => this.toggleServicesModal(false)}
-						servicesList={APP_CONFIG.EMAIL_DOMAINS}
+						servicesList={this.props.auth.engine}
 						onPressItem={(selected) => {
 							this.props.auth.selectedDomain = selected;
 							this.toggleServicesModal(false);
