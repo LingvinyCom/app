@@ -12,7 +12,7 @@ import COLORS from '../../config/colors.config';
 import styles from './styles';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-@inject((allStores) => {return {auth: allStores.auth}})
+@inject((allStores) => {return {auth: allStores.auth};})
 export default class Signature extends Component {
 	constructor(props) {
 		super(props);
