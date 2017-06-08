@@ -26,6 +26,7 @@ export default class CollapseMenu extends Component {
 
 		this.state = {
 			isCollapsed: true,
+			switchValue: false,
 		};
 	}
 
@@ -72,10 +73,13 @@ export default class CollapseMenu extends Component {
 							placeholder={'Password'}
 							onChangeText={(text: string) => this.props.auth.setValue({'hostPassword': text})}
 						/>
-						<Switch
-							label={'USE SSL'}
-							onPress={(value: boolean) => this.props.auth.setValue({'useSsl': value})}
-						/>
+						<View style={styles.switchWrapper}>
+							<Switch
+								switchValue={this.state.switchValue}
+								label={'USE SSL'}
+								onPress={(switchValue: boolean) => this.props.auth.setValue({'useSsl': switchValue})}
+							/>
+						</View>
 						<Input
 							label={'SERVER PORT'}
 							value={serverPort}

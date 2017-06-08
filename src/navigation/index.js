@@ -22,7 +22,7 @@ class Navigator extends Component {
 
 			// initialRouteName: 'FirstLaunch',
 			//  initialRouteName: 'Inbox',
-			// initialRouteName: 'Registration',
+			 initialRouteName: 'Registration',
 			// initialRouteName: 'SignIn',
 			// initialRouteName: 'Login',
 			// initialRouteName: 'AddMail',
@@ -31,7 +31,8 @@ class Navigator extends Component {
 			// initialRouteName: 'ChangePasswosrd',
 			// initialRouteName: 'OrdersHistory',
 			// initialRouteName: 'PaymentsHistory',
-			 initialRouteName: 'AutoTranslation',
+			// initialRouteName: 'AutoTranslation',
+			 // initialRouteName: 'Signature',
 		};
 	}
 

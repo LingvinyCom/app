@@ -42,8 +42,6 @@ const styles = {
 		flexDirection: 'row',
 		justifyContent: 'space-between',
 		alignItems: 'center',
-		marginBottom: 35,
-		marginHorizontal: 40,
 	},
 	switchLabel: {
 		fontSize: 14,
