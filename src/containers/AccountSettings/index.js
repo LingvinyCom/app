@@ -17,6 +17,7 @@ export default class AccountSettings extends Component {
 		),
 	};
 	render() {
+		const { navigate } = this.props.navigation;
 		const EmailsList = [
 			{
 				isActiveEmailAccount: true,
@@ -34,11 +35,11 @@ export default class AccountSettings extends Component {
 		const ActionsList = [
 			{
 				title: "Orders History",
-				onPress: () => console.log("navigate to this Item"),
+				onPress: () => navigate('OrdersHistory'),
 			},
 			{
 				title: "Payments History",
-				onPress: () => console.log("navigate to this Item"),
+				onPress: () => navigate('PaymentsHistory'),
 			},
 			{
 				title: "Signature",
@@ -53,7 +54,6 @@ export default class AccountSettings extends Component {
 				onPress: () => console.log("navigate to this Item"),
 			},
 		];
-		const { navigate } = this.props.navigation;
 		return (
 			<ScrollView>
 				<View style={styles.pageContainer}>
