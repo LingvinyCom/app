@@ -68,6 +68,6 @@ export default class PaymentsHistory extends Component {
 					</ScrollView>
 				</View>
 			</View>
-		)
+		);
 	}
 }

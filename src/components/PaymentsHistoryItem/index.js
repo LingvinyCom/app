@@ -5,7 +5,7 @@ import { View, Text } from 'react-native';
 
 import styles from './styles';
 
-export default PaymentsHistoryItem = props => (
+const PaymentsHistoryItem = props => (
 	<View style={styles.wrapper}>
 		<View style={styles.header}>
 			<Text style={styles.title}>
@@ -25,3 +25,5 @@ export default PaymentsHistoryItem = props => (
 		</View>
 	</View>
 );
+
+export default PaymentsHistoryItem;

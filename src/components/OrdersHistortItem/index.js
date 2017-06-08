@@ -5,7 +5,7 @@ import { View, Text } from 'react-native';
 
 import styles from './styles';
 
-export default OrdersHistoryItem = props => (
+const OrdersHistoryItem = props => (
 	<View style={styles.wrapper}>
 		<View style={styles.header}>
 			<Text style={styles.title}>
@@ -32,3 +32,5 @@ export default OrdersHistoryItem = props => (
 		</View>
 	</View>
 );
+
+export default OrdersHistoryItem;

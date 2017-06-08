@@ -74,6 +74,6 @@ export default class OrdersHistory extends Component {
 					</ScrollView>
 				</View>
 			</View>
-		)
+		);
 	}
 }
