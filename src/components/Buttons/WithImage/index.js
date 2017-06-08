@@ -2,7 +2,7 @@
 
 import React, {Component} from 'react';
 import {
-	View,
+	TouchableOpacity,
 	Image,
 } from 'react-native';
 
@@ -14,16 +14,17 @@ export default class WithImageButton extends Component {
 		const styleButton = this.props.color === 'transparent' ? [styles.button, styles.transparentBtn] : styles.button;
 
 		return (
-			<View
+			<TouchableOpacity
 				style={styleButton}
 				color={this.props.color}
+				onPress={this.props.onPress}
 			>
 				<Image
 					style={styles.img}
 					source={this.props.img}
-				  resizeMode="contain"
+					resizeMode="contain"
 				/>
-			</View>
+			</TouchableOpacity>
 		);
 	}
 }

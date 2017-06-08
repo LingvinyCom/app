@@ -2,19 +2,19 @@
 
 import React, {Component} from 'react';
 import {View, ScrollView, ListView, Image} from 'react-native';
-
-import MessegesBlockInfo from './components/messagesInfoBlock';
-import SearchBlock from '../../components/Inbox/searchBlock';
-import RouterHeader from '../../components/Inbox/routerHeader';
-import InboxItem from '../../components/Inbox/inboxItem';
-import NewMessageBtn from '../../components/Inbox/newMessageBtn';
 import Swipeout from 'react-native-swipeout';
+import MessegesBlockInfo from './components/MessagesInfoBlock/';
+import SearchBlock from '../../components/Inbox/SearchBlock/';
+import RouterHeader from '../../components/Inbox/RouterHeader/';
+import InboxItem from '../../components/Inbox/InboxItem/';
+import NewMessageBtn from '../../components/Inbox/NewMessageBtn/';
+import EmptyInbox from '../../components/Inbox/EmptyInbox/';
+import MainDropdownMenu from './components/MainDropdownMenu/';
+import MoveToDropdown from './components/MoveToDropdown/';
+
 import rows from './data';
-import EmptyInbox from '../../components/Inbox/emptyInbox';
 
 import styles from './styles';
-import COLORS from '../../config/colors.config';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export default class Inbox extends Component {
 	state: {
@@ -26,6 +26,9 @@ export default class Inbox extends Component {
 		let ds = new ListView.DataSource({rowHasChanged: (row1, row2) => true});
 		this.state = {
 			dataSource: ds.cloneWithRows(rows),
+			isMainDropdownVisible: false,
+			isMoveToDropdownVisible: false,
+			isVisibleMessageInfoBlock: true,
 		};
 	}
 
@@ -57,11 +60,9 @@ export default class Inbox extends Component {
 	}
 	static navigationOptions = {
 		drawerLabel: 'Inbox',
-		drawerIcon: ({ tintColor }) => (
-			<Icon
-				name="inbox"
-				size={20}
-				color={COLORS.iconGray}
+		drawerIcon: () => (
+			<Image
+				source={require('../../assets/img/inbox-item.png')}
 			/>
 		),
 	};
@@ -71,10 +72,9 @@ export default class Inbox extends Component {
 				<View style={styles.header}>
 					<RouterHeader
 						onPressLeftIcon={ () => this.props.navigation.navigate('DrawerOpen')}
-						onPressRightIcon={ () => this.props.navigation.navigate('Notifications') }
+						onPressRightIcon={ () => this.setState({ isMainDropdownVisible: !this.state.isMainDropdownVisible }) }
 						titlePage={"Inbox"}
 						leftIconUrl={require('../../assets/img/menu-icon.png')}
-						rightIconUrl={require('../../assets/img/bell-icon.png')}
 						isShowRightIcon={true}
 					/>
 					<SearchBlock onPressSearch={() => console.log("something search") }/>
@@ -86,7 +86,12 @@ export default class Inbox extends Component {
 								!this.state.dataSource &&
 								<EmptyInbox /> ||
 								<View>
-									<MessegesBlockInfo onPress={() => console.log(" hide this block") }/>
+									{
+										this.state.isVisibleMessageInfoBlock &&
+										<MessegesBlockInfo
+											onPress={() => this.setState({ isVisibleMessageInfoBlock: false }) }
+										/>
+									}
 									<View style={styles.inboxList}>
 										<ListView
 											scrollEnabled
@@ -100,6 +105,14 @@ export default class Inbox extends Component {
 					</View>
 					<NewMessageBtn onPress={() => console.log("create new message Item")}/>
 				</View>
+				<MainDropdownMenu
+					isMainDropdownVisible={this.state.isMainDropdownVisible}
+					showDropDownMoveTo={ () => this.setState({ isMoveToDropdownVisible: true })}
+				/>
+				<MoveToDropdown
+					isMoveToDropdownVisible={this.state.isMoveToDropdownVisible}
+					backToMainDropdown={ () => this.setState({ isMoveToDropdownVisible: false, isMainDropdownVisible: true }) }
+				/>
 			</View>
 		);
 	}

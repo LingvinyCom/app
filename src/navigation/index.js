@@ -10,7 +10,7 @@ import styles from './styles';
 
 class Navigator extends Component {
 	setNavigatorConfig() {
-		// if (this.props.auth.isHydrated && this.props.auth.uid) {
+		// if (this.props.auth.isHydrated && this.props.auth.userAccount.uid) {
 		//     return {
 		//     initialRouteName: 'MainTabs'
 		//     };
@@ -28,11 +28,12 @@ class Navigator extends Component {
 			// initialRouteName: 'AddMail',
 			// initialRouteName: 'ForgotPassword',
 			// initialRouteName: 'Sidebar',
+			// initialRouteName: 'ChangePasswosrd',
 		};
 	}
 
 	initRouter() {
-		// return DrawerNavigator({...Sidebar}, this.setNavigatorConfig());
+		//return DrawerNavigator({...Sidebar});
 		return StackNavigator({...Auth, ...Main}, this.setNavigatorConfig());
 	}
 

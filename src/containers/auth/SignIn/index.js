@@ -35,7 +35,7 @@ export default class SignIn extends Component {
 
 		login(this.props.auth.email, this.props.auth.password)
 			.then((data) => {
-				this.props.auth.uid = data.lingviny_token;
+				this.props.auth.userAccount.uid = data.lingviny_token;
 				this.props.navigation.navigate('Inbox');
 			}).catch((error) => {
 			this.setState({isShowErrorModal: true});

@@ -1,15 +1,13 @@
 // @flow
 
 import React, {Component} from 'react';
-import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
+import {View, ScrollView} from 'react-native';
 
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import COLORS from '../../config/colors.config';
 import styles from './styles';
 
-import BalanceBlock from './components/balanceBlock';
-import Account from './components/account';
-import MenuItem from './components/menuItem';
+import BalanceBlock from './components/BalanceBlock/';
+import Account from './components/Account/';
+import MenuItem from './components/MenuItem/';
 
 type Props = {
 	accountBalanceValue: number,

@@ -91,7 +91,7 @@ export default class Registration extends Component {
 
 			signUp(payload)
 			.then((data) => {
-				this.props.auth.uid = data.lingviny_token;
+				this.props.auth.userAccount.uid = data.lingviny_token;
 				this.props.navigation.navigate('Congratulations');
 			}).catch((error) => {
 				this.setState({ isShowErrorModal: true, propsModal: {} });
@@ -152,6 +152,7 @@ export default class Registration extends Component {
 								Object.keys(this.props.auth.selectedDomain).length > 0 ?
 									<Buttons.WithImage
 										img={this.props.auth.selectedDomain.image}
+										onPress={() => this.toggleServicesModal(true)}
 										color={'transparent'}
 									/> :
 									<Buttons.Rounded

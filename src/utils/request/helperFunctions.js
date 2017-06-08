@@ -38,7 +38,6 @@ export function postRequest(url: string, body: Object): Promise<> {
 				}
 			});
 	});
-
 }
 
 function checkResponseData(response, action) {

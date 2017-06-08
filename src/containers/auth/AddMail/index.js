@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 
 import Title from '../../../components/Auth/Title/';
-import Input from '../../../components/SimpleInput';
+import Input from '../../../components/SimpleInput/';
 import CollapseMenu from './components/CollapseMenu/';
 import * as Buttons from './../../../components/Buttons/';
 import * as Modals from './../../../components/Modals/';
@@ -61,7 +61,7 @@ export default class AddMail extends Component {
 
 			signUp(payload)
 				.then((data) => {
-					this.props.auth.uid = data.lingviny_token;
+					this.props.auth.userAccount.uid = data.lingviny_token;
 					this.props.navigation.navigate('Congratulations');
 				}).catch((error) => {
 					this.setState({ isShowErrorModal: true, propsModal: {} });

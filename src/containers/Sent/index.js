@@ -1,12 +1,12 @@
 // @flow
 
 import React, {Component} from 'react';
-import {View, ScrollView, ListView} from 'react-native';
+import {View, ScrollView, ListView, Image} from 'react-native';
 
-import SearchBlock from '../../components/Inbox/searchBlock';
-import RouterHeader from '../../components/Inbox/routerHeader';
-import InboxItem from '../../components/Inbox/inboxItem';
-import NewMessageBtn from '../../components/Inbox/newMessageBtn';
+import SearchBlock from '../../components/Inbox/SearchBlock/';
+import RouterHeader from '../../components/Inbox/RouterHeader/';
+import InboxItem from '../../components/Inbox/InboxItem/';
+import NewMessageBtn from '../../components/Inbox/NewMessageBtn/';
 import Swipeout from 'react-native-swipeout';
 import rows from './data';
 
@@ -55,12 +55,8 @@ export default class Sent extends Component {
 	}
 	static navigationOptions = {
 		drawerLabel: 'Sent',
-		drawerIcon: ({ tintColor }) => (
-			<Icon
-				name="send"
-				size={20}
-				color={COLORS.iconGray}
-			/>
+		drawerIcon: () => (
+			<Image source={require('../../assets/img/sent-icon.png')} />
 		),
 	};
 	render() {

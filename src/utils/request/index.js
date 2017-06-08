@@ -29,7 +29,7 @@ export function resetPassword(email: string): Promise<> {
 }
 
 /**
- * Signup to reate account request
+ * Signup to create account request
  *
  * @param {Object} payload - payload
  *
@@ -37,4 +37,16 @@ export function resetPassword(email: string): Promise<> {
  */
 export function signUp(payload: Object): Promise<> {
 	return postRequest('client', payload);
+}
+
+
+/**
+ * Logout user request
+ *
+ * @param {Object} payload - payload
+ *
+ * @returns {Promise}
+ */
+export function logout(payload: Object): Promise<> {
+	return postRequest('auth/logout', payload);
 }
