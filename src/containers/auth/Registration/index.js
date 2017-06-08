@@ -6,6 +6,7 @@ import {
 	Linking,
 	KeyboardAvoidingView,
 	View,
+	ScrollView,
 } from 'react-native';
 import Collapsible from 'react-native-collapsible';
 import Title from '../../../components/Auth/Title/';
@@ -133,6 +134,7 @@ export default class Registration extends Component {
 				style={styles.registrationWrapper}
 				behavior="position"
 			>
+				<ScrollView>
 					<Logotip/>
 					<Title text={'New to Lingviny?'}/>
 					<Description
@@ -147,62 +149,62 @@ export default class Registration extends Component {
 								placeholder={'Enter an Email'}
 								keyboardType="email-address"
 							/>
-						<Collapsible collapsed={isCollapsed}>
-							{
-								Object.keys(this.props.auth.selectedDomain).length > 0 ?
-									<Buttons.WithImage
-										img={this.props.auth.selectedDomain.image}
-										onPress={() => this.toggleServicesModal(true)}
-										color={'transparent'}
-									/> :
-									<Buttons.Rounded
-										text={'Choose Mail Service'}
-										onPress={() => this.toggleServicesModal(true)}
-										color={'transparent'}
-									/>
-							}
-						</Collapsible>
+							<Collapsible collapsed={isCollapsed}>
+								{
+									Object.keys(this.props.auth.selectedDomain).length > 0 ?
+										<Buttons.WithImage
+											img={this.props.auth.selectedDomain.image}
+											onPress={() => this.toggleServicesModal(true)}
+											color={'transparent'}
+										/> :
+										<Buttons.Rounded
+											text={'Choose Mail Service'}
+											onPress={() => this.toggleServicesModal(true)}
+											color={'transparent'}
+										/>
+								}
+							</Collapsible>
+							<Input
+								label={'PASSWORD'}
+								secureTextEntry={true}
+								value={this.props.auth.password}
+								onChangeText={(text: string) => this.props.auth.setValue({'password': text})}
+								placeholder={'Enter a Password'}
+							/>
+							<Buttons.Rounded
+								text={'Continue'}
+								onPress={this.registration.bind(this)}
+							/>
+						</View>
 
-						<Input
-							label={'PASSWORD'}
-							secureTextEntry={true}
-							value={this.props.auth.password}
-							onChangeText={(text: string) => this.props.auth.setValue({'password': text})}
-							placeholder={'Enter a Password'}
+						<Footer
+							text={'Already a member?'}
+							clickableText={'Login'}
+							onPressText={() => navigate('SignIn')}
 						/>
-						<Buttons.Rounded
-							text={'Continue'}
-							onPress={this.registration.bind(this)}
+						<Modals.Services
+							modalVisible={isShowServicesModal}
+							hideModal={() => this.toggleServicesModal(false)}
+							servicesList={APP_CONFIG.EMAIL_DOMAINS}
+							onPressItem={(selected) => {
+								this.props.auth.selectedDomain = selected;
+								this.toggleServicesModal(false);
+							}}
+							onPressPolicy={this.handleClick.bind(this)}
+							onPressOther={() => {
+								this.toggleServicesModal(false);
+								navigate('AddMail');
+							}}
 						/>
-					</View>
-
-					<Footer
-						text={'Already a member?'}
-						clickableText={'Login'}
-						onPressText={() => navigate('SignIn')}
-					/>
-					<Modals.Services
-						modalVisible={isShowServicesModal}
-						hideModal={() => this.toggleServicesModal(false)}
-						servicesList={APP_CONFIG.EMAIL_DOMAINS}
-						onPressItem={(selected) => {
-							this.props.auth.selectedDomain = selected;
-							this.toggleServicesModal(false);
-						}}
-						onPressPolicy={this.handleClick.bind(this)}
-						onPressOther={() => {
-							this.toggleServicesModal(false);
-							navigate('AddMail');
-						}}
-					/>
-					<Modals.Notify
-						show={isShowErrorModal}
-						type={'error'}
-						title={'Unable to Signup'}
-						description={propsModal.description || 'Something went wrong.'}
-						btnLabel={'Try again'}
-						hideModal={() => this.setState({isShowErrorModal: false})}
-					/>
+						<Modals.Notify
+							show={isShowErrorModal}
+							type={'error'}
+							title={'Unable to Signup'}
+							description={propsModal.description || 'Something went wrong.'}
+							btnLabel={'Try again'}
+							hideModal={() => this.setState({isShowErrorModal: false})}
+						/>
+					</ScrollView>
 				</KeyboardAvoidingView>
 		);
 	}
