@@ -39,7 +39,7 @@ export default DrawerNavigator(
 			return (
 				<ScrollView>
 					<BalanceBlock
-						balanceValue={250}
+						balanceValue={"250.00"}
 						onPress={() => console.log('BalanceBlock')}
 					/>
 					<Account
@@ -53,7 +53,7 @@ export default DrawerNavigator(
 		},
 		contentOptions: {
 			style: {
-				padding: 0,
+				paddingVertical: 0,
 				marginTop: 0,
 			},
 			inactiveTintColor: COLORS.gray,

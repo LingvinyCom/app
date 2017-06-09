@@ -94,6 +94,7 @@ export default class AddMail extends Component {
 									onChangeText={(text: string) => this.props.auth.setValue({'email': text})}
 									placeholder={"Enter an Email"}
 									keyboardType="email-address"
+									autoCapitalize="none"
 								/>
 								<Input
 									label={'PASSWORD'}

@@ -8,7 +8,6 @@ const styles = StyleSheet.create({
 	mainContainer: {
 		flex: 1,
 		backgroundColor: COLORS.blackWhite,
-		marginTop: Platform.OS === "ios" ? 25 : 0,
 	},
 	pageContent: {
 		backgroundColor: COLORS.blackWhite,
