@@ -5,15 +5,9 @@ import { View, Text } from 'react-native';
 
 import styles from './styles';
 
-const AutoTranslationItem = props => (
+export default (props: Object) => (
 	<View style={styles.wrapper}>
-		<Text style={styles.title}>
-			{props.title}
-		</Text>
-		<Text style={styles.email}>
-			{props.email}
-		</Text>
+		<Text style={styles.title}>{props.title}</Text>
+		<Text style={styles.email}>{props.email}</Text>
 	</View>
 );
-
-export default AutoTranslationItem;

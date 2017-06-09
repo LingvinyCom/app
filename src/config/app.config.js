@@ -1,12 +1,12 @@
 export default {
 	EMAIL_ENGINE_IMAGES: {
-		google: require('../assets/img/google.png'),
+		'gmail.com': require('../assets/img/google.png'),
 		exchange: require('../assets/img/exchange.png'),
-		yahoo: require('../assets/img/yahoo.png'),
-		icloud: require('../assets/img/icloud.png'),
-		outlook: require('../assets/img/outlook-logo.png'),
-		aol: require('../assets/img/aol-logo.png'),
-		yandex: require('../assets/img/yandex-logo.png'),
-		mailru: require('../assets/img/mail-ru-logo.png'),
+		'yahoo.com': require('../assets/img/yahoo.png'),
+		'icloud.com': require('../assets/img/icloud.png'),
+		'outlook.com': require('../assets/img/outlook-logo.png'),
+		'aol.com': require('../assets/img/aol-logo.png'),
+		'yandex.ru': require('../assets/img/yandex-logo.png'),
+		'mail.ru': require('../assets/img/mail-ru-logo.png'),
 	}
 };

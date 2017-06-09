@@ -92,8 +92,8 @@ export default class Sidebar extends Component {
 				onPress: () => console.log(" navigate to Sent "),
 			},
 		];
-		return null;
-		/*return (
+
+		return (
 			<View style={styles.mainContainer}>
 				<View style={styles.sidebarWrapper}>
 					<ScrollView>
@@ -145,6 +145,6 @@ export default class Sidebar extends Component {
 					</ScrollView>
 				</View>
 			</View>
-		);*/
+		);
 	}
 }

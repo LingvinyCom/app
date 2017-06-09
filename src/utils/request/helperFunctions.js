@@ -19,7 +19,7 @@ function handleResStatus(response, reject, resolve) {
 			checkResponseData(response, resolve);
 			break;
 		case 400:
-			checkResponseData(response, resolve);
+			checkResponseData(response, reject);
 			break;
 		default:
 			checkResponseData(response, reject);
@@ -37,13 +37,17 @@ function handleResStatus(response, reject, resolve) {
  * @returns {Promise}
  */
 export function postRequest(url: string, body: Object): Promise<> {
+	const authorization = body.token ? { 'Authorization' : body.token} : null;
+	const headers = {
+		'Accept': 'application/json',
+		'Content-Type': 'application/json',
+		...authorization,
+	};
+
 	return new Promise((resolve, reject) => {
 		fetch(`${API_URL}${url}`, {
 				method: 'POST',
-				headers: {
-					'Accept': 'application/json',
-					'Content-Type': 'application/json',
-				},
+				headers,
 				body: JSON.stringify(body)
 			})
 			.then((response) => {

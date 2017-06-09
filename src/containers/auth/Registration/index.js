@@ -1,11 +1,12 @@
 // @flow
 
-import React, {Component} from 'react';
-import {inject, observer} from 'mobx-react';
+import React, { Component } from 'react';
+import { inject, observer } from 'mobx-react';
 import {
 	Linking,
 	KeyboardAvoidingView,
 	View,
+	ScrollView,
 } from 'react-native';
 import Collapsible from 'react-native-collapsible';
 import Title from '../../../components/Auth/Title/';
@@ -59,8 +60,7 @@ export default class Registration extends Component {
 			.then((data) => {
 				this.props.auth.engine = data;
 			}).catch((error) => {
-					this.setState({ isShowErrorModal: true, propsModal: {} });
-			}).finally(() => {
+				this.setState({ isShowErrorModal: true, propsModal: {} });
 			});
 	}
 
@@ -69,7 +69,7 @@ export default class Registration extends Component {
 		const isEmailValid = email && PATTERN_CONFIG.email.test(email);
 
 		if (isEmailValid && domain) {
-			const existed = this.props.auth.engine.find((d) => d.domain === domain);
+			const existed = this.props.auth.engine.find((d) => d.title === domain);
 			if (existed) {
 				this.props.auth.selectedDomain = existed;
 			} else {
@@ -82,7 +82,7 @@ export default class Registration extends Component {
 	}
 
 	onChangeEmail(text: string) {
-		this.props.auth.setValue({'email': text});
+		this.props.auth.setValue({ 'email': text });
 		clearTimeout(this.timer);
 		this.timer = setTimeout(this.detectEmailDomain.bind(this, text), 1000);
 	}
@@ -101,8 +101,9 @@ export default class Registration extends Component {
 
 			signUp(payload)
 				.then((data) => {
-					this.props.auth.userAccount.uid = data.lingviny_token;
-					this.props.navigation.navigate('Congratulations');
+					if (data && data.token) {
+						this.props.auth.setValue({ userAccount: { uid: data.token } });
+					}
 				}).catch((error) => {
 					this.setState({ isShowErrorModal: true, propsModal: {} });
 				}).finally(() => {
@@ -119,7 +120,7 @@ export default class Registration extends Component {
 	}
 
 	toggleServicesModal(value: boolean) {
-		this.setState({isShowServicesModal: value});
+		this.setState({ isShowServicesModal: value });
 	}
 
 	handleClick = () => {
@@ -135,7 +136,7 @@ export default class Registration extends Component {
 	};
 
 	render() {
-		const {navigate} = this.props.navigation;
+		const { navigate } = this.props.navigation;
 		const { isShowServicesModal, isShowErrorModal, isCollapsed, propsModal } = this.state;
 
 		return (
@@ -143,20 +144,20 @@ export default class Registration extends Component {
 				style={styles.registrationWrapper}
 				behavior="position"
 			>
-					<Logotip/>
-					<Title text={'New to Lingviny?'}/>
+				<ScrollView>
+					<Logotip />
+					<Title text={'New to Lingviny?'} />
 					<Description
 						text={`Please enter your credentials for the existing mailbox you'll be working with and we'll take care of all the rest`}
 					/>
-
 					<View style={styles.form}>
-							<Input
-								label={'EMAIL'}
-								value={this.props.auth.email}
-								onChangeText={(text: string) => this.onChangeEmail(text)}
-								placeholder={'Enter an Email'}
-								keyboardType="email-address"
-							/>
+						<Input
+							label={'EMAIL'}
+							value={this.props.auth.email}
+							onChangeText={(text: string) => this.onChangeEmail(text)}
+							placeholder={'Enter an Email'}
+							keyboardType="email-address"
+						/>
 						<Collapsible collapsed={isCollapsed}>
 							{
 								Object.keys(this.props.auth.selectedDomain).length > 0 ?
@@ -172,12 +173,11 @@ export default class Registration extends Component {
 									/>
 							}
 						</Collapsible>
-
 						<Input
 							label={'PASSWORD'}
 							secureTextEntry={true}
 							value={this.props.auth.password}
-							onChangeText={(text: string) => this.props.auth.setValue({'password': text})}
+							onChangeText={(text: string) => this.props.auth.setValue({ 'password': text })}
 							placeholder={'Enter a Password'}
 						/>
 						<Buttons.Rounded
@@ -211,9 +211,10 @@ export default class Registration extends Component {
 						title={'Unable to Signup'}
 						description={propsModal.description || 'Something went wrong.'}
 						btnLabel={'Try again'}
-						hideModal={() => this.setState({isShowErrorModal: false})}
+						hideModal={() => this.setState({ isShowErrorModal: false })}
 					/>
-				</KeyboardAvoidingView>
+				</ScrollView>
+			</KeyboardAvoidingView>
 		);
 	}
 }

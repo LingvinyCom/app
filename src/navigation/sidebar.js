@@ -1,19 +1,21 @@
 import React from 'react';
-import {DrawerNavigator, DrawerItems} from 'react-navigation';
-import {ScrollView} from 'react-native';
+import { DrawerNavigator, DrawerItems } from 'react-navigation';
+import { ScrollView } from 'react-native';
 
-import Inbox from './../containers/Inbox';
-import Sent from './../containers/Sent';
-import BalanceBlock from './../containers/Sidebar/components/BalanceBlock';
-import Account from './../containers/Sidebar/components/Account';
-import TranslatedItems from './../containers/TranslatedItems';
-import Archive from './../containers/Archive';
-import Spam from './../containers/Spam';
-import Drafts from './../containers/Drafts';
-import JohnFolder from './../containers/JohnFolder';
-import OfficeEmail from './../containers/OfficeEmail';
-import BillingPayments from './../containers/BillingPayments';
-import AccountSettings from './../containers/AccountSettings';
+import Inbox from './../containers/Inbox/';
+import Sent from './../containers/Sent/';
+import Account from './../containers/Sidebar/components/Account/';
+import TranslatedItems from './../containers/TranslatedItems/';
+import Archive from './../containers/Archive/';
+import Spam from './../containers/Spam/';
+import Drafts from './../containers/Drafts/';
+import JohnFolder from './../containers/JohnFolder/';
+import OfficeEmail from './../containers/OfficeEmail/';
+import BillingPayments from './../containers/BillingPayments/';
+import AccountSettings from './../containers/AccountSettings/';
+
+import BalanceBlock from './../containers/Sidebar/components/BalanceBlock/';
+import Logout from '../containers/Sidebar/components/Logout/';
 
 import COLORS from './../config/colors.config';
 
@@ -40,7 +42,7 @@ export default DrawerNavigator(
 				<ScrollView>
 					<BalanceBlock
 						balanceValue={250}
-						onPress={() => console.log('BalanceBlock')}
+						onPress={() => console.log('Go to BalanceBlock')}
 					/>
 					<Account
 						avatarText={"TS"}
@@ -48,6 +50,7 @@ export default DrawerNavigator(
 						accountName={"John Smith"}
 					/>
 					<DrawerItems {...props} />
+					<Logout navigation={props.navigation}/>
 				</ScrollView>
 			);
 		},
@@ -65,4 +68,3 @@ export default DrawerNavigator(
 			},
 		},
 	});
-

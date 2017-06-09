@@ -1,7 +1,7 @@
 // @flow
 
 import { StyleSheet } from 'react-native';
-import COLORS from '../../config/colors.config';
+import COLORS from '../../../config/colors.config';
 
 /**
  *  @TODO: Add _t_styles.
@@ -42,8 +42,6 @@ const styles = {
 		flexDirection: 'row',
 		justifyContent: 'space-between',
 		alignItems: 'center',
-		marginBottom: 35,
-		marginHorizontal: 40,
 	},
 	switchLabel: {
 		fontSize: 14,

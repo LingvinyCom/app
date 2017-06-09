@@ -43,12 +43,12 @@ export function signUp(payload: Object): Promise<> {
 /**
  * Logout user request
  *
- * @param {Object} payload - payload
+ * @param {Object} token - token
  *
  * @returns {Promise}
  */
-export function logout(payload: Object): Promise<> {
-	return postRequest('auth/logout', payload);
+export function logout(token: string): Promise<> {
+ return postRequest('auth/logout', { token });
 }
 
 

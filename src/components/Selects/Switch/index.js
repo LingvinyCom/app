@@ -7,12 +7,6 @@ import { SwitchPlugin } from './SwitchPlugin';
 
 import styles from './styles';
 
-
-// type Props = {
-//     switchValue: boolean,
-//     onPress: Function
-// };
-
 const Switch = (props: Object) => (
 	<View style={styles.switchBlock}>
 		<Text style={styles.switchLabel}>{props.label}</Text>
@@ -23,7 +17,7 @@ const Switch = (props: Object) => (
 				disabled={false}
 				activeText={'on'}
 				inActiveText={'off'}
-    />
+			/>
 		</View>
 	</View>
 );

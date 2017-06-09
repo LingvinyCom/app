@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { inject } from 'mobx-react';
+import { inject, observer } from 'mobx-react/native';
 import { StackNavigator } from 'react-navigation';
 import SplashScreen from 'react-native-splash-screen';
 
@@ -9,29 +9,36 @@ import Sidebar from './sidebar';
 
 import styles from './styles';
 
-@inject((allStores) => {
-	return {
+@inject((allStores) => ({
 		auth: allStores.auth,
-	};
-})
-class Navigator extends Component {
+}))
+@observer
+export default class Navigator extends Component {
 	setNavigatorConfig() {
 		return {
 			navigationOptions: {
 				header: null,
 			},
-			initialRouteName: 'FirstLaunch',
-			// initialRouteName: 'Inbox',
-			// initialRouteName: 'Registration',
-			// initialRouteName: 'SignIn',
-			// initialRouteName: 'Login',
-			// initialRouteName: 'AddMail',
-			// initialRouteName: 'ForgotPassword',
-			// initialRouteName: 'Sidebar',
-			// initialRouteName: 'ChangePasswosrd',
-			// initialRouteName: 'OrdersHistory',
-			// initialRouteName: 'PaymentsHistory',
-			//  initialRouteName: 'AutoTranslation',
+			initialRouteName: this.props.auth.userAccount.uid ? 'Drawer' : this.props.auth.showLaunch ? 'FirstLaunch' : 'Registration',
+			/**
+				* Routing containers.
+					[
+						'FirstLaunch',
+						'Drawer',
+						'Inbox',
+						'Registration',
+						'SignIn',
+						'Login',
+						'AddMail',
+						'ForgotPassword',
+						'Sidebar',
+						'ChangePasswosrd',
+						'OrdersHistory',
+						'PaymentsHistory',
+						'AutoTranslation',
+						'Signature',
+					]
+			*/
 		};
 	}
 
@@ -53,12 +60,10 @@ class Navigator extends Component {
 	}
 
 	render() {
-		// if (!this.props.auth.isHydrated) {
-		// 	return null;
-		// };
+		if (!this.props.auth.isHydrated) {
+			return null;
+		}
 		const Router = this.initRouter();
 		return <Router style={styles.routerContainer}/>;
 	}
 }
-
-export default Navigator;

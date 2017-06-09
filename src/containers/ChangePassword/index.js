@@ -6,7 +6,7 @@ import {View} from 'react-native';
 import RouterHeader from '../../components/Inbox/RouterHeader';
 import SimpleInput from '../../components/SimpleInput';
 import RoundedButton from '../../components/Buttons/Rounded';
-import Checkbox from '../../components/Checkbox';
+import * as Selects from '../../components/Selects/';
 
 import styles from './styles';
 
@@ -47,7 +47,7 @@ export default class ChangePassword extends Component {
 							label={"REPEAT NEW PASSWORD"}
 							secureTextEntry={this.state.secureTextEntry}
 						/>
-						<Checkbox
+						<Selects.Checkbox
 							onPress={this._onPressCheckbox.bind(this)}
 							isCheckboxActive={this.state.isCheckboxActive}
 						/>

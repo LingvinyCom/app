@@ -1,8 +1,8 @@
 // @flow
 
-import React, {Component} from 'react';
-import {inject} from 'mobx-react';
-import {KeyboardAvoidingView} from 'react-native';
+import React, { Component } from 'react';
+import { inject } from 'mobx-react';
+import { KeyboardAvoidingView } from 'react-native';
 
 import Logotip from '../../../components/Auth/Logo';
 import Title from '../../../components/Auth/Title/';
@@ -35,8 +35,9 @@ export default class SignIn extends Component {
 
 		login(this.props.auth.email, this.props.auth.password)
 			.then((data) => {
-				this.props.auth.userAccount.uid = data.lingviny_token;
-				this.props.navigation.navigate('Drawer');
+				if (data && data.lingviny_token) {
+					this.props.auth.setValue({'userAccount': { uid: data.lingviny_token }});
+				}
 			}).catch((error) => {
 			this.setState({isShowErrorModal: true});
 			}).finally(() => {

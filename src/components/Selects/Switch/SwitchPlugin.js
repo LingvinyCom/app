@@ -1,13 +1,13 @@
 // @flow
 
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import {
     Text,
     Animated,
     TouchableWithoutFeedback,
 } from 'react-native';
 
-import COLORS from '../../config/colors.config';
+import COLORS from '../../../config/colors.config';
 import styles from './styles';
 
 type Props = {

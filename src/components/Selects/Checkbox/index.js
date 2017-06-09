@@ -3,11 +3,12 @@
 import React from 'react';
 import {View, TouchableOpacity, Text} from 'react-native';
 
-import styles from './styles';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import COLORS from '../../config/colors.config';
+import COLORS from '../../../config/colors.config';
 
-const Checkbox = (props) =>  {
+import styles from './styles';
+
+export default (props: Object) =>  {
 	return (
 		<TouchableOpacity
 			style={styles.checkboxWrapper}
@@ -15,14 +16,11 @@ const Checkbox = (props) =>  {
 		>
 			<View style={ props.isCheckboxActive ? [styles.checkboxIcon, styles.isActiveCheckbox] : styles.checkboxIcon}>
 				{
-					props.isCheckboxActive && <Icon name="check" size={18} color={COLORS.blue} />
+					props.isCheckboxActive &&
+					<Icon name="check" size={18} color={COLORS.blue} />
 				}
 			</View>
-			<Text style={styles.checkboxLabel}>
-				Show Password
-			</Text>
+			<Text style={styles.checkboxLabel}>Show Password</Text>
 		</TouchableOpacity>
 	);
 };
-
-export default Checkbox;

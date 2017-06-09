@@ -3,10 +3,10 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 
-import Menu, { MenuContext, MenuOptions, MenuOption, MenuTrigger } from 'react-native-menu';
-import styles from './styles';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import COLORS from '../../../config/colors.config';
+
+import styles from './styles';
 
 type Props = {
 	titlePage: string,
@@ -22,9 +22,9 @@ const RouterHeader = (props: Props) => {
 			<View style={styles.routerHeader}>
 				<TouchableOpacity
 					style={styles.routerIconLeft}
-				  onPress={onPressLeftIcon}
+					onPress={onPressLeftIcon}
 				>
-					<Image source={leftIconUrl} />
+					<Image source={leftIconUrl}/>
 				</TouchableOpacity>
 				<View>
 					<Text style={styles.routerTitle}>{titlePage }</Text>

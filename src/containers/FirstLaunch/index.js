@@ -1,9 +1,10 @@
 // @flow
 
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
 	View,
 } from 'react-native';
+import { inject } from 'mobx-react';
 import SwiperSlider from './../../components/Swiper';
 import * as Buttons from './../../components/Buttons';
 import * as Modals from '../../components/Modals/';
@@ -28,6 +29,9 @@ const slides = [
 	},
 ];
 
+@inject((allStores) => ({
+	auth: allStores.auth,
+}))
 export default class FirstLaunch extends Component {
 	state: {
 		isShowNotificationsModal: boolean,
@@ -44,7 +48,7 @@ export default class FirstLaunch extends Component {
 		if (state && state.params && state.params.logedIn) {
 			this.setState({ isShowNotificationsModal: true });
 		} else {
-			navigate('Registration');
+			this.props.auth.setValue({ showLaunch: false });
 		}
 	}
 

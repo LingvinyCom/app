@@ -9,8 +9,9 @@ import {
 
 import Collapsible from 'react-native-collapsible';
 import Input from '../../../../../components/SimpleInput/';
-import Switch from '../../../../../components/Switch/';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+
+import * as Selects from '../../../../../components/Selects/';
 
 import COLORS from '../../../../../config/colors.config';
 import styles from './syles';
@@ -26,6 +27,7 @@ export default class CollapseMenu extends Component {
 
 		this.state = {
 			isCollapsed: true,
+			switchValue: false,
 		};
 	}
 
@@ -72,10 +74,13 @@ export default class CollapseMenu extends Component {
 							placeholder={'Password'}
 							onChangeText={(text: string) => this.props.auth.setValue({'hostPassword': text})}
 						/>
-						<Switch
-							label={'USE SSL'}
-							onPress={(value: boolean) => this.props.auth.setValue({'useSsl': value})}
-						/>
+						<View style={styles.switchWrapper}>
+							<Selects.Switch
+								switchValue={this.state.switchValue}
+								label={'USE SSL'}
+								onPress={(switchValue: boolean) => this.props.auth.setValue({'useSsl': switchValue})}
+							/>
+						</View>
 						<Input
 							keyboardType={'number-pad'}
 							label={'SERVER PORT'}

@@ -43,7 +43,7 @@ export default class AccountSettings extends Component {
 			},
 			{
 				title: "Signature",
-				onPress: () => console.log("navigate to this Item"),
+				onPress: () => navigate('Signature'),
 			},
 			{
 				title: "Auto Translation",
