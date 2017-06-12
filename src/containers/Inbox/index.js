@@ -20,7 +20,6 @@ export default class Inbox extends Component {
   state: {
     dataSource: Object,
   }
-  
   constructor(props: {}) {
     super(props);
     let ds = new ListView.DataSource({rowHasChanged: (row1, row2) => true});
@@ -31,7 +30,6 @@ export default class Inbox extends Component {
       isVisibleMessageInfoBlock: true,
     };
   }
-  
   _renderRow(rowData: Object, sectionID: number, rowID: number) {
     return (
       <Swipeout
@@ -58,7 +56,6 @@ export default class Inbox extends Component {
       </Swipeout>
     );
   }
-  
   static navigationOptions = {
     drawerLabel: 'Inbox',
     drawerIcon: () => (

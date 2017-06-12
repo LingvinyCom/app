@@ -41,8 +41,7 @@ const MoveToDropdown = (props: Object) => {
       </TouchableOpacity>
     </View>
   </TouchableOpacity>
-    
     );
     };
-    
+
     export default MoveToDropdown;
