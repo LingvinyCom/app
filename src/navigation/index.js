@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {StackNavigator} from 'react-navigation';
 import SplashScreen from 'react-native-splash-screen';
+import {View} from 'react-native';
 
 import Auth from './auth';
 import Main from './main';
@@ -18,6 +19,10 @@ class Navigator extends Component {
 			navigationOptions: {
 				header: null,
 			},
+      cardStyle: {
+			  shadowColor: '#fff',
+        shadowOpacity: 0,
+      },
 			// initialRouteName: 'FirstLaunch',
 			// initialRouteName: 'Inbox',
 			initialRouteName: 'Registration',
