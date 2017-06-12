@@ -15,6 +15,7 @@ const styles = {
 		alignItems: 'center',
 		backgroundColor: COLORS.white,
 		minHeight: DeviceHeight,
+		overflow: 'hidden',
 	},
 	form: {
 		flex: 1,

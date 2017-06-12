@@ -22,7 +22,11 @@ const styles = {
 		backgroundColor: 'transparent',
 		borderWidth: 1,
 		borderColor: COLORS.btnBorderColor,
-	}
+	},
+	img: {
+		flex:1,
+		marginVertical: 5,
+	},
 };
 
 const exportStyles = StyleSheet.create(styles);

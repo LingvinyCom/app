@@ -24,6 +24,10 @@ const styles = {
 		fontSize: 16,
 		color: COLORS.gray,
 	},
+	switchWrapper: {
+		marginBottom: 35,
+		marginHorizontal: 40,
+	},
 };
 
 const exportStyles = StyleSheet.create(styles);

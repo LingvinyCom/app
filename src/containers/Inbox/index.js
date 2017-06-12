@@ -1,14 +1,17 @@
 // @flow
 
 import React, {Component} from 'react';
-import {View, ScrollView, ListView} from 'react-native';
-
-import MessegesBlockInfo from './components/messagesInfoBlock';
-import SearchBlock from './components/searchBlock';
-import RouterHeader from './components/routerHeader';
-import InboxItem from './components/inboxItem';
-import NewMessageBtn from './components/newMessageBtn';
+import {View, ScrollView, ListView, Image} from 'react-native';
 import Swipeout from 'react-native-swipeout';
+import MessegesBlockInfo from './components/MessagesInfoBlock/';
+import SearchBlock from '../../components/Inbox/SearchBlock/';
+import RouterHeader from '../../components/Inbox/RouterHeader/';
+import InboxItem from '../../components/Inbox/InboxItem/';
+import NewMessageBtn from '../../components/Inbox/NewMessageBtn/';
+import EmptyInbox from '../../components/Inbox/EmptyInbox/';
+import MainDropdownMenu from './components/MainDropdownMenu/';
+import MoveToDropdown from './components/MoveToDropdown/';
+
 import rows from './data';
 
 import styles from './styles';
@@ -23,6 +26,9 @@ export default class Inbox extends Component {
 		let ds = new ListView.DataSource({rowHasChanged: (row1, row2) => true});
 		this.state = {
 			dataSource: ds.cloneWithRows(rows),
+			isMainDropdownVisible: false,
+			isMoveToDropdownVisible: false,
+			isVisibleMessageInfoBlock: true,
 		};
 	}
 
@@ -47,33 +53,66 @@ export default class Inbox extends Component {
 					theme={rowData.theme}
 					description={rowData.description}
 					time={rowData.time}
+				  itemStatus={rowData.itemStatus}
 				/>
 			</Swipeout>
 		);
 	}
-
+	static navigationOptions = {
+		drawerLabel: 'Inbox',
+		drawerIcon: () => (
+			<Image
+				source={require('../../assets/img/inbox-item.png')}
+			/>
+		),
+	};
 	render() {
 		return (
 			<View style={styles.mainContainer}>
 				<View style={styles.header}>
-					<RouterHeader titlePage={"Inbox"}/>
-					<SearchBlock onPress={() => console.log("something search") }/>
+					<RouterHeader
+						onPressLeftIcon={ () => this.props.navigation.navigate('DrawerOpen')}
+						onPressRightIcon={ () => this.setState({ isMainDropdownVisible: !this.state.isMainDropdownVisible }) }
+						titlePage={"Inbox"}
+						leftIconUrl={require('../../assets/img/menu-icon.png')}
+						isShowRightIcon={true}
+					/>
+					<SearchBlock onPressSearch={() => console.log("something search") }/>
 				</View>
 				<View style={styles.pageContent}>
 					<View>
 						<ScrollView>
-							<MessegesBlockInfo onPress={() => console.log(" hide this block") }/>
-							<View style={styles.inboxList}>
-								<ListView
-									scrollEnabled
-									dataSource={this.state.dataSource}
-									renderRow={this._renderRow.bind(this)}
-								/>
-							</View>
+							{
+								!this.state.dataSource &&
+								<EmptyInbox /> ||
+								<View>
+									{
+										this.state.isVisibleMessageInfoBlock &&
+										<MessegesBlockInfo
+											onPress={() => this.setState({ isVisibleMessageInfoBlock: false }) }
+										/>
+									}
+									<View style={styles.inboxList}>
+										<ListView
+											scrollEnabled
+											dataSource={this.state.dataSource}
+											renderRow={this._renderRow.bind(this)}
+										/>
+									</View>
+								</View>
+							}
 						</ScrollView>
 					</View>
 					<NewMessageBtn onPress={() => console.log("create new message Item")}/>
 				</View>
+				<MainDropdownMenu
+					isMainDropdownVisible={this.state.isMainDropdownVisible}
+					showDropDownMoveTo={ () => this.setState({ isMoveToDropdownVisible: true })}
+				/>
+				<MoveToDropdown
+					isMoveToDropdownVisible={this.state.isMoveToDropdownVisible}
+					backToMainDropdown={ () => this.setState({ isMoveToDropdownVisible: false, isMainDropdownVisible: true }) }
+				/>
 			</View>
 		);
 	}

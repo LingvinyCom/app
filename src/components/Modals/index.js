@@ -1,7 +1,11 @@
-import Error from './Error/';
+import Notify from './Notify/';
 import Services from './Services/';
+import AllowNotifications from './AllowNotifications/';
+import Confirmation from './Confirmation/';
 
 export {
-	Error,
+	Notify,
 	Services,
+	AllowNotifications,
+	Confirmation,
 };

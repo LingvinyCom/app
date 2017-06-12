@@ -1,7 +1,7 @@
 // @flow
 
 
-import { postRequest } from './helperFunctions';
+import { postRequest, getRequest } from './helperFunctions';
 
 
 /**
@@ -13,7 +13,7 @@ import { postRequest } from './helperFunctions';
  * @returns {Promise}
  */
 export function login(email: string, password: string): Promise<> {
-	return postRequest('api/auth/login', { email, password });
+	return postRequest('auth/login', { email, password });
 }
 
 
@@ -25,5 +25,40 @@ export function login(email: string, password: string): Promise<> {
  * @returns {Promise}
  */
 export function resetPassword(email: string): Promise<> {
-	return postRequest('api/auth/password_reset', { email });
+	return postRequest('auth/reset-password', { email });
+}
+
+/**
+ * Signup to create account request
+ *
+ * @param {Object} payload - payload
+ *
+ * @returns {Promise}
+ */
+export function signUp(payload: Object): Promise<> {
+	return postRequest('client', payload);
+}
+
+
+/**
+ * Logout user request
+ *
+ * @param {Object} token - token
+ *
+ * @returns {Promise}
+ */
+export function logout(token: string): Promise<> {
+ return postRequest('auth/logout', { token });
+}
+
+
+/**
+ * Get Engine
+ *
+ * @param {Object} payload - payload
+ *
+ * @returns {Promise}
+ */
+export function getEngine(): Promise<> {
+	return getRequest('engine');
 }
