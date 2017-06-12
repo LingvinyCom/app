@@ -1,10 +1,20 @@
 // @flow
 
-import {StyleSheet} from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 
 import COLORS from '../../../../config/colors.config';
 
+const {height} = Dimensions.get('window');
+
 const styles = StyleSheet.create({
+  outerContainer: {
+  	flex: 1,
+	  height: height,
+	  backgroundColor: 'transparent',
+	  position: 'absolute',
+	  left: 0,
+	  right: 0,
+  },
 	container: {
 		width: 155,
 		borderRadius: 3,

@@ -70,8 +70,9 @@ export default class ForgotPassword extends Component {
 						label={'EMAIL'}
 						value={this.props.auth.email}
 						onChangeText={(text: string) => this.props.auth.setValue({'email': text})}
-						placeholder={'Enter an Email'}
+						placeholder={'Email Address'}
 						keyboardType="email-address"
+						autoCapitalize={"none"}
 					/>
 					<Buttons.Rounded
 						text={'Recover Password'}

@@ -40,8 +40,9 @@ export default class Form extends Component {
 					label={'EMAIL'}
 					value={email}
 					onChangeText={(text: string) => this.props.auth.setValue({'email': text})}
-					placeholder={'Enter an Email'}
+					placeholder={'Email Address'}
 					keyboardType="email-address"
+					autoCapitalize={"none"}
 				/>
 				{
 					component
@@ -53,7 +54,7 @@ export default class Form extends Component {
 					secureTextEntry={true}
 					value={password}
 					onChangeText={(text: string) => this.props.auth.setValue({'password': text})}
-					placeholder={'Enter a Password'}
+					placeholder={'Password'}
 				/>
 				{
 					isShowForgotPassword &&

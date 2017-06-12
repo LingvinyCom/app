@@ -16,7 +16,7 @@ const styles = {
 	text: {
 		color: COLORS.black,
 		fontSize: 30,
-		fontWeight: 'bold'
+		fontWeight: 'bold',
 	},
 	btnWrapper: {
 		height: 100,
@@ -29,11 +29,12 @@ const styles = {
 		lineHeight: 28,
 		color: COLORS.gray,
 		paddingHorizontal: 60,
-		marginBottom: 30,
+    marginTop: -10,
+		marginBottom: 20,
 		textAlign: 'center',
 	},
 	onboardingImageWraper: {
-		marginBottom: 30,
+		marginBottom: 20,
 	},
 	onboardingDescription: {
 		paddingHorizontal: 50,

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react/native';
 import { StackNavigator } from 'react-navigation';
 import SplashScreen from 'react-native-splash-screen';
+import {View} from 'react-native';
 
 import Auth from './auth';
 import Main from './main';
@@ -19,7 +20,11 @@ export default class Navigator extends Component {
 			navigationOptions: {
 				header: null,
 			},
-			initialRouteName: this.props.auth.userAccount.uid ? 'Drawer' : this.props.auth.showLaunch ? 'FirstLaunch' : 'Registration',
+      cardStyle: {
+        shadowColor: '#fff',
+        shadowOpacity: 0,
+      },
+			initialRouteName: this.props.auth.userAccount.uid ? 'Drawer' : this.props.auth.showLaunch ? 'FirstLaunch' : 'Drawer',
 			/**
 				* Routing containers.
 					[

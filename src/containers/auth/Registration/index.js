@@ -155,9 +155,9 @@ export default class Registration extends Component {
 							label={'EMAIL'}
 							value={this.props.auth.email}
 							onChangeText={(text: string) => this.onChangeEmail(text)}
-							placeholder={'Enter an Email'}
+							placeholder={'Email Address'}
 							keyboardType="email-address"
-							autoCapitalize="none"
+							autoCapitalize={"none"}
 						/>
 						<Collapsible collapsed={isCollapsed}>
 							{
