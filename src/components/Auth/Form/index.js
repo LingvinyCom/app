@@ -41,6 +41,8 @@ export default class Form extends Component {
 					value={email}
 					onChangeText={(text: string) => this.props.auth.setValue({'email': text})}
 					placeholder={'Email Address'}
+					keyboardType="email-address"
+					autoCapitalize={"none"}
 				/>
 				{
 					component

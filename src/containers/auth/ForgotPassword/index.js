@@ -28,12 +28,16 @@ import styles from './styles';
 export default class ForgotPassword extends Component {
 	state = {
 		isShowErrorModal: Boolean,
+		isShowInfoModal: Boolean,
+		propsModal: Object,
 	}
 
 	constructor(props: Object) {
 		super(props);
 		this.state = {
 			isShowErrorModal: false,
+			isShowInfoModal: false,
+			propsModal: {},
 		};
 	}
 
@@ -42,10 +46,9 @@ export default class ForgotPassword extends Component {
 
 		resetPassword(this.props.auth.email)
 			.then((data) => {
-        this.props.navigation.navigate('SignIn');
-      }).catch(() => {
-        this.props.auth.requestError = 'Error';
-         this.setState({ isShowErrorModal: true });
+        this.setState({ isShowInfoModal: true });
+      }).catch((error) => {
+        this.setState({ isShowErrorModal: true });
       }).finally(() => {
         this.props.app.showLoader = false;
       });
@@ -54,7 +57,7 @@ export default class ForgotPassword extends Component {
 	render() {
 		return (
 			<KeyboardAvoidingView
-				behavior="padding"
+				behavior="position"
 				style={styles.forgotPassWrapper}
 			>
 				<Logotip/>
@@ -67,19 +70,35 @@ export default class ForgotPassword extends Component {
 						label={'EMAIL'}
 						value={this.props.auth.email}
 						onChangeText={(text: string) => this.props.auth.setValue({'email': text})}
-						placeholder={'Enter an Email'}
+						placeholder={'Email Address'}
+						keyboardType="email-address"
+						autoCapitalize={"none"}
 					/>
 					<Buttons.Rounded
 						text={'Recover Password'}
 						onPress={this.recoverPassword.bind(this)}
 					/>
 				</View>
-				<Modals.Error
-					modalVisible={this.state.isShowErrorModal}
-					hideModal={ () => this.setState({isShowErrorModal: false}) }
-					titleError={'Unable to Login'}
-					descriptionError={"Incorrect Username or Password"}
-					textBtn={'Try again'}
+				<Modals.Notify
+					show={this.state.isShowErrorModal}
+					type={'error'}
+					title={'Recover password'}
+					description={'Incorrect Email'}
+					btnLabel={'Try again'}
+					hideModal={() => this.setState({ isShowErrorModal: false })}
+				/>
+				<Modals.Notify
+					show={this.state.isShowInfoModal}
+					type={'information'}
+					title={'Recover password'}
+					description={'We just sent you an email with instructions'}
+					btnLabel={'Ok'}
+					hideModal={() => {
+						this.setState(
+							{ isShowInfoModal: false },
+							() => this.props.navigation.navigate('SignIn'),
+						);
+					}}
 				/>
 			</KeyboardAvoidingView>
 		);

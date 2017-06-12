@@ -1,8 +1,8 @@
 // @flow
 
-import React, {Component} from 'react';
-import {inject} from 'mobx-react';
-import {View} from 'react-native';
+import React, { Component } from 'react';
+import { inject } from 'mobx-react';
+import { KeyboardAvoidingView } from 'react-native';
 
 import Logotip from '../../../components/Auth/Logo';
 import Title from '../../../components/Auth/Title/';
@@ -10,7 +10,7 @@ import Form from '../../../components/Auth/Form/';
 import Footer from '../../../components/Auth/Footer/';
 import * as Modals from '../../../components/Modals/';
 
-import {login} from '../../../utils/request/';
+import { login } from '../../../utils/request/';
 
 import styles from './styles';
 
@@ -35,21 +35,23 @@ export default class SignIn extends Component {
 
 		login(this.props.auth.email, this.props.auth.password)
 			.then((data) => {
-				this.props.auth.uid = data.lingviny_token;
-				this.props.navigation.navigate('Inbox');
-			}).catch(() => {
-			this.props.auth.requestError = 'Error';
+				if (data && data.lingviny_token) {
+					this.props.auth.setValue({'userAccount': { uid: data.lingviny_token }});
+				}
+			}).catch((error) => {
 			this.setState({isShowErrorModal: true});
-		}).finally(() => {
-			this.props.app.showLoader = false;
-		});
+			}).finally(() => {
+				this.props.app.showLoader = false;
+			});
 	}
 
 	render() {
 		const {navigate} = this.props.navigation;
-
 		return (
-			<View style={styles.signinWrapper}>
+			<KeyboardAvoidingView
+				style={styles.signinWrapper}
+				behavior="position"
+			>
 				<Logotip/>
 				<Title text={'Login to Continue'}/>
 				<Form
@@ -64,14 +66,15 @@ export default class SignIn extends Component {
 					clickableText={'Sign Up'}
 					onPressText={() => navigate('Registration')}
 				/>
-				<Modals.Error
-					modalVisible={this.state.isShowErrorModal}
-					hideModal={ () => this.setState({isShowErrorModal: false}) }
-					titleError={'Unable to Login'}
-					descriptionError={"Incorrect Username or Password"}
-					textBtn={'Try again'}
+				<Modals.Notify
+					show={this.state.isShowErrorModal}
+					type={'error'}
+					title={'Unable to Login'}
+					description={'Incorrect Username or Password'}
+					btnLabel={'Try again'}
+					hideModal={() => this.setState({isShowErrorModal: false})}
 				/>
-			</View>
+			</KeyboardAvoidingView>
 		);
 	}
 }

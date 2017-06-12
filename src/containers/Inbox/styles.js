@@ -10,16 +10,16 @@ const styles = StyleSheet.create({
 		backgroundColor: COLORS.blackWhite,
 	},
 	pageContent: {
-		backgroundColor: COLORS.white,
+		backgroundColor: COLORS.blackWhite,
 		flex: 1,
 		justifyContent: 'space-between',
-		paddingHorizontal: 20,
 	},
 	inboxList: {
-		marginBottom: 20,
+		marginVertical: 20,
+		alignItems: 'center',
 	},
 	swipeoutList: {
-		backgroundColor: COLORS.white,
+		backgroundColor: COLORS.blackWhite,
 		marginBottom: 15,
 	},
 });

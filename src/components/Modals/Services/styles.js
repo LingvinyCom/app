@@ -18,12 +18,14 @@ const styles = {
 		width: WidthDevice - 40,
 		backgroundColor: COLORS.white,
 		borderRadius: 3,
-		padding: 30,
+	},
+	modalBody: {
+		marginTop: 30,
 	},
 	modalCLose: {
 		position: 'absolute',
 		top: 10,
-		right: 10,
+		right: 20,
 	},
 	modalTitle: {
 		textAlign: 'center',
@@ -32,11 +34,16 @@ const styles = {
 		marginBottom: 15,
 	},
 	wrapperBtn: {
-		paddingVertical: 15,
+		marginHorizontal: 60,
+		paddingVertical: 13,
 		borderBottomWidth: 1,
-		borderColor: COLORS.blackWhite,
+		borderColor: COLORS.lightGray2,
 		justifyContent: 'center',
 		alignItems: 'center',
+	},
+	img: {
+		maxWidth: 100,
+		height: 25,
 	},
 	noBorder: {
 		borderBottomWidth: 0,
@@ -51,6 +58,7 @@ const styles = {
 	policyBtn: {
 		justifyContent: 'center',
 		alignItems: 'center',
+		marginBottom: 30,
 	},
 	policyBtntext: {
 		fontSize: 12,
