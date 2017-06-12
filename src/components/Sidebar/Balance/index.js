@@ -5,24 +5,20 @@ import {View, Text, TouchableOpacity} from 'react-native';
 
 import styles from './styles';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import COLORS from '../../../../config/colors.config';
+import COLORS from '../../../config/colors.config';
 
 type Props = {
 	balanceValue: number,
 	onPress: Function,
 };
 
-const BalanceBlock = (props: Props) => {
-	const {balanceValue, onPress} = props;
+const Balance = (props: Props) => {
+	const { balanceValue, onPress } = props;
 	return (
 		<View style={styles.balanceBlock}>
-			<Text style={styles.balanceBlockTitle}>
-				Available Balance
-			</Text>
+			<Text style={styles.balanceBlockTitle}>Available Balance</Text>
 			<View style={styles.balanceBlockValue}>
-				<Text style={styles.balanceCount}>
-					${balanceValue}
-				</Text>
+				<Text style={styles.balanceCount}>${balanceValue}</Text>
 				<TouchableOpacity
 					style={styles.balanceBtnAdd}
 					onPress={onPress}
@@ -38,4 +34,4 @@ const BalanceBlock = (props: Props) => {
 	);
 };
 
-export default BalanceBlock;
+export default Balance;

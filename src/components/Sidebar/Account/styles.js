@@ -1,14 +1,14 @@
 // @flow
 
 import {StyleSheet} from 'react-native';
-import COLORS from '../../../../config/colors.config';
+import COLORS from '../../../config/colors.config';
 
 const styles = StyleSheet.create({
 	account: {
 		flexDirection: 'row',
 		alignItems: 'center',
 		paddingVertical: 25,
-		paddingHorizontal: 30,
+		paddingHorizontal: 15,
 		backgroundColor: COLORS.blackWhite,
 		margin: 0,
 	},

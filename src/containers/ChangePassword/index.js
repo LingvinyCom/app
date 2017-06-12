@@ -11,7 +11,12 @@ import * as Selects from '../../components/Selects/';
 import styles from './styles';
 
 export default class ChangePassword extends Component {
-	constructor(props) {
+	state: {
+		isCheckboxActive: boolean,
+		secureTextEntry: boolean,
+	}
+
+	constructor(props: Object) {
 		super(props);
 		this.state = ({
 			isCheckboxActive: false,
@@ -36,16 +41,22 @@ export default class ChangePassword extends Component {
 				<View style={styles.pageContent}>
 					<View style={styles.inputBlock}>
 						<SimpleInput
-							label={"OLD PASSWORD"}
+							label={'OLD PASSWORD'}
+							placeholder={'Old password'}
 							secureTextEntry={this.state.secureTextEntry}
+							onChangeText={(value) => console.log('value', value)}
 						/>
 						<SimpleInput
-							label={"NEW PASSWORD"}
+							label={'NEW PASSWORD'}
+							placeholder={'New password'}
 							secureTextEntry={this.state.secureTextEntry}
+							onChangeText={(value) => console.log('value', value)}
 						/>
 						<SimpleInput
-							label={"REPEAT NEW PASSWORD"}
+							label={'REPEAT NEW PASSWORD'}
+							placeholder={'Repeat new password'}
 							secureTextEntry={this.state.secureTextEntry}
+							onChangeText={(value) => console.log('value', value)}
 						/>
 						<Selects.Checkbox
 							onPress={this._onPressCheckbox.bind(this)}

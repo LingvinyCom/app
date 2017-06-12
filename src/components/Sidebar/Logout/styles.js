@@ -1,7 +1,7 @@
 // @flow
 
 import {StyleSheet} from 'react-native';
-import COLORS from '../../../../config/colors.config';
+import COLORS from '../../../config/colors.config';
 
 const styles = StyleSheet.create({
 	middleListMenu: {

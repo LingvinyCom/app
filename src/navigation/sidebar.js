@@ -4,18 +4,19 @@ import { ScrollView } from 'react-native';
 
 import Inbox from './../containers/Inbox/';
 import Sent from './../containers/Sent/';
-import Account from './../containers/Sidebar/components/Account/';
+
 import TranslatedItems from './../containers/TranslatedItems/';
 import Archive from './../containers/Archive/';
 import Spam from './../containers/Spam/';
 import Drafts from './../containers/Drafts/';
-import JohnFolder from './../containers/JohnFolder/';
+import ImportedFolder from './../containers/ImportedFolder/';
 import OfficeEmail from './../containers/OfficeEmail/';
 import BillingPayments from './../containers/BillingPayments/';
 import AccountSettings from './../containers/AccountSettings/';
 
-import BalanceBlock from './../containers/Sidebar/components/BalanceBlock/';
-import Logout from '../containers/Sidebar/components/Logout/';
+import Account from './../components/Sidebar/Account/';
+import Balance from './../components/Sidebar/Balance/';
+import Logout from '../components/Sidebar/Logout/';
 
 import COLORS from './../config/colors.config';
 
@@ -27,7 +28,7 @@ export default DrawerNavigator(
 		Archive: { name: 'Archive', screen: Archive },
 		Spam: { name: 'Spam', screen: Spam },
 		Drafts: { name: 'Drafts', screen: Drafts },
-		JohnFolder: { name: 'JohnFolder', screen: JohnFolder },
+		ImportedFolder: { name: 'JohnFolder', screen: ImportedFolder },
 		OfficeEmail: { name: 'OfficeEmail', screen: OfficeEmail },
 		BillingPayments: { name: 'BillingPayments', screen: BillingPayments },
 		AccountSettings: { name: 'AccountSettings', screen: AccountSettings },
@@ -40,9 +41,9 @@ export default DrawerNavigator(
 		contentComponent: (props) => {
 			return (
 				<ScrollView>
-					<BalanceBlock
-						balanceValue={250}
-						onPress={() => console.log('Go to BalanceBlock')}
+					<Balance
+						balanceValue={"250.00"}
+						onPress={() => console.log('Go to Balance')}
 					/>
 					<Account
 						avatarText={"TS"}
@@ -56,7 +57,7 @@ export default DrawerNavigator(
 		},
 		contentOptions: {
 			style: {
-				padding: 0,
+				paddingVertical: 0,
 				marginTop: 0,
 			},
 			inactiveTintColor: COLORS.gray,

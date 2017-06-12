@@ -35,12 +35,14 @@ const slides = [
 export default class FirstLaunch extends Component {
 	state: {
 		isShowNotificationsModal: boolean,
+		activeSlideIdx: number,
 	}
 
 	constructor(props: Object) {
 		super(props);
 		this.state = {
 			isShowNotificationsModal: false,
+			activeSlideIdx: 0,
 		};
 	}
 
@@ -63,14 +65,24 @@ export default class FirstLaunch extends Component {
 		this.setState({ isShowNotificationsModal: false }, () => navigate('Inbox'));
 	}
 
+	renderBtnLabel() {
+		if (this.state.activeSlideIdx === (slides.length - 1)) {
+			return 'Ok';
+		}
+		return 'Skip';
+	}
+
 	render() {
 		const { navigate, state } = this.props.navigation;
 		return (
 			<View style={styles.wrapper}>
-				<SwiperSlider slides={slides}/>
+				<SwiperSlider
+					slides={slides}
+					setActiveSlideIdx={(idx) => this.setState({ activeSlideIdx: idx })}
+				/>
 				<View style={styles.btnWrapper}>
 					<Buttons.Rounded
-						text={'Skip'}
+						text={this.renderBtnLabel()}
 						onPress={this.onClickSkip.bind(this, navigate, state)}
 					/>
 				</View>

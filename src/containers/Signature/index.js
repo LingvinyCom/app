@@ -87,7 +87,7 @@ export default class Signature extends Component {
 								activeLanguageList.map((item, index) =>
 								<View
 									key={index}
-								  style={styles.languageWrapper}
+									style={styles.languageWrapper}
 								>
 									<Text style={styles.languageName}>{item}</Text>
 								</View>

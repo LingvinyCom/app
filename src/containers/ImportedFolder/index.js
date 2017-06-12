@@ -7,7 +7,7 @@ import RouterHeader from '../../components/Inbox/RouterHeader/';
 
 import styles from './styles';
 
-export default class JohnFolder extends Component {
+export default class ImportedFolder extends Component {
 	static navigationOptions = {
 		drawerLabel: 'John Folder',
 		drawerIcon: () => (

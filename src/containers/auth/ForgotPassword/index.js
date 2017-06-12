@@ -81,7 +81,7 @@ export default class ForgotPassword extends Component {
 				<Modals.Notify
 					show={this.state.isShowErrorModal}
 					type={'error'}
-					title={'Rocever password'}
+					title={'Recover password'}
 					description={'Incorrect Email'}
 					btnLabel={'Try again'}
 					hideModal={() => this.setState({ isShowErrorModal: false })}
@@ -89,7 +89,7 @@ export default class ForgotPassword extends Component {
 				<Modals.Notify
 					show={this.state.isShowInfoModal}
 					type={'information'}
-					title={'Rocever password'}
+					title={'Recover password'}
 					description={'We just sent you an email with instructions'}
 					btnLabel={'Ok'}
 					hideModal={() => {

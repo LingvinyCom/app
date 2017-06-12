@@ -18,7 +18,7 @@ export default class TranslatedItems extends Component {
 		return (
 			<View style={styles.pageContainer}>
 				<RouterHeader
-					onPressLeftIcon={ () => this.props.navigation.navigate('Inbox')}
+					onPressLeftIcon={() => this.props.navigation.navigate('Inbox')}
 					titlePage={"Translate Into"}
 					leftIconUrl={require('../../assets/img/arrow-left-icon.png')}
 					isShowRightIcon={false}

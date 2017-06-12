@@ -1,12 +1,12 @@
 // @flow
 
 import {StyleSheet} from 'react-native';
-import COLORS from '../../../../config/colors.config';
+import COLORS from '../../../config/colors.config';
 
 
 const styles = StyleSheet.create({
 	balanceBlock: {
-		paddingHorizontal: 30,
+		paddingHorizontal: 15,
 		paddingTop: 30,
 		paddingBottom: 15,
 	},

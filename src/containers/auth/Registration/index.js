@@ -157,6 +157,7 @@ export default class Registration extends Component {
 							onChangeText={(text: string) => this.onChangeEmail(text)}
 							placeholder={'Enter an Email'}
 							keyboardType="email-address"
+							autoCapitalize="none"
 						/>
 						<Collapsible collapsed={isCollapsed}>
 							{
@@ -177,8 +178,8 @@ export default class Registration extends Component {
 							label={'PASSWORD'}
 							secureTextEntry={true}
 							value={this.props.auth.password}
-							onChangeText={(text: string) => this.props.auth.setValue({ 'password': text })}
-							placeholder={'Enter a Password'}
+							onChangeText={(text: string) => this.props.auth.setValue({'password': text})}
+							placeholder={'Password'}
 						/>
 						<Buttons.Rounded
 							text={'Continue'}

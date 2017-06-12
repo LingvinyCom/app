@@ -12,21 +12,15 @@ type Props = {
 };
 
 const Account = (props: Props) => {
-	const {avatarText, accountName, accountEmail} = props;
+	const { avatarText, accountName, accountEmail } = props;
 	return (
 		<View style={styles.account}>
 			<View style={styles.accountAvatar}>
-				<Text style={styles.accountAvatarText}>
-					{ avatarText }
-				</Text>
+				<Text style={styles.accountAvatarText}>{ avatarText }</Text>
 			</View>
 			<View style={styles.accountInfo}>
-				<Text style={styles.accountName}>
-					{ accountName }
-				</Text>
-				<Text style={styles.accountEmail}>
-					{ accountEmail }
-				</Text>
+				<Text style={styles.accountName}>{ accountName }</Text>
+				<Text style={styles.accountEmail}>{ accountEmail }</Text>
 			</View>
 		</View>
 	);

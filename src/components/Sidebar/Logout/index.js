@@ -4,11 +4,11 @@ import React, { Component } from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
 import { inject } from 'mobx-react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import * as Modals from '../../../../components/Modals/';
+import * as Modals from '../../../components/Modals/';
 
-import { logout } from '../../../../utils/request/';
+import { logout } from '../../../utils/request/';
 
-import COLORS from '../../../../config/colors.config';
+import COLORS from '../../../config/colors.config';
 import styles from './styles';
 
 
@@ -37,6 +37,10 @@ export default class Logout extends Component {
 	}
 
 	logout() {
+		if (this.state.isShowConfirmationModal) {
+			this.toggleConfirmationModal(false);
+		}
+
 		this.props.app.showLoader = true;
 
 		logout(this.props.auth.userAccount.uid)
@@ -71,13 +75,10 @@ export default class Logout extends Component {
 					btnLabel={'Try again'}
 					hideModal={() => this.setState({isShowErrorModal: false})}
 				/>
-				<Modals.Notify
+				<Modals.Confirmation
 					show={this.state.isShowConfirmationModal}
-					type={'error'}
-					title={'REALLY???'}
-					description={'ARE YOU SURE YOU WANT TO LOG OUT?'}
-					btnLabel={'Try again'}
-					hideModal={() => this.toggleConfirmationModal(false)}
+					onAccept={this.logout.bind(this)}
+					onDecline={() => this.toggleConfirmationModal(false)}
 				/>
 			</View>
 		);

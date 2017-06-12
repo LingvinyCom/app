@@ -17,6 +17,9 @@ const styles = StyleSheet.create({
 		fontSize: 18,
 		color: COLORS.gray,
 	},
+	routerIconLeft: {
+		width: 25,
+	},
 });
 
 export default styles;

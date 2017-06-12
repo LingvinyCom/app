@@ -20,22 +20,26 @@ const swiperProps = {
 };
 
 export default class SwiperSlider extends Component {
+
 	render() {
 		const {slides} = this.props;
 		return (
 			<View>
-				<Swiper {...swiperProps}>
-					{slides.map((slide, idx) => (
-						<View style={styles.slide} key={idx}>
-							<Text style={styles.onboardingTitle}>{slide.title}</Text>
-							<View style={styles.onboardingImageWraper}>
-								<Image source={slide.imgUrl}/>
+				<Swiper
+					{...swiperProps}
+					onMomentumScrollEnd={(e, state, context) => this.props.setActiveSlideIdx(state.index)}
+				>
+					{
+						slides.map((slide, idx) => (
+							<View style={styles.slide} key={idx}>
+								<Text style={styles.onboardingTitle}>{slide.title}</Text>
+								<View style={styles.onboardingImageWraper}>
+									<Image source={slide.imgUrl}/>
+								</View>
+								<Text style={styles.onboardingDescription}>{slide.description}</Text>
 							</View>
-							<Text style={styles.onboardingDescription}>
-								{slide.description}
-							</Text>
-						</View>
-					))}
+						))
+					}
 				</Swiper>
 			</View>
 		);
